@@ -6,9 +6,6 @@ A multilingual prompt library built with Next.js. The interface is available in
 **English** (primary), **日本語**, **中文** and **မြန်မာ** (optional translations,
 falling back to English for any missing key).
 
-Based on [MrXie23/PromptLibrary](https://github.com/MrXie23/PromptLibrary) — the
-upstream project provided the application code and the initial prompt collection.
-
 ## ✨ Features
 
 - Browse prompts by category (content creation, programming, design, data, marketing, education)
@@ -89,5 +86,4 @@ Then run `npm run generate-data` (or just `npm run dev`) to refresh the index.
 
 ## 📄 License
 
-MIT — see [LICENSE](LICENSE). Prompt content and the original application code
-come from [MrXie23/PromptLibrary](https://github.com/MrXie23/PromptLibrary).
+MIT — see [LICENSE](LICENSE). 
