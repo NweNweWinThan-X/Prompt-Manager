@@ -6,13 +6,15 @@ export interface LanguageOption {
   nativeName: string;
   // Short label used in the compact switcher
   shortLabel: string;
+  // ISO 3166-1 alpha-2 country code for the flag icon (flag-icons uses these)
+  flag: string;
 }
 
 export const LANGUAGES: LanguageOption[] = [
-  { code: 'en', nativeName: 'English', shortLabel: 'EN' },
-  { code: 'ja', nativeName: '日本語', shortLabel: 'JA' },
-  { code: 'zh', nativeName: '中文', shortLabel: 'ZH' },
-  { code: 'my', nativeName: 'မြန်မာ', shortLabel: 'MY' },
+  { code: 'en', nativeName: 'English', shortLabel: 'EN', flag: 'gb' },
+  { code: 'ja', nativeName: '日本語', shortLabel: 'JP', flag: 'jp' },
+  { code: 'zh', nativeName: '中文', shortLabel: 'CN', flag: 'cn' },
+  { code: 'my', nativeName: 'မြန်မာ', shortLabel: 'MM', flag: 'mm' },
 ];
 
 export const SUPPORTED_LOCALES = LANGUAGES.map((l) => l.code);

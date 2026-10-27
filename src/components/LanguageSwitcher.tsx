@@ -61,7 +61,7 @@ export default function LanguageSwitcher() {
                 aria-expanded={isOpen}
                 aria-label={isLoaded ? t('language.select') : 'Select language'}
             >
-                <i className="fa-solid fa-globe"></i>
+                <span className={`fi fi-${current.flag}`} aria-hidden="true"></span>
                 <span>{current.shortLabel}</span>
             </button>
             {isOpen && (
@@ -76,6 +76,7 @@ export default function LanguageSwitcher() {
                                 onClick={() => handleLanguageChange(lang.code)}
                                 disabled={isChangingLanguage}
                             >
+                                <span className={`fi fi-${lang.flag}`} aria-hidden="true"></span>
                                 {lang.nativeName}
                             </button>
                         </li>

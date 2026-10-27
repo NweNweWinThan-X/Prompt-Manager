@@ -1079,8 +1079,20 @@ body.dark-mode .footer-bottom {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
+.language-trigger .fi,
+.language-menu .fi {
+  /* flag-icons sizes itself from the font, but as a flex item it would shrink */
+  flex: none;
+  width: 1.333em;
+  height: 1em;
+  border-radius: 2px;
+  line-height: 1;
+}
+
 .language-menu button {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   width: 100%;
   text-align: left;
   background: none;
