@@ -1,7 +1,7 @@
 ---
 title: 故事创意生成器
 description: 生成原创故事创意，包括情节、角色设定和情感弧线，适用于小说、剧本或短篇故事。
-category: 内容创作
+category: Content Creation
 ---
 
 # 故事创意生成器

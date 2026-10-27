@@ -1,7 +1,7 @@
 ---
 title: 社交媒体内容日历生成器
 description: 根据营销目标和受众特征，创建结构化的社交媒体内容日历，包括帖子类型、主题和发布时间。
-category: 营销推广
+category: Marketing
 ---
 
 # 社交媒体内容日历生成器

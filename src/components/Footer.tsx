@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from '../lib/i18n';
 import { loadTranslation } from '../lib/i18n';
 import { useLanguage } from '../context/LanguageContext';
+import { REPO_ISSUES_URL, REPO_README_URL, REPO_URL } from '../config/site';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -71,9 +72,9 @@ export default function Footer() {
           <div className="footer-links-section">
             <h4>{t('footer.resources')}</h4>
             <div className="footer-links-items">
-              <a href="https://github.com/MrXie23/PromptLibrary" target="_blank" rel="noopener noreferrer">{t('footer.github_repo')}</a>
-              <a href="https://github.com/MrXie23/PromptLibrary/issues" target="_blank" rel="noopener noreferrer">{t('footer.feedback')}</a>
-              <a href="https://github.com/MrXie23/PromptLibrary/blob/main/README.md" target="_blank" rel="noopener noreferrer">{t('footer.documentation')}</a>
+              <a href={REPO_URL} target="_blank" rel="noopener noreferrer">{t('footer.github_repo')}</a>
+              <a href={REPO_ISSUES_URL} target="_blank" rel="noopener noreferrer">{t('footer.feedback')}</a>
+              <a href={REPO_README_URL} target="_blank" rel="noopener noreferrer">{t('footer.documentation')}</a>
             </div>
           </div>
 
@@ -88,14 +89,8 @@ export default function Footer() {
         </div>
 
         <div className="footer-social">
-          <a href="https://twitter.com/promptlibrary" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-            <i className="fa-brands fa-twitter"></i>
-          </a>
-          <a href="https://github.com/MrXie23/PromptLibrary" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <a href={REPO_URL} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             <i className="fa-brands fa-github"></i>
-          </a>
-          <a href="https://discord.gg/promptlibrary" target="_blank" rel="noopener noreferrer" aria-label="Discord">
-            <i className="fa-brands fa-discord"></i>
           </a>
         </div>
       </div>

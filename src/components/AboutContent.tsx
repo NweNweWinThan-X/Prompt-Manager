@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useTranslation } from '../lib/i18n';
 import { useLanguage } from '../context/LanguageContext';
+import { REPO_README_URL, REPO_URL } from '../config/site';
 
 export default function AboutContent() {
     const { locale } = useLanguage();
@@ -50,11 +51,11 @@ export default function AboutContent() {
                 <p>{t('about.vision_text')}</p>
 
                 <div className="cta-buttons">
-                    <Link href="https://github.com/MrXie23/PromptLibrary/blob/main/README.md" className="view-button">
+                    <Link href={REPO_README_URL} className="view-button">
                         {t('ui.how_to_contribute')}
                     </Link>
                     <a
-                        href="https://github.com/MrXie23/PromptLibrary"
+                        href={REPO_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="view-button secondary"

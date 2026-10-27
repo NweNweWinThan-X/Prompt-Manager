@@ -1,6 +1,10 @@
 const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
+const {
+  resolveCategorySlug,
+  resolveCategoryName,
+} = require("../categories.config");
 
 // 配置项
 const ITEMS_PER_PAGE = 9; // 每页显示的提示词数量（根据您的要求设置为9）
@@ -147,18 +151,19 @@ function generateCategoryPages(allPrompts, paginatedDir, buildPaginatedDir) {
   const categories = {};
 
   allPrompts.forEach((prompt) => {
-    const category = prompt.category;
-    if (category) {
-      if (!categories[category]) {
-        categories[category] = [];
+    if (prompt.category) {
+      // 以 slug 归类，前置内容里的别名也能落到正确的分类
+      const slug = resolveCategorySlug(prompt.category);
+      if (!categories[slug]) {
+        categories[slug] = [];
       }
-      categories[category].push(prompt);
+      categories[slug].push(prompt);
     }
   });
 
   // 为每个分类生成分页数据
-  Object.entries(categories).forEach(([categoryName, categoryPrompts]) => {
-    const categorySlug = categoryName.toLowerCase().replace(/\s+/g, "-");
+  Object.entries(categories).forEach(([categorySlug, categoryPrompts]) => {
+    const categoryName = resolveCategoryName(categorySlug);
     const totalPages = Math.ceil(
       categoryPrompts.length / CATEGORIES_ITEMS_PER_PAGE
     );

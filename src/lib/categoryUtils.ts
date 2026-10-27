@@ -3,7 +3,7 @@ import path from 'path';
 import { CategoryData } from '@/types';
 import { safeReadFile, safeWriteFile, safeParseJson } from './utils';
 import { getAllPrompts } from './promptUtils';
-import { CATEGORIES } from '@/config/categories';
+import { CATEGORIES, resolveCategorySlug } from '@/config/categories';
 
 // 分类配置文件路径
 const CATEGORIES_FILE_PATH = path.join(process.cwd(), 'src', 'config', 'categories.json');
@@ -48,15 +48,12 @@ function updateCategoryCounts(categories: CategoryData[]): CategoryData[] {
     }
   });
   
-  // 按slug统计
+  // 按slug统计（分类名、slug 或别名都能匹配）
   const slugCounts: Record<string, number> = {};
   prompts.forEach(prompt => {
     if (prompt.category) {
-      // 查找对应分类的slug
-      const category = categories.find(cat => cat.name === prompt.category);
-      if (category) {
-        slugCounts[category.slug] = (slugCounts[category.slug] || 0) + 1;
-      }
+      const slug = resolveCategorySlug(prompt.category);
+      slugCounts[slug] = (slugCounts[slug] || 0) + 1;
     }
   });
   

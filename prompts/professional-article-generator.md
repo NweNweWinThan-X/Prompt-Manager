@@ -1,7 +1,7 @@
 ---
 title: "专业文章生成器"
 description: "创建结构化、专业的文章，包含引人入胜的标题、精确的小标题和丰富的内容。"
-category: "内容创作"
+category: Content Creation
 author: ""
 tags: []
 ---

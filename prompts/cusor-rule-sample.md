@@ -1,7 +1,7 @@
 ---
 title: cursor rule提示词样例
 description: 在cursor中使用，用来指导约束AI，使AI编码效率更高
-category: 编程开发
+category: Programming
 createdAt: '2025-03-21'
 updatedAt: '2025-03-21T08:03:20.574Z'
 rating: 10

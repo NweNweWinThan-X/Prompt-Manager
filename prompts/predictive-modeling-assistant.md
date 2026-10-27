@@ -1,7 +1,7 @@
 ---
 title: 预测建模助手
 description: 帮助构建和优化预测模型，提供特征选择、模型选择、评估及调优的专业指导。
-category: 数据分析
+category: Data Analysis
 ---
 
 # 预测建模助手

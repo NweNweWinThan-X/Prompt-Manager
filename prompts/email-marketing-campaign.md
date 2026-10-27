@@ -1,7 +1,7 @@
 ---
 title: 电子邮件营销活动策划
 description: 设计完整的电子邮件营销活动，包括目标设定、分段策略、邮件序列设计和性能预测。
-category: 营销推广
+category: Marketing
 ---
 
 # 电子邮件营销活动策划

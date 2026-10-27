@@ -10,7 +10,8 @@
     "lint": "next lint",
     "export": "next export",
     "deploy": "npm run build:optimized && node -e \"require('fs').writeFileSync('out/.nojekyll','')\"",
-    "generate-data": "node scripts/generate-index.js && node scripts/generate-paginated-data.js"
+    "generate-data": "node scripts/generate-index.js && node scripts/generate-paginated-data.js",
+    "new-prompt": "node scripts/new-prompt.js"
   },
   "dependencies": {
     "i18next": "^23.10.0",

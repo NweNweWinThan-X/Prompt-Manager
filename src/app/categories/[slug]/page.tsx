@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { getAllCategories, getAllPrompts } from '@/lib/prompts';
 import { notFound } from 'next/navigation';
-import { SLUG_TO_CATEGORY } from '@/config/categories';
+import { resolveCategorySlug } from '@/config/categories';
 import dynamic from 'next/dynamic';
 
 // 动态导入客户端组件
@@ -62,9 +62,8 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   }
 
   const allPrompts = getAllPrompts();
-  const categoryPrompts = allPrompts.filter(prompt =>
-    prompt.category === SLUG_TO_CATEGORY[category.slug] ||
-    prompt.category === category.name
+  const categoryPrompts = allPrompts.filter(
+    prompt => resolveCategorySlug(prompt.category) === category.slug
   );
 
   return (

@@ -1,7 +1,7 @@
 ---
 title: "学习计划生成器"
 description: "为任何主题或技能创建个性化的、结构化的学习路径，包含里程碑、资源和时间表。"
-category: "教育学习"
+category: Education
 author: ""
 tags: []
 ---

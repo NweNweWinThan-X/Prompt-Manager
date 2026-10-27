@@ -1,7 +1,7 @@
 ---
 title: "数据分析计划生成器"
 description: "根据具体业务问题和可用数据创建完整的数据分析计划，包括方法选择、工具建议和预期结果。"
-category: "数据分析"
+category: Data Analysis
 author: ""
 tags: []
 ---

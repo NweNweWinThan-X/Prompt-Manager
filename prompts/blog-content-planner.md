@@ -1,7 +1,7 @@
 ---
 title: 博客内容规划师
 description: 生成全面的博客内容计划，包括标题创意、关键词建议和主题大纲。
-category: 内容创作
+category: Content Creation
 ---
 
 # 博客内容规划师

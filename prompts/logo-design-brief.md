@@ -1,7 +1,7 @@
 ---
 title: Logo设计指南
 description: 根据品牌价值观和目标受众创建详细的Logo设计方案，包括风格、颜色、字体和应用场景建议。
-category: 创意设计
+category: Creative Design
 ---
 
 # Logo 设计指南

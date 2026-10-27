@@ -1,7 +1,7 @@
 ---
 title: 考试题目生成器
 description: 根据指定主题和难度生成各种类型的考试题目，包括选择题、填空题和论述题。
-category: 教育学习
+category: Education
 ---
 
 # 考试题目生成器

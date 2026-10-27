@@ -3,7 +3,7 @@
     "slug": "logo-design-brief",
     "title": "Logo设计指南",
     "description": "根据品牌价值观和目标受众创建详细的Logo设计方案，包括风格、颜色、字体和应用场景建议。",
-    "category": "创意设计",
+    "category": "Creative Design",
     "rating": 9.4,
     "createdAt": "2025-02-05",
     "featured": false
@@ -12,7 +12,7 @@
     "slug": "predictive-modeling-assistant",
     "title": "预测建模助手",
     "description": "帮助构建和优化预测模型，提供特征选择、模型选择、评估及调优的专业指导。",
-    "category": "数据分析",
+    "category": "Data Analysis",
     "rating": 9.4,
     "createdAt": "2025-02-03",
     "featured": false
@@ -21,7 +21,7 @@
     "slug": "exam-question-generator",
     "title": "考试题目生成器",
     "description": "根据指定主题和难度生成各种类型的考试题目，包括选择题、填空题和论述题。",
-    "category": "教育学习",
+    "category": "Education",
     "rating": 9.4,
     "createdAt": "2025-02-01",
     "featured": false
@@ -30,7 +30,7 @@
     "slug": "concept-explainer",
     "title": "概念解释专家",
     "description": "将复杂概念分解成简单易懂的解释，使用类比、例子和视觉描述帮助理解。",
-    "category": "教育学习",
+    "category": "Education",
     "rating": 9.3,
     "createdAt": "2025-01-30",
     "featured": false
@@ -39,7 +39,7 @@
     "slug": "story-idea-generator",
     "title": "故事创意生成器",
     "description": "生成原创故事创意，包括情节、角色设定和情感弧线，适用于小说、剧本或短篇故事。",
-    "category": "内容创作",
+    "category": "Content Creation",
     "rating": 9.3,
     "createdAt": "2025-01-28",
     "featured": false
@@ -48,7 +48,7 @@
     "slug": "data-visualization-guide",
     "title": "数据可视化指南",
     "description": "基于具体数据和目标提供最佳数据可视化建议，包括图表类型选择、设计原则和工具建议。",
-    "category": "数据分析",
+    "category": "Data Analysis",
     "rating": 9.3,
     "createdAt": "2025-01-27",
     "featured": false
@@ -57,7 +57,7 @@
     "slug": "api-documentation-generator",
     "title": "API文档生成器",
     "description": "根据API代码或规范生成专业、完整的API文档，包括端点说明、参数详解和使用示例。",
-    "category": "编程开发",
+    "category": "Programming",
     "rating": 9.2,
     "createdAt": "2025-01-25",
     "featured": false
@@ -66,7 +66,7 @@
     "slug": "code-refactoring-guide",
     "title": "代码重构指南",
     "description": "分析现有代码并提供详细的重构建议，改进代码结构、可读性和可维护性。",
-    "category": "编程开发",
+    "category": "Programming",
     "rating": 9.1,
     "createdAt": "2025-01-22",
     "featured": false
@@ -75,7 +75,7 @@
     "slug": "code-optimization-assistant",
     "title": "代码优化助手",
     "description": "分析并优化您的代码，提供性能改进建议和最佳实践指导。",
-    "category": "编程开发",
+    "category": "Programming",
     "rating": 9.5,
     "createdAt": "2025-01-20",
     "featured": true

@@ -1,7 +1,7 @@
 ---
 title: 概念解释专家
 description: 将复杂概念分解成简单易懂的解释，使用类比、例子和视觉描述帮助理解。
-category: 教育学习
+category: Education
 ---
 
 # 概念解释专家

@@ -1,7 +1,7 @@
 ---
 title: 代码重构指南
 description: 分析现有代码并提供详细的重构建议，改进代码结构、可读性和可维护性。
-category: 编程开发
+category: Programming
 ---
 
 # 代码重构指南

@@ -1,7 +1,7 @@
 ---
 title: 数据可视化指南
 description: 基于具体数据和目标提供最佳数据可视化建议，包括图表类型选择、设计原则和工具建议。
-category: 数据分析
+category: Data Analysis
 ---
 
 # 数据可视化指南

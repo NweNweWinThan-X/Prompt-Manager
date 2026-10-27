@@ -1,7 +1,7 @@
 ---
 title: 代码优化助手
 description: 分析并优化您的代码，提供性能改进建议和最佳实践指导。
-category: 编程开发
+category: Programming
 ---
 
 # 代码优化助手

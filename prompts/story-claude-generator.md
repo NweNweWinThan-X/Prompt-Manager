@@ -1,7 +1,7 @@
 ---
 title: 故事创作助手
 description: 与用户协作创作引人入胜的故事，提供情节转折和人物发展建议。
-category: 内容创作
+category: Content Creation
 author: ''
 tags: []
 createdAt: '2025-03-20'
