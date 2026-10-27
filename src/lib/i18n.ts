@@ -26,6 +26,12 @@ const loadingPromises: LoadingPromisesType = Object.fromEntries(
 
 // 预加载翻译
 export const loadTranslation = async (locale: string, namespace: string = 'common') => {
+  // 翻译文件通过相对路径获取，只能在浏览器里加载；
+  // 在服务端渲染时 fetch 相对 URL 会抛 ERR_INVALID_URL
+  if (typeof window === 'undefined') {
+    return {};
+  }
+
   // 如果正在加载这个翻译，返回已有的Promise
   const currentPromise = loadingPromises[locale]?.[namespace];
   if (currentPromise !== undefined) {

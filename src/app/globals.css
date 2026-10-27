@@ -849,10 +849,28 @@ footer {
   nav {
     padding: 16px;
     max-width: 100%;
+    gap: 8px;
   }
 
   .logo {
     font-size: 1.25rem;
+    /* Give way to the controls instead of letting them overlap it */
+    flex: 0 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .nav-actions {
+    flex: none;
+    gap: 6px;
+  }
+
+  .nav-actions button,
+  .nav-actions .search-btn {
+    width: 36px;
+    height: 36px;
   }
 
   .nav-links {
@@ -1200,12 +1218,24 @@ footer {
 
 @media (max-width: 768px) {
   .language-switcher {
-    margin-right: 0.5rem;
+    margin-right: 0.25rem;
   }
 
+  /*
+   * The header has to hold the logo, language, search, theme and menu on a
+   * 375px screen. The flag alone still reads as the language control, so the
+   * code is dropped and the pill shrinks to the size of the round buttons.
+   */
   .language-trigger {
-    font-size: 0.8rem;
-    padding: 4px 8px;
+    height: 36px;
+    width: 36px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .language-trigger .language-code {
+    display: none;
   }
 }
 
