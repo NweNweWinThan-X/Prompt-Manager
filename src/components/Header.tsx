@@ -28,9 +28,23 @@ export default function Header() {
   }, [translationsLoaded]);
 
   useEffect(() => {
-    // 检查用户系统偏好
-    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setDarkMode(prefersDarkMode);
+    // 主题：以 <html data-theme> 为准（layout.tsx 在首次绘制前已设置）
+    const current = document.documentElement.getAttribute('data-theme');
+    setDarkMode(
+      current
+        ? current === 'dark'
+        : window.matchMedia('(prefers-color-scheme: dark)').matches
+    );
+
+    // 没有手动选择时，跟随系统偏好变化
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleSystemChange = (event: MediaQueryListEvent) => {
+      if (!localStorage.getItem('theme')) {
+        document.documentElement.setAttribute('data-theme', event.matches ? 'dark' : 'light');
+        setDarkMode(event.matches);
+      }
+    };
+    media.addEventListener('change', handleSystemChange);
 
     // 检测是否为移动设备
     const checkIfMobile = () => {
@@ -44,12 +58,18 @@ export default function Header() {
     window.addEventListener('resize', checkIfMobile);
 
     // 清除监听器
-    return () => window.removeEventListener('resize', checkIfMobile);
+    return () => {
+      window.removeEventListener('resize', checkIfMobile);
+      media.removeEventListener('change', handleSystemChange);
+    };
   }, []);
 
   const toggleTheme = () => {
+    const next = darkMode ? 'light' : 'dark';
     setDarkMode(!darkMode);
-    document.body.classList.toggle('dark-mode');
+    // 所有颜色都来自 data-theme 上的 token，这里只需切换属性
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
   };
 
   const toggleMobileMenu = () => {
@@ -148,8 +168,38 @@ export default function Header() {
           <button onClick={handleSearchClick} className="search-btn">
             <i className="fa-solid fa-magnifying-glass"></i>
           </button>
-          <button className="theme-toggle" onClick={toggleTheme}>
-            <i className={`fa-solid ${darkMode ? 'fa-sun' : 'fa-moon'}`}></i>
+          <button
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label={isLoaded ? t(darkMode ? 'theme.light' : 'theme.dark') : 'Toggle theme'}
+            title={isLoaded ? t(darkMode ? 'theme.light' : 'theme.dark') : undefined}
+          >
+            {/*
+              Inline SVG rather than a Font Awesome <i>: the Font Awesome script
+              swaps each <i> for an <svg> once, so a class change on re-render
+              left the icon showing the previous theme.
+            */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              {darkMode ? (
+                <>
+                  <circle cx="12" cy="12" r="4" />
+                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                </>
+              ) : (
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              )}
+            </svg>
           </button>
           {isMobile && (
             <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>

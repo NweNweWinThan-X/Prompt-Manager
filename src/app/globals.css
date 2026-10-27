@@ -3,21 +3,97 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* 基础样式 */
+
+/*
+ * Theme tokens.
+ *
+ * The theme is driven by the data-theme attribute on <html>, which the header
+ * toggle sets and layout.tsx applies before first paint. Light is the default;
+ * the dark values live in ONE place below and are applied twice: once for an
+ * explicit data-theme="dark", once for visitors whose system asks for dark and
+ * who have not chosen light themselves.
+ *
+ * Components must use these tokens rather than literal colours, otherwise they
+ * stay stuck in one theme while everything around them switches.
+ */
 :root {
+  color-scheme: light;
+
   --primary-color: #0071e3;
   --secondary-color: #1d1d1f;
+
+  /* Surfaces, from furthest back to nearest front */
   --background-color: #ffffff;
   --card-background: #f5f5f7;
+  --surface-hover: #e8e8ed;
+  --header-bg: rgba(255, 255, 255, 0.8);
+  --overlay-bg: #ffffff;
+
+  /* Text */
   --text-color: #1d1d1f;
-  --text-secondary: #86868b;
+  --text-secondary: #6e6e73;
+  --text-muted: #86868b;
+
+  /* Lines and depth */
   --border-color: #d2d2d7;
   --shadow-color: rgba(0, 0, 0, 0.08);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 6px 20px rgba(0, 0, 0, 0.15);
+
   --highlight-color: #2997ff;
   --success-color: #4CAF50;
   --warning-color: #FF9800;
   --danger-color: #F44336;
   --radius: 12px;
   --transition: all 0.3s ease;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --secondary-color: #f5f5f7;
+
+  --background-color: #000000;
+  --card-background: #1c1c1e;
+  --surface-hover: #2c2c2e;
+  --header-bg: rgba(0, 0, 0, 0.8);
+  --overlay-bg: #121212;
+
+  --text-color: #ffffff;
+  --text-secondary: #a1a1a6;
+  --text-muted: #86868b;
+
+  --border-color: #38383c;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Same dark values for a system preference the visitor has not overridden */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+
+    --secondary-color: #f5f5f7;
+
+    --background-color: #000000;
+    --card-background: #1c1c1e;
+    --surface-hover: #2c2c2e;
+    --header-bg: rgba(0, 0, 0, 0.8);
+    --overlay-bg: #121212;
+
+    --text-color: #ffffff;
+    --text-secondary: #a1a1a6;
+    --text-muted: #86868b;
+
+    --border-color: #38383c;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 6px 20px rgba(0, 0, 0, 0.6);
+  }
 }
 
 * {
@@ -114,7 +190,7 @@ header {
   position: sticky;
   top: 0;
   backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--header-bg);
   z-index: 1000;
   border-bottom: 1px solid var(--border-color);
   width: 100%;
@@ -186,7 +262,7 @@ nav {
 .nav-actions button:hover,
 .nav-actions .search-btn:hover {
   color: var(--text-color);
-  background-color: #e8e8ed;
+  background-color: var(--surface-hover);
 }
 
 /* 英雄区域样式 */
@@ -541,22 +617,15 @@ footer {
 .footer {
   flex-shrink: 0;
   /* 防止footer被压缩 */
-  background-color: #f8f9fa;
-  color: #333;
+  background-color: var(--card-background);
+  color: var(--text-color);
   padding: 3rem 0 1rem;
   margin-top: auto;
   /* 将footer推到底部 */
-  border-top: 1px solid #e9ecef;
+  border-top: 1px solid var(--border-color);
   width: 100%;
   left: 0;
   right: 0;
-}
-
-/* 深色模式 */
-body.dark-mode .footer {
-  background-color: #1a1a1a;
-  color: #f8f9fa;
-  border-top: 1px solid #333;
 }
 
 .footer-content {
@@ -578,12 +647,8 @@ body.dark-mode .footer {
 }
 
 .footer-logo span {
-  color: #3182ce;
+  color: var(--primary-color);
   /* 蓝色强调，与Header匹配 */
-}
-
-body.dark-mode .footer-logo span {
-  color: #63b3ed;
 }
 
 .footer-links {
@@ -609,18 +674,14 @@ body.dark-mode .footer-logo span {
 }
 
 .footer-links-section a {
-  color: #4a5568;
+  color: var(--text-secondary);
   text-decoration: none;
   margin-bottom: 0.5rem;
   transition: color 0.2s;
 }
 
-body.dark-mode .footer-links-section a {
-  color: #cbd5e0;
-}
-
 .footer-links-section a:hover {
-  color: #3182ce;
+  color: var(--primary-color);
 }
 
 .footer-social {
@@ -630,17 +691,13 @@ body.dark-mode .footer-links-section a {
 }
 
 .footer-social a {
-  color: #4a5568;
+  color: var(--text-secondary);
   font-size: 1.25rem;
   transition: color 0.2s;
 }
 
-body.dark-mode .footer-social a {
-  color: #cbd5e0;
-}
-
 .footer-social a:hover {
-  color: #3182ce;
+  color: var(--primary-color);
 }
 
 .footer-bottom {
@@ -649,15 +706,11 @@ body.dark-mode .footer-social a {
   padding: 1rem 20px;
   text-align: center;
   font-size: 0.875rem;
-  color: #718096;
-  border-top: 1px solid #e9ecef;
+  /* Readable rather than decorative: --text-muted falls under 4.5:1 on white */
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-color);
   width: 100%;
   box-sizing: border-box;
-}
-
-body.dark-mode .footer-bottom {
-  color: #a0aec0;
-  border-top: 1px solid #333;
 }
 
 .logo-section {
@@ -808,7 +861,7 @@ body.dark-mode .footer-bottom {
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: #fff;
+    background-color: var(--overlay-bg);
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -817,10 +870,6 @@ body.dark-mode .footer-bottom {
     transition: transform 0.3s ease-in-out;
     z-index: 1000;
     padding: 2rem;
-  }
-
-  body.dark-mode .nav-links {
-    background-color: #121212;
   }
 
   .nav-links.mobile-open {
@@ -968,11 +1017,7 @@ body.dark-mode .footer-bottom {
   .footer-links-section {
     width: 100%;
     padding-bottom: 1rem;
-    border-bottom: 1px solid #eaeaea;
-  }
-
-  body.dark-mode .footer-links-section {
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--border-color);
   }
 
   .footer-links-section:last-child {
@@ -1040,23 +1085,35 @@ body.dark-mode .footer-bottom {
 }
 
 .language-trigger {
-  display: flex;
+  /* Flag first, code beside it, both centred on the same optical line */
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  justify-content: flex-start;
+  gap: 8px;
+  height: 40px;
   background: none;
   border: 1px solid var(--border-color);
-  border-radius: 6px;
-  padding: 5px 10px;
-  font-size: 0.85rem;
+  border-radius: 20px;
+  padding: 0 14px;
+  font-size: 0.8rem;
+  font-weight: 500;
   cursor: pointer;
   color: var(--text-color);
-  transition: color 0.3s, border-color 0.3s;
+  transition: color 0.2s, border-color 0.2s, background-color 0.2s;
 }
 
 .language-trigger:hover,
 .language-trigger[aria-expanded="true"] {
   color: var(--primary-color);
   border-color: var(--primary-color);
+  background-color: var(--card-background);
+}
+
+.language-trigger:focus-visible,
+.language-menu button:focus-visible,
+.nav-actions button:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
 }
 
 .language-trigger:disabled {
@@ -1069,49 +1126,75 @@ body.dark-mode .footer-bottom {
   top: calc(100% + 6px);
   right: 0;
   z-index: 100;
-  min-width: 140px;
+  min-width: 180px;
   margin: 0;
-  padding: 4px;
+  padding: 6px;
   list-style: none;
-  background-color: var(--card-bg, var(--background));
+  background-color: var(--background-color);
   border: 1px solid var(--border-color);
   border-radius: 8px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-lg);
 }
 
 .language-trigger .fi,
 .language-menu .fi {
-  /* flag-icons sizes itself from the font, but as a flex item it would shrink */
+  /*
+   * flag-icons sizes itself from the font, but as a flex item it would shrink.
+   * The flag is the optical anchor, so it keeps a fixed 4:3 box and the label
+   * centres against it rather than against the text baseline.
+   */
   flex: none;
-  width: 1.333em;
-  height: 1em;
+  width: 20px;
+  height: 15px;
   border-radius: 2px;
+  line-height: 1;
+}
+
+.language-code {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
   line-height: 1;
 }
 
 .language-menu button {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   width: 100%;
   text-align: left;
   background: none;
   border: none;
   border-radius: 6px;
   padding: 8px 10px;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   cursor: pointer;
   color: var(--text-color);
   transition: background-color 0.2s, color 0.2s;
 }
 
+/* Native name takes the space; the code sits flush right as a quiet marker */
+.language-menu .language-name {
+  flex: 1;
+  /* Roomy enough for Burmese, whose stacked marks clip at a tighter leading */
+  line-height: 1.8;
+}
+
+.language-menu .language-code {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
 .language-menu button:hover {
-  background-color: var(--border-color);
+  background-color: var(--surface-hover);
   color: var(--primary-color);
 }
 
 .language-menu button.active {
   font-weight: 600;
+  color: var(--primary-color);
+}
+
+.language-menu button.active .language-code {
   color: var(--primary-color);
 }
 
@@ -1309,9 +1392,6 @@ main,
   margin-left: 0.5rem;
 }
 
-body.dark-mode .mobile-menu-toggle {
-  color: #f8f9fa;
-}
 
 /* 分页控件样式 */
 .paginated-prompts {
@@ -1528,29 +1608,9 @@ body.dark-mode .mobile-menu-toggle {
 }
 
 /* 深色模式 */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-color: #000000;
-    --card-background: #1c1c1e;
-    --text-color: #ffffff;
-    --text-secondary: #86868b;
-    --border-color: #38383c;
-    --shadow-color: rgba(0, 0, 0, 0.2);
-  }
-
-  header {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-
-  .nav-actions button {
-    background-color: #1c1c1e;
-  }
-
-  .nav-actions button:hover {
-    background-color: #2c2c2e;
-  }
-
-  .search-container input {
-    background-color: #1c1c1e;
-  }
-}
+/*
+ * The dark palette lives with the other tokens at the top of this file.
+ * It must not be repeated here: a plain `@media (prefers-color-scheme: dark)`
+ * block would win over the data-theme attribute and leave anyone on a dark
+ * system unable to switch to light.
+ */

@@ -62,7 +62,7 @@ export default function LanguageSwitcher() {
                 aria-label={isLoaded ? t('language.select') : 'Select language'}
             >
                 <span className={`fi fi-${current.flag}`} aria-hidden="true"></span>
-                <span>{current.shortLabel}</span>
+                <span className="language-code">{current.shortLabel}</span>
             </button>
             {isOpen && (
                 <ul className="language-menu" role="listbox">
@@ -77,7 +77,8 @@ export default function LanguageSwitcher() {
                                 disabled={isChangingLanguage}
                             >
                                 <span className={`fi fi-${lang.flag}`} aria-hidden="true"></span>
-                                {lang.nativeName}
+                                <span className="language-name">{lang.nativeName}</span>
+                                <span className="language-code">{lang.shortLabel}</span>
                             </button>
                         </li>
                     ))}
