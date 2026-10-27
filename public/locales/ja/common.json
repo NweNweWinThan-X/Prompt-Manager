@@ -1,0 +1,144 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "categories": "カテゴリー",
+    "popular": "人気",
+    "about": "概要"
+  },
+  "footer": {
+    "navigation": "ナビゲーション",
+    "resources": "リソース",
+    "legal": "法的情報",
+    "github_repo": "GitHub リポジトリ",
+    "feedback": "フィードバック",
+    "documentation": "ドキュメント",
+    "terms": "利用規約",
+    "privacy": "プライバシーポリシー",
+    "cookies": "クッキーポリシー",
+    "rights": "All Rights Reserved"
+  },
+  "language": {
+    "select": "言語",
+    "en": "英語",
+    "ja": "日本語",
+    "zh": "中国語",
+    "my": "ビルマ語"
+  },
+  "theme": {
+    "dark": "ダークモード",
+    "light": "ライトモード"
+  },
+  "hero": {
+    "title": "AI プロンプトの世界を探索しよう",
+    "subtitle": "厳選されたプロンプトを見つけ、使い、共有して、AI の力を最大限に引き出しましょう",
+    "search_placeholder": "プロンプトライブラリを検索...",
+    "search_button": "検索"
+  },
+  "homepage": {
+    "featured_prompts": "注目のプロンプト",
+    "recently_added": "最近追加されたプロンプト",
+    "view_all_popular": "人気を見る",
+    "view_all": "すべて見る"
+  },
+  "categories": {
+    "title": "カテゴリーを見る",
+    "subtitle": "さまざまな分野のプロンプトを探索しましょう",
+    "view_all": "すべて見る",
+    "prompts_count": "{{count}} 件のプロンプト",
+    "prompt_count_total": "合計 {{count}} 件のプロンプト",
+    "content_creation": "コンテンツ制作",
+    "programming": "プログラミング",
+    "creative_design": "クリエイティブデザイン",
+    "data_analysis": "データ分析",
+    "marketing": "マーケティング",
+    "education": "教育・学習",
+    "other": "その他"
+  },
+  "popular": {
+    "title": "人気のプロンプト",
+    "subtitle": "多くのユーザーに支持されている高品質なプロンプト",
+    "view_all": "すべて見る"
+  },
+  "about": {
+    "title": "このサイトについて",
+    "subtitle": "Prompt Library のミッションとビジョン",
+    "description": "Prompt Library は、さまざまな分野の AI プロンプトを収集・共有・改善するためのオープンなプラットフォームです。コミュニティの協力によって、誰もが AI をより効果的に活用できる質の高いプロンプトを作れると考えています。",
+    "team": "チーム",
+    "mission": "ミッション",
+    "mission_text": "高品質な AI プロンプトを誰もが使えるようにし、AI ツールをより身近で分かりやすいものにすること。",
+    "vision": "ビジョン",
+    "vision_text": "世界で最も充実した AI プロンプトのライブラリを築き、AI の力をより多くの人に届けること。"
+  },
+  "prompt_card": {
+    "by": "作成者",
+    "views": "閲覧数",
+    "likes": "いいね",
+    "created": "作成日",
+    "updated": "更新日",
+    "view_button": "詳細を見る",
+    "copy_button": "プロンプトをコピー",
+    "copied": "コピーしました！",
+    "new": "新着",
+    "featured": "注目"
+  },
+  "prompt_detail": {
+    "description": "説明",
+    "content": "プロンプト本文",
+    "usage": "使い方",
+    "usage_text": "上のプロンプトをお好みの AI ツールにコピーし、必要に応じて調整して使い始めましょう。"
+  },
+  "search": {
+    "title": "検索結果",
+    "no_results": "結果が見つかりませんでした",
+    "placeholder": "キーワードを入力して検索...",
+    "searching": "検索中...",
+    "results_count": "{{count}} 件の結果が見つかりました",
+    "enter_query": "検索キーワードを入力してください"
+  },
+  "subscribe": {
+    "title": "更新情報を受け取る",
+    "subtitle": "最新のプロンプトと機能のお知らせをお届けします",
+    "email_placeholder": "メールアドレスを入力",
+    "button": "登録する",
+    "success": "登録が完了しました！",
+    "error": "登録に失敗しました。しばらくしてからもう一度お試しください。"
+  },
+  "pagination": {
+    "previous": "前へ",
+    "next": "次へ",
+    "page": "{{total}} ページ中 {{current}} ページ目"
+  },
+  "ui": {
+    "loading": "読み込み中...",
+    "error": "エラーが発生しました",
+    "try_again": "再試行",
+    "no_data": "データがありません",
+    "coming_soon": "近日公開",
+    "back_to_categories": "すべてのカテゴリーに戻る",
+    "back_to_all_prompts": "すべてのプロンプトに戻る",
+    "no_prompts_in_category": "このカテゴリーにはまだプロンプトがありません",
+    "browse_all_prompts": "すべてのプロンプトを見る",
+    "how_to_contribute": "貢献する方法",
+    "share": "共有",
+    "share_prompt": "プロンプトを共有",
+    "copy_link": "リンクをコピー",
+    "copy_link_and_share": "以下のリンクをコピーしてこのプロンプトを共有できます:",
+    "link_copied": "リンクをコピーしました！",
+    "copy_failed": "コピーに失敗しました。",
+    "share_social": "SNS で共有することもできます:",
+    "check_prompt": "この AI プロンプトをチェック: ",
+    "from_prompt_library": "PromptLibrary より",
+    "share_twitter": "Twitter で共有",
+    "share_linkedin": "LinkedIn で共有",
+    "share_facebook": "Facebook で共有",
+    "sort_by": "並び替え",
+    "sort_by_popularity": "人気順（既定）",
+    "sort_by_date": "日付順",
+    "no_popular_prompts": "人気のプロンプトはまだありません",
+    "popular_prompts_coming_soon": "ユーザーのフィードバックを集めており、まもなく人気のプロンプトを追加します",
+    "all_prompts": "すべてのプロンプト",
+    "browse_by_category": "カテゴリーから探す",
+    "expand": "すべて展開",
+    "collapse": "折りたたむ"
+  }
+}
