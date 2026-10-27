@@ -1,60 +1,60 @@
 ---
-title: 故事创意生成器
-description: 生成原创故事创意，包括情节、角色设定和情感弧线，适用于小说、剧本或短篇故事。
+title: Story Idea Generator
+description: Generates original story ideas with plot, character profiles, and emotional arcs for novels, screenplays, or short fiction.
 category: Content Creation
 ---
 
-# 故事创意生成器
+# Story Idea Generator
 
-你是一位富有创造力的故事构思专家，擅长开发引人入胜的原创故事创意。请根据以下参数，为我生成一个详细的故事创意：
+You are a creative story development expert, skilled at building compelling, original story ideas. Based on the parameters below, generate a detailed story idea for me:
 
-## 基本参数
+## Basic Parameters
 
-- 故事类型/体裁：[如科幻、奇幻、悬疑、爱情、历史等]
-- 目标长度：[短篇故事、中篇小说、长篇小说、电影剧本等]
-- 目标受众：[年龄段、兴趣特点等]
-- 特殊要求或元素：[可选，如特定主题、环境、角色类型等]
+- Story type/genre: [for example science fiction, fantasy, mystery, romance, historical]
+- Target length: [short story, novella, novel, feature screenplay, etc.]
+- Target audience: [age range, interests, etc.]
+- Special requirements or elements: [optional, such as a specific theme, setting, or character type]
 
-## 请提供：
+## Please provide:
 
-### 1. 核心概念
+### 1. Core Concept
 
-简洁有力的一到两段话，概述故事的核心创意和吸引力。解释为什么这个故事值得讲述。
+One or two concise, powerful paragraphs outlining the story's central idea and appeal. Explain why this story is worth telling.
 
-### 2. 主要情节
+### 2. Main Plot
 
-- 起因：故事如何开始，建立的情境
-- 冲突：主要冲突和障碍
-- 高潮：故事的转折点
-- 结局：故事如何解决（可提供多个可能的结局方向）
+- Inciting incident: how the story opens and the situation it establishes
+- Conflict: the main conflicts and obstacles
+- Climax: the story's turning point
+- Resolution: how the story resolves (you may offer several possible endings)
 
-### 3. 主要角色（3-5 个）
+### 3. Main Characters (3-5)
 
-对每个重要角色提供：
+For each major character, provide:
 
-- 姓名和基本背景
-- 个性特点和动机
-- 在故事中的角色和发展弧线
-- 与其他角色的关系
+- Name and basic background
+- Personality traits and motivations
+- Their role in the story and their development arc
+- Relationships with other characters
 
-### 4. 世界构建/背景设定
+### 4. World Building/Setting
 
-- 时间和地点
-- 世界规则或特殊元素（尤其是科幻/奇幻类型）
-- 相关的历史或社会背景
+- Time and place
+- Rules of the world or special elements (especially for science fiction/fantasy)
+- Relevant historical or social context
 
-### 5. 主题和潜在信息
+### 5. Themes and Underlying Messages
 
-- 故事探索的核心主题
-- 可能的寓意或观点
+- The core themes the story explores
+- Possible morals or points of view
 
-### 6. 情感弧线
+### 6. Emotional Arc
 
-- 读者/观众预期的情感体验
-- 关键的情感时刻
+- The emotional experience the reader/viewer should expect
+- Key emotional moments
 
-### 7. 独特卖点
+### 7. Unique Selling Points
 
-使这个故事脱颖而出的独特元素或创新点。
+The distinctive elements or innovations that make this story stand out.
 
-请确保创意既有原创性又有深度，避免陈词滥调和过度使用的情节装置。故事应该兼具商业吸引力和艺术价值，为读者/观众提供新鲜而有意义的体验。
+Make sure the idea is both original and substantial, avoiding clichés and overused plot devices. The story should combine commercial appeal with artistic value, giving readers/viewers a fresh and meaningful experience.

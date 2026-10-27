@@ -1,12 +1,12 @@
 ---
-title: 代码优化助手
-description: 分析并优化您的代码，提供性能改进建议和最佳实践指导。
+title: Code Optimization Assistant
+description: Analyze and optimize your code, with performance improvement suggestions and best-practice guidance.
 category: Programming
 ---
 
-# 代码优化助手
+# Code Optimization Assistant
 
-作为一名经验丰富的软件工程师，请帮我分析以下代码并提供优化建议：
+As an experienced software engineer, analyze the code below and give me optimization suggestions:
 
-```[编程语言]
-[粘贴您的代码]
+```[programming language]
+[paste your code]

@@ -1,106 +1,106 @@
 ---
-title: 电子邮件营销活动策划
-description: 设计完整的电子邮件营销活动，包括目标设定、分段策略、邮件序列设计和性能预测。
+title: Email Marketing Campaign Planning
+description: Design a complete email marketing campaign, including goal setting, segmentation strategy, email sequence design, and performance forecasting.
 category: Marketing
 ---
 
-# 电子邮件营销活动策划
+# Email Marketing Campaign Planning
 
-你是一位资深的电子邮件营销专家，擅长策划高转化率的电子邮件活动。请根据以下信息，为我设计一个全面的电子邮件营销活动：
+You are a senior email marketing expert, skilled at planning high-converting email campaigns. Based on the information below, design a comprehensive email marketing campaign for me:
 
-## 活动基本信息
+## Basic Campaign Information
 
-请提供以下详细信息，我将据此为您定制活动策略：
+Please provide the following details, and I will tailor the campaign strategy to them:
 
-- 活动目标：[例如：产品发布、促销优惠、客户回访、教育内容、品牌建设]
-- 目标受众：[受众的人口统计、行为特征、偏好等]
-- 产品/服务详情：[需要推广的产品或服务的核心特点和价值主张]
-- 价值主张：[为何客户应该关注/购买]
-- 活动时长：[活动持续的时间，例如：一次性、1 周、1 个月等]
-- 邮件列表情况：[列表规模、来源、分段情况、参与度历史]
-- 转化目标：[期望的用户行动，例如：点击、购买、注册、下载等]
-- 特殊优惠：[如果有特别的折扣或促销]
-- 预期转化率：[基于以往活动或行业标准]
-- 品牌语调：[如何表达品牌个性和声音]
-- 技术限制：[使用的电子邮件平台和其功能]
+- Campaign goal: [for example: product launch, promotional offer, customer win-back, educational content, brand building]
+- Target audience: [the audience's demographics, behavioral traits, preferences, etc.]
+- Product/service details: [the core features and value proposition of the product or service being promoted]
+- Value proposition: [why customers should pay attention or buy]
+- Campaign duration: [how long the campaign runs, for example: one-off, 1 week, 1 month, etc.]
+- Email list status: [list size, source, segmentation, engagement history]
+- Conversion goal: [the user action you want, for example: clicks, purchases, sign-ups, downloads, etc.]
+- Special offers: [any particular discounts or promotions]
+- Expected conversion rate: [based on past campaigns or industry benchmarks]
+- Brand tone: [how your brand personality and voice should come across]
+- Technical constraints: [the email platform you use and what it can do]
 
-## 我将提供以下内容：
+## I will provide the following:
 
-### 1. 活动策略概述
+### 1. Campaign Strategy Overview
 
-- 核心信息和定位
-- 活动结构和逻辑
-- 关键绩效指标(KPI)设定
-- 竞争差异化因素
+- Core message and positioning
+- Campaign structure and logic
+- Key performance indicators (KPIs)
+- Competitive differentiators
 
-### 2. 受众细分策略
+### 2. Audience Segmentation Strategy
 
-- 建议的细分方法和群组
-- 每个细分群体的专属信息
-- 个性化和动态内容机会
-- 触发条件和行为规则
+- Recommended segmentation approach and groups
+- Dedicated messaging for each segment
+- Personalization and dynamic content opportunities
+- Trigger conditions and behavioral rules
 
-### 3. 邮件序列设计
+### 3. Email Sequence Design
 
-详细规划邮件序列，包括：
+A detailed plan for the email sequence, including:
 
-- 序列结构和邮件数量
-- 每封邮件的目的和焦点
-- 发送时间和频率优化
-- 自动化触发点和条件
+- Sequence structure and number of emails
+- The purpose and focus of each email
+- Send timing and frequency optimization
+- Automation triggers and conditions
 
-### 4. 每封邮件的详细规划
+### 4. Detailed Plan for Each Email
 
-对于每封邮件提供：
+For each email, provide:
 
-- 主题行变体(A/B 测试)
-- 预览文本建议
-- 内容结构和框架
-- 关键信息要点
-- 视觉元素建议
-- 行动召唤(CTA)策略
-- 个性化元素
+- Subject line variants (A/B testing)
+- Preview text recommendations
+- Content structure and framework
+- Key message points
+- Visual element recommendations
+- Call-to-action (CTA) strategy
+- Personalization elements
 
-### 5. 创意方向
+### 5. Creative Direction
 
-- 主题行创意和测试方案
-- 内容创意概念
-- 视觉设计方向
-- 品牌声音和语调指南
+- Subject line ideas and a testing plan
+- Content concepts
+- Visual design direction
+- Brand voice and tone guidelines
 
-### 6. 技术实施指南
+### 6. Technical Implementation Guide
 
-- 电子邮件响应式设计考虑
-- 个性化动态内容实现
-- 测试协议和清单
-- 发送基础设施建议
-- 垃圾邮件规避指南
+- Responsive email design considerations
+- Implementing personalized dynamic content
+- Testing protocol and checklist
+- Sending infrastructure recommendations
+- Guidelines for avoiding spam filters
 
-### 7. 转化率优化策略
+### 7. Conversion Rate Optimization Strategy
 
-- 登陆页面协同优化
-- 多步骤转化路径建议
-- 社会证明和紧迫感元素
-- 微转化和宏转化目标定义
+- Coordinated landing page optimization
+- Multi-step conversion path recommendations
+- Social proof and urgency elements
+- Definition of micro- and macro-conversion goals
 
-### 8. 测试与分析框架
+### 8. Testing and Analytics Framework
 
-- A/B 测试计划
-- 关键指标监控建议
-- 分析仪表板设计
-- 基于结果的优化流程
+- A/B testing plan
+- Recommendations for monitoring key metrics
+- Analytics dashboard design
+- Results-based optimization process
 
-### 9. 后续跟进策略
+### 9. Follow-up Strategy
 
-- 非活跃用户重新激活计划
-- 后续交叉销售/追加销售机会
-- 客户旅程整合点
+- Re-engagement plan for inactive users
+- Follow-up cross-sell/upsell opportunities
+- Integration points with the customer journey
 
-### 10. 合规与最佳实践
+### 10. Compliance and Best Practices
 
-- 合规性检查清单
-- 可访问性最佳实践
-- 品牌一致性指南
-- 发件人声誉保护措施
+- Compliance checklist
+- Accessibility best practices
+- Brand consistency guidelines
+- Measures to protect sender reputation
 
-请提供具体、可操作的电子邮件活动计划，包括实际的邮件内容示例、主题行变体和视觉设计指导。策略应该基于数据驱动的决策，并针对我的特定业务目标和受众需求定制。
+Provide a specific, actionable email campaign plan, including real email content examples, subject line variants, and visual design guidance. The strategy should be based on data-driven decisions and tailored to my specific business goals and audience needs.

@@ -1,8 +1,8 @@
 [
   {
     "slug": "learning-plan-generator",
-    "title": "学习计划生成器",
-    "description": "为任何主题或技能创建个性化的、结构化的学习路径，包含里程碑、资源和时间表。",
+    "title": "Learning Plan Generator",
+    "description": "Create a personalized, structured learning path for any topic or skill, complete with milestones, resources and a schedule.",
     "category": "Education",
     "author": "",
     "tags": [],
@@ -13,8 +13,8 @@
   },
   {
     "slug": "exam-question-generator",
-    "title": "考试题目生成器",
-    "description": "根据指定主题和难度生成各种类型的考试题目，包括选择题、填空题和论述题。",
+    "title": "Exam Question Generator",
+    "description": "Generate exam questions of various types, including multiple choice, fill-in-the-blank and essay questions, for a given topic and difficulty level.",
     "category": "Education",
     "rating": 9.4,
     "createdAt": "2025-02-01",
@@ -22,8 +22,8 @@
   },
   {
     "slug": "concept-explainer",
-    "title": "概念解释专家",
-    "description": "将复杂概念分解成简单易懂的解释，使用类比、例子和视觉描述帮助理解。",
+    "title": "Concept Explainer",
+    "description": "Break complex concepts down into simple, understandable explanations, using analogies, examples, and visual descriptions to aid understanding.",
     "category": "Education",
     "rating": 9.3,
     "createdAt": "2025-01-30",

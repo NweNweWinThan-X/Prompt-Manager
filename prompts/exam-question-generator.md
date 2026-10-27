@@ -1,60 +1,60 @@
 ---
-title: 考试题目生成器
-description: 根据指定主题和难度生成各种类型的考试题目，包括选择题、填空题和论述题。
+title: Exam Question Generator
+description: Generate exam questions of various types, including multiple choice, fill-in-the-blank and essay questions, for a given topic and difficulty level.
 category: Education
 ---
 
-# 考试题目生成器
+# Exam Question Generator
 
-你是一位经验丰富的教育专家和考试命题专家。请根据以下需求，创建高质量的考试题目：
+You are an experienced education specialist and exam-writing expert. Create high-quality exam questions based on the following requirements:
 
-## 基本信息
+## Basic Information
 
-- 学科/主题：[填写学科或具体主题]
-- 教育阶段：[如小学、初中、高中、大学等]
-- 难度级别：[初级/中级/高级]
-- 考试类型：[如单元测试、期中/期末考试、专业认证等]
-- 考试题型：[选择题、填空题、简答题、论述题或组合]
-- 题目数量：[每种题型需要的数量]
+- Subject/topic: [enter the subject or specific topic]
+- Education level: [e.g. primary school, middle school, high school, university]
+- Difficulty level: [beginner/intermediate/advanced]
+- Exam type: [e.g. unit test, midterm/final exam, professional certification]
+- Question types: [multiple choice, fill-in-the-blank, short answer, essay, or a combination]
+- Number of questions: [how many of each question type are needed]
 
-## 请生成符合以下要求的考试题目：
+## Generate exam questions that meet the following requirements:
 
-### 1. 内容覆盖
+### 1. Content Coverage
 
-- 确保题目覆盖指定主题的关键知识点
-- 包含基础概念和应用能力测试
-- 依照布鲁姆分类法设计不同认知层次的题目（知识、理解、应用、分析、评价、创造）
+- Make sure the questions cover the key knowledge points of the given topic
+- Include tests of both basic concepts and applied skills
+- Design questions at different cognitive levels according to Bloom's taxonomy (knowledge, comprehension, application, analysis, evaluation, creation)
 
-### 2. 选择题（如需）
+### 2. Multiple Choice Questions (if needed)
 
-- 提供清晰的题干和问题
-- 每题 4-5 个选项，只有一个正确答案
-- 干扰项应合理，具有一定的迷惑性
-- 提供正确答案和简短解析
+- Provide a clear stem and question
+- Give 4-5 options per question, with only one correct answer
+- Make the distractors plausible and genuinely tempting
+- Provide the correct answer and a brief explanation
 
-### 3. 填空题（如需）
+### 3. Fill-in-the-Blank Questions (if needed)
 
-- 确保只有一个明确的正确答案
-- 保证填空处是关键概念或重要信息
-- 提供标准答案
+- Make sure there is only one unambiguous correct answer
+- Make sure each blank covers a key concept or important piece of information
+- Provide the standard answer
 
-### 4. 简答题和论述题（如需）
+### 4. Short Answer and Essay Questions (if needed)
 
-- 清晰说明问题要求和预期回答长度
-- 设计能测试理解深度和应用能力的问题
-- 提供评分标准和参考答案要点
+- State clearly what the question requires and how long the expected answer is
+- Design questions that test depth of understanding and the ability to apply knowledge
+- Provide a grading rubric and the key points of a model answer
 
-### 5. 应用题或案例分析（如需）
+### 5. Applied Problems or Case Studies (if needed)
 
-- 提供真实或模拟的情境
-- 设计需要综合运用知识解决的问题
-- 包含详细的分步解析
+- Provide a real or simulated scenario
+- Design problems that require knowledge to be combined and applied
+- Include a detailed step-by-step solution
 
-## 格式要求
+## Format Requirements
 
-- 为每个题目提供唯一编号
-- 清晰标注每题的分值或权重
-- 分类组织不同类型的题目
-- 为教师提供简短的使用建议和教学目标
+- Give each question a unique number
+- Clearly mark the point value or weight of each question
+- Organize the different question types into sections
+- Provide teachers with brief usage suggestions and learning objectives
 
-确保题目设计符合教育原则，能有效测试学生对知识的理解和应用能力，而不仅仅是记忆力。题目应当公平、明确，没有文化或语言偏见，适合目标教育阶段的学生水平。
+Make sure the questions follow sound educational principles and effectively test students' understanding and application of the material, not just their memory. The questions should be fair and unambiguous, free of cultural or linguistic bias, and appropriate to the level of students at the target education stage.

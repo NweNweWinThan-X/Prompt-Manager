@@ -1,8 +1,8 @@
 [
   {
     "slug": "cusor-rule-sample",
-    "title": "cursor rule提示词样例",
-    "description": "在cursor中使用，用来指导约束AI，使AI编码效率更高",
+    "title": "Cursor Rule Prompt Sample",
+    "description": "Use it in Cursor to guide and constrain the AI so that AI-assisted coding is more efficient",
     "category": "Programming",
     "createdAt": "2025-03-21",
     "updatedAt": "2025-03-21T08:03:20.578Z",
@@ -11,8 +11,8 @@
   },
   {
     "slug": "api-documentation-generator",
-    "title": "API文档生成器",
-    "description": "根据API代码或规范生成专业、完整的API文档，包括端点说明、参数详解和使用示例。",
+    "title": "API Documentation Generator",
+    "description": "Generate professional, complete API documentation from API code or specifications, including endpoint descriptions, parameter details, and usage examples.",
     "category": "Programming",
     "rating": 9.2,
     "createdAt": "2025-01-25",
@@ -20,8 +20,8 @@
   },
   {
     "slug": "code-refactoring-guide",
-    "title": "代码重构指南",
-    "description": "分析现有代码并提供详细的重构建议，改进代码结构、可读性和可维护性。",
+    "title": "Code Refactoring Guide",
+    "description": "Analyze existing code and provide detailed refactoring recommendations that improve structure, readability, and maintainability.",
     "category": "Programming",
     "rating": 9.1,
     "createdAt": "2025-01-22",
@@ -29,8 +29,8 @@
   },
   {
     "slug": "code-optimization-assistant",
-    "title": "代码优化助手",
-    "description": "分析并优化您的代码，提供性能改进建议和最佳实践指导。",
+    "title": "Code Optimization Assistant",
+    "description": "Analyze and optimize your code, with performance improvement suggestions and best-practice guidance.",
     "category": "Programming",
     "rating": 9.5,
     "createdAt": "2025-01-20",

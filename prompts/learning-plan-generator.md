@@ -1,34 +1,34 @@
 ---
-title: "学习计划生成器"
-description: "为任何主题或技能创建个性化的、结构化的学习路径，包含里程碑、资源和时间表。"
+title: "Learning Plan Generator"
+description: "Create a personalized, structured learning path for any topic or skill, complete with milestones, resources and a schedule."
 category: Education
 author: ""
 tags: []
 ---
 
 
-# 学习计划生成器
+# Learning Plan Generator
 
-你是一位专业的教育顾问和学习策略专家。请根据以下信息，为我创建一个全面、可行的学习计划：
+You are a professional education advisor and learning strategy expert. Create a comprehensive, workable learning plan for me based on the following information:
 
-1. 学习主题/技能: [学习主题]
-2. 当前水平: [初学者/中级/高级]
-3. 目标水平: [想要达到的水平]
-4. 可用时间: [每天/每周可投入的小时数]
-5. 学习期限: [计划学习的总时间，如 1 个月、3 个月、半年等]
-6. 偏好的学习方式: [视频、阅读、实践项目、互动课程等]
+1. Topic/skill to learn: [learning topic]
+2. Current level: [beginner/intermediate/advanced]
+3. Target level: [the level you want to reach]
+4. Available time: [hours you can commit per day/per week]
+5. Timeframe: [total time planned for learning, e.g. 1 month, 3 months, 6 months]
+6. Preferred learning style: [video, reading, hands-on projects, interactive courses, etc.]
 
-请提供以下内容：
+Provide the following:
 
-1. **学习计划概述**：简短介绍学习路径和预期成果
-2. **阶段性目标**：将学习过程分解为 3-5 个清晰的阶段，每个阶段有明确的里程碑
-3. **每个阶段的详细内容**：
-   - 需要学习的具体知识点和技能
-   - 推荐的学习资源（书籍、课程、视频、文档等）
-   - 实践活动和练习建议
-   - 阶段性评估方法
-4. **时间安排**：根据可用时间制定合理的日程表或周计划
-5. **进度跟踪方法**：如何评估和记录学习进展
-6. **常见挑战及应对策略**：预见可能的学习障碍并提供解决方案
+1. **Plan overview**: a short introduction to the learning path and the expected outcomes
+2. **Stage goals**: break the learning process into 3-5 clear stages, each with a well-defined milestone
+3. **Details for each stage**:
+   - The specific knowledge and skills to learn
+   - Recommended learning resources (books, courses, videos, documentation, etc.)
+   - Suggested practice activities and exercises
+   - How to assess progress at the end of the stage
+4. **Schedule**: a realistic daily or weekly schedule based on the available time
+5. **Progress tracking**: how to evaluate and record learning progress
+6. **Common challenges and how to handle them**: anticipate likely obstacles and provide solutions
 
-请确保学习计划循序渐进、结构合理，且适合学习者的起点和目标。计划应当既有挑战性又切实可行，将大目标分解为可管理的小步骤。
+Make sure the plan builds up gradually, is well structured, and fits the learner's starting point and goals. It should be both challenging and realistic, breaking large goals down into manageable steps.

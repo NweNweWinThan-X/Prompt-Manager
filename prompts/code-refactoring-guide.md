@@ -1,83 +1,83 @@
 ---
-title: 代码重构指南
-description: 分析现有代码并提供详细的重构建议，改进代码结构、可读性和可维护性。
+title: Code Refactoring Guide
+description: Analyze existing code and provide detailed refactoring recommendations that improve structure, readability, and maintainability.
 category: Programming
 ---
 
-# 代码重构指南
+# Code Refactoring Guide
 
-你是一位资深软件架构师和代码质量专家。请分析以下代码，并提供详细的重构指南，以改进其质量、可维护性和性能。
+You are a senior software architect and code quality expert. Analyze the code below and provide a detailed refactoring guide for improving its quality, maintainability, and performance.
 
 ```
-[编程语言]
-[粘贴需要重构的代码]
+[programming language]
+[paste the code you want refactored]
 ```
 
-## 请提供：
+## Provide the following:
 
-### 1. 代码分析
+### 1. Code Analysis
 
-- 对当前代码的总体评估
-- 识别的主要问题和挑战
-- 代码质量和架构的强项和弱项
+- An overall assessment of the current code
+- The main problems and challenges you identify
+- Strengths and weaknesses in code quality and architecture
 
-### 2. 重构目标
+### 2. Refactoring Goals
 
-明确列出重构的主要目标，如：
+Clearly list the main goals of the refactoring, such as:
 
-- 提高可读性和可维护性
-- 改进性能
-- 增强可扩展性
-- 减少重复和冗余
-- 优化错误处理
-- 提高测试覆盖度
+- Improving readability and maintainability
+- Improving performance
+- Increasing extensibility
+- Reducing duplication and redundancy
+- Improving error handling
+- Increasing test coverage
 
-### 3. 详细重构建议
+### 3. Detailed Refactoring Recommendations
 
-提供具体、可执行的重构建议，包括：
+Provide specific, actionable refactoring recommendations, including:
 
-#### 代码结构和组织
+#### Code Structure and Organization
 
-- 类和函数的责任划分
-- 模块化和封装建议
-- 文件组织和命名约定
+- How responsibilities should be split across classes and functions
+- Recommendations for modularity and encapsulation
+- File organization and naming conventions
 
-#### 设计模式应用
+#### Applying Design Patterns
 
-- 适用的设计模式建议
-- 如何实现及理由
+- Recommended design patterns that fit
+- How to implement them and why
 
-#### 具体重构操作
+#### Specific Refactoring Steps
 
-- 明确的重构步骤，包括示例代码
-- 对关键部分的详细重写指导
-- 命名改进建议
+- Clear refactoring steps, including sample code
+- Detailed rewriting guidance for the key parts
+- Naming improvement suggestions
 
-#### 性能优化
+#### Performance Optimization
 
-- 算法和数据结构改进
-- 资源使用优化
-- 异步和并发处理建议
+- Algorithm and data structure improvements
+- Resource usage optimization
+- Recommendations for asynchronous and concurrent processing
 
-### 4. 重构优先级
+### 4. Refactoring Priorities
 
-- 建议的重构顺序（从最关键到次要）
-- 投入产出比最高的改变
+- The recommended order of refactoring (from most critical to least)
+- The changes with the highest return on effort
 
-### 5. 测试建议
+### 5. Testing Recommendations
 
-- 如何确保重构不引入新问题
-- 单元测试和集成测试的建议
-- 测试覆盖重点
+- How to make sure the refactoring does not introduce new problems
+- Recommendations for unit tests and integration tests
+- Where test coverage should focus
 
-### 6. 重构后的代码示例
+### 6. Refactored Code Examples
 
-为关键部分提供重构后的代码示例，以清晰展示改进建议。
+Provide refactored code examples for the key parts, so the recommended improvements are clear.
 
-### 7. 长期维护建议
+### 7. Long-Term Maintenance Recommendations
 
-- 持续改进的实践
-- 代码审查要点
-- 文档和注释策略
+- Practices for continuous improvement
+- Key points for code review
+- Documentation and commenting strategy
 
-请确保建议既有理论指导，又有实用性，可以实际实施。建议应符合现代软件开发最佳实践，并考虑到项目规模和复杂性。
+Make sure the recommendations offer both conceptual guidance and practical steps that can actually be carried out. They should follow modern software development best practices and take the project's size and complexity into account.

@@ -1,97 +1,97 @@
 ---
-title: 社交媒体内容日历生成器
-description: 根据营销目标和受众特征，创建结构化的社交媒体内容日历，包括帖子类型、主题和发布时间。
+title: Social Media Content Calendar Generator
+description: Creates a structured social media content calendar based on your marketing goals and audience, covering post types, themes, and publishing times.
 category: Marketing
 ---
 
-# 社交媒体内容日历生成器
+# Social Media Content Calendar Generator
 
-你是一位专业的社交媒体策略师，精通内容规划和日历管理。请根据以下信息，为我创建一个详细的社交媒体内容日历：
+You are a professional social media strategist with deep expertise in content planning and calendar management. Based on the information below, create a detailed social media content calendar for me:
 
-## 基本信息
+## Basic Information
 
-请提供以下信息，以便我制定定制化的内容日历：
+Provide the following information so I can build a customized content calendar:
 
-- 平台：[要发布内容的社交媒体平台，例如：Instagram、Facebook、Twitter、LinkedIn、TikTok 等]
-- 内容目标：[品牌知名度、社区建设、线索生成、销售转化等]
-- 目标受众：[主要受众群体的描述，包括年龄、兴趣、行为等]
-- 品牌声音：[品牌的语调和个性，例如：专业、随意、幽默、教育性等]
-- 关键产品/服务：[需要重点推广的产品或服务]
-- 重要日期：[产品发布、促销活动、行业事件、节假日等]
-- 发布频率：[每个平台每周/每月的理想发布次数]
-- 内容类型偏好：[图片、视频、故事、直播、博客、问答等]
-- 现有内容资产：[可重用或改编的内容资源]
-- 行业话题：[相关的行业主题、趋势或关键词]
-- 竞争对手表现：[竞争对手在社交媒体上的内容策略和表现]
+- Platforms: [the social media platforms you will publish on, for example: Instagram, Facebook, Twitter, LinkedIn, TikTok]
+- Content goals: [brand awareness, community building, lead generation, sales conversion, etc.]
+- Target audience: [description of your main audience segments, including age, interests, behavior, etc.]
+- Brand voice: [the tone and personality of the brand, for example: professional, casual, humorous, educational]
+- Key products/services: [the products or services you want to promote most]
+- Important dates: [product launches, promotions, industry events, holidays, etc.]
+- Posting frequency: [the ideal number of posts per week/month for each platform]
+- Preferred content types: [images, video, stories, live streams, blog posts, Q&A, etc.]
+- Existing content assets: [content you can reuse or adapt]
+- Industry topics: [relevant industry themes, trends, or keywords]
+- Competitor performance: [competitors' social media content strategies and results]
 
-## 我将提供的内容日历将包括：
+## The content calendar I will provide includes:
 
-### 1. 月度概览
+### 1. Monthly Overview
 
-- 月度内容主题和焦点
-- 关键营销活动和里程碑
-- 内容分布和平衡
-- 平台特定策略
+- Monthly content themes and focus
+- Key campaigns and milestones
+- Content distribution and balance
+- Platform-specific strategy
 
-### 2. 每周详细计划
+### 2. Detailed Weekly Plan
 
-对于每周提供：
+For each week, provide:
 
-- 每日内容建议
-- 每个帖子的平台分配
-- 内容类型和格式
-- 最佳发布时间
+- Daily content suggestions
+- Platform assignment for each post
+- Content type and format
+- Best publishing times
 
-### 3. 详细帖子计划
+### 3. Detailed Post Plan
 
-对于每个建议的帖子，提供：
+For each suggested post, provide:
 
-- 帖子主题和目的
-- 建议的内容框架
-- 主要信息和卖点
-- 号召性用语(CTA)建议
-- 相关标签建议
-- 视觉元素指南
+- Post theme and purpose
+- Suggested content framework
+- Key messages and selling points
+- Call-to-action (CTA) suggestions
+- Relevant hashtag suggestions
+- Visual element guidelines
 
-### 4. 内容类别分配
+### 4. Content Category Mix
 
-建议的内容类型混合，例如：
+A suggested mix of content types, for example:
 
-- 教育内容 (占比%)
-- 促销内容 (占比%)
-- 用户生成内容 (占比%)
-- 娱乐内容 (占比%)
-- 互动/参与内容 (占比%)
-- 幕后/品牌故事 (占比%)
+- Educational content (% of total)
+- Promotional content (% of total)
+- User-generated content (% of total)
+- Entertainment content (% of total)
+- Interactive/engagement content (% of total)
+- Behind-the-scenes/brand story content (% of total)
 
-### 5. 季节性和趋势内容建议
+### 5. Seasonal and Trend Content Suggestions
 
-- 与行业相关的季节性内容
-- 趋势搭载机会
-- 实时营销潜力点
+- Seasonal content relevant to your industry
+- Trend-jacking opportunities
+- Real-time marketing opportunities
 
-### 6. 内容再利用策略
+### 6. Content Repurposing Strategy
 
-- 跨平台内容改编建议
-- 长内容分拆为多个帖子的方法
-- 常青内容重复使用计划
+- Suggestions for adapting content across platforms
+- Ways to split long-form content into multiple posts
+- A plan for reusing evergreen content
 
-### 7. 参与策略
+### 7. Engagement Strategy
 
-- 互动提示和问题建议
-- 社区管理时间表
-- 用户生成内容征集计划
+- Interaction prompts and question suggestions
+- Community management schedule
+- Plan for soliciting user-generated content
 
-### 8. 绩效跟踪框架
+### 8. Performance Tracking Framework
 
-- 关键绩效指标(KPI)建议
-- 分析和报告结构
-- A/B 测试机会
+- Suggested key performance indicators (KPIs)
+- Analytics and reporting structure
+- A/B testing opportunities
 
-### 9. 内容创建工作流程
+### 9. Content Creation Workflow
 
-- 内容准备时间表
-- 审批流程建议
-- 资源需求估计
+- Content preparation schedule
+- Approval process suggestions
+- Resource requirement estimates
 
-请提供具体、实用的内容计划，包括实际的帖子示例和创意概念，而不仅是通用模板。日历应该既有策略性，又可以直接执行，帮助我在社交媒体上建立持续的存在感，并实现我的营销目标。
+Provide a specific, practical content plan with real post examples and creative concepts, not just a generic template. The calendar should be both strategic and ready to execute, helping me build a consistent presence on social media and reach my marketing goals.

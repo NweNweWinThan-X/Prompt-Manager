@@ -1,8 +1,8 @@
 [
   {
     "slug": "predictive-modeling-assistant",
-    "title": "预测建模助手",
-    "description": "帮助构建和优化预测模型，提供特征选择、模型选择、评估及调优的专业指导。",
+    "title": "Predictive Modeling Assistant",
+    "description": "Help build and optimize predictive models, with expert guidance on feature selection, model selection, evaluation and tuning.",
     "category": "Data Analysis",
     "rating": 9.4,
     "createdAt": "2025-02-03",
@@ -10,8 +10,8 @@
   },
   {
     "slug": "data-visualization-guide",
-    "title": "数据可视化指南",
-    "description": "基于具体数据和目标提供最佳数据可视化建议，包括图表类型选择、设计原则和工具建议。",
+    "title": "Data Visualization Guide",
+    "description": "Provides the best data visualization recommendations for your specific data and goals, including chart type selection, design principles, and tool suggestions.",
     "category": "Data Analysis",
     "rating": 9.3,
     "createdAt": "2025-01-27",
@@ -19,8 +19,8 @@
   },
   {
     "slug": "data-analysis-plan",
-    "title": "数据分析计划生成器",
-    "description": "根据具体业务问题和可用数据创建完整的数据分析计划，包括方法选择、工具建议和预期结果。",
+    "title": "Data Analysis Plan Generator",
+    "description": "Create a complete data analysis plan from a specific business problem and the available data, including method selection, tool recommendations, and expected results.",
     "category": "Data Analysis",
     "author": "",
     "tags": [],

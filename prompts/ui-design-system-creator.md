@@ -1,104 +1,104 @@
 ---
-title: "UI设计系统创建器"
-description: "构建完整的用户界面设计系统，包括组件规范、色彩系统、排版规则和交互模式。"
+title: "UI Design System Creator"
+description: "Builds a complete user interface design system, including component specifications, color system, typography rules, and interaction patterns."
 category: Creative Design
 author: ""
 tags: []
 ---
 
 
-# UI 设计系统创建器
+# UI Design System Creator
 
-你是一位经验丰富的 UI/UX 设计师和设计系统专家。请帮我为以下项目创建一个完整、一致的 UI 设计系统框架：
+You are an experienced UI/UX designer and design system expert. Help me create a complete, consistent UI design system framework for the following project:
 
-## 项目信息
+## Project Information
 
-请提供以下信息，我将据此创建设计系统：
+Provide the following information, and I will build the design system from it:
 
-- 产品/项目类型：[如移动应用、网站、管理后台、电商平台等]
-- 品牌身份：[品牌名称、核心价值观、个性特征]
-- 目标平台：[如 iOS、Android、Web、跨平台等]
-- 设计风格偏好：[如极简、拟物化、扁平化、新拟物等]
-- 目标用户：[主要用户群体及其特点]
-- 竞品或参考案例：[喜欢的设计系统或产品界面示例]
-- 特殊要求：[无障碍需求、多语言支持、黑暗模式等]
+- Product/project type: [for example mobile app, website, admin dashboard, e-commerce platform]
+- Brand identity: [brand name, core values, personality traits]
+- Target platforms: [for example iOS, Android, Web, cross-platform]
+- Preferred design style: [for example minimalist, skeuomorphic, flat, neumorphic]
+- Target users: [the main user groups and their characteristics]
+- Competitors or references: [design systems or product interfaces you like]
+- Special requirements: [accessibility needs, multi-language support, dark mode, etc.]
 
-## 我将提供的设计系统框架：
+## The design system framework I will provide:
 
-### 1. 设计原则
+### 1. Design Principles
 
-- 核心设计原则（3-5 个）
-- 每个原则的定义和实践指南
-- 如何在产品中体现这些原则
+- Core design principles (3-5)
+- A definition and practical guidance for each principle
+- How to express these principles in the product
 
-### 2. 色彩系统
+### 2. Color System
 
-- 主色调和辅助色彩（提供具体色号）
-- 功能色彩（成功、警告、错误、信息等）
-- 中性色阶
-- 颜色的用途规范和使用场景
-- 可访问性考虑（对比度要求）
-- 深色模式变体（如需）
+- Primary and secondary colors (with specific color codes)
+- Functional colors (success, warning, error, information, etc.)
+- Neutral color scale
+- Usage rules and scenarios for each color
+- Accessibility considerations (contrast requirements)
+- Dark mode variants (if needed)
 
-### 3. 排版系统
+### 3. Typography System
 
-- 字体家族选择及理由
-- 文本尺寸层级（标题、副标题、正文等）
-- 行高、字间距和段落间距规则
-- 字重使用指南
-- 响应式排版调整规则
+- Font family choices and the reasoning behind them
+- Text size hierarchy (headings, subheadings, body text, etc.)
+- Line height, letter spacing, and paragraph spacing rules
+- Font weight usage guidelines
+- Responsive typography adjustment rules
 
-### 4. 网格和布局
+### 4. Grid and Layout
 
-- 基础网格系统定义
-- 间距和边距规则
-- 响应式布局断点和行为
-- 对齐原则
+- Base grid system definition
+- Spacing and margin rules
+- Responsive layout breakpoints and behavior
+- Alignment principles
 
-### 5. 组件库框架
+### 5. Component Library Framework
 
-为以下基础组件分别提供：
+Provide specifications for each of these core components:
 
-- 按钮（类型、状态、尺寸）
-- 表单元素（输入框、选择器、复选框等）
-- 卡片和容器
-- 导航元素（菜单、标签页等）
-- 通知和提示（警告、错误、成功消息等）
-- 模态框和对话框
-- 数据展示组件（表格、列表等）
-- 加载状态和空状态
-- 图标系统指南
+- Buttons (types, states, sizes)
+- Form elements (inputs, selects, checkboxes, etc.)
+- Cards and containers
+- Navigation elements (menus, tabs, etc.)
+- Notifications and alerts (warning, error, success messages, etc.)
+- Modals and dialogs
+- Data display components (tables, lists, etc.)
+- Loading states and empty states
+- Icon system guidelines
 
-每个组件描述包括：
+For each component, describe:
 
-- 外观和结构定义
-- 各种状态变化
-- 尺寸变体
-- 使用场景和原则
+- Appearance and structure
+- State variations
+- Size variants
+- Use cases and principles
 
-### 6. 交互模式
+### 6. Interaction Patterns
 
-- 触摸/点击反馈
-- 状态转换和动效原则
-- 手势交互规范
-- 使用动效的时机和原则
+- Touch/click feedback
+- State transition and motion principles
+- Gesture interaction specifications
+- When and how to use motion
 
-### 7. 图像和图标指南
+### 7. Imagery and Icon Guidelines
 
-- 图标风格和创建原则
-- 插图使用规范
-- 图片处理准则
-- 图像比例和裁剪规则
+- Icon style and creation principles
+- Illustration usage rules
+- Image treatment guidelines
+- Image ratio and cropping rules
 
-### 8. 实施指南
+### 8. Implementation Guidelines
 
-- 命名约定
-- 文件组织建议
-- 代码实现建议（如 CSS 变量、组件结构）
-- 版本控制和更新流程
+- Naming conventions
+- File organization suggestions
+- Code implementation suggestions (such as CSS variables, component structure)
+- Version control and update process
 
-### 9. 实例演示
+### 9. Worked Examples
 
-- 关键页面或流程中如何应用设计系统
+- How to apply the design system to key pages or flows
 
-请提供详细、具体的指南，而不仅仅是泛泛而谈。对每个元素的选择提供清晰的理由，解释如何确保设计系统的一致性，以及如何反映品牌个性。
+Provide detailed, specific guidance rather than generalities. Give clear reasoning for each choice, explain how to keep the design system consistent, and show how it reflects the brand personality.

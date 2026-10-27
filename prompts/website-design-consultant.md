@@ -1,82 +1,82 @@
 ---
-title: "网站设计顾问"
-description: "根据业务需求和目标受众提供详细的网站设计建议，包括布局、色彩方案和用户体验优化。"
+title: "Website Design Consultant"
+description: "Provides detailed website design recommendations based on your business needs and target audience, covering layout, color scheme, and user experience improvements."
 category: Creative Design
 author: ""
 tags: []
 ---
 
 
-# 网站设计顾问
+# Website Design Consultant
 
-你是一位经验丰富的网站设计和用户体验专家。请根据以下信息，为我提供全面的网站设计建议：
+You are an experienced website design and user experience expert. Based on the information below, give me comprehensive website design recommendations:
 
-## 基本信息
+## Basic Information
 
-请提供以下信息，我将基于这些要素给出设计建议：
+Provide the following information, and I will base my design recommendations on it:
 
-- 网站类型/行业：[如电商、企业官网、博客、教育平台等]
-- 目标受众：[主要用户群体、年龄段、技术熟练度等]
-- 品牌特性：[品牌个性、价值观、已有的视觉元素等]
-- 主要目标：[转化销售、信息展示、内容分享、用户参与等]
-- 主要内容和功能：[产品展示、博客文章、用户注册、在线购物等]
-- 竞品或参考网站：[喜欢或不喜欢的网站例子及理由]
-- 特殊要求：[任何特定的设计偏好或限制]
+- Website type/industry: [for example e-commerce, corporate site, blog, education platform]
+- Target audience: [main user groups, age range, technical proficiency, etc.]
+- Brand characteristics: [brand personality, values, existing visual elements, etc.]
+- Primary goals: [sales conversion, information display, content sharing, user engagement, etc.]
+- Main content and features: [product displays, blog posts, user registration, online shopping, etc.]
+- Competitor or reference sites: [examples of sites you like or dislike, and why]
+- Special requirements: [any specific design preferences or constraints]
 
-## 请提供以下设计建议：
+## Please provide the following design recommendations:
 
-### 1. 整体设计风格
+### 1. Overall Design Style
 
-- 推荐的设计风格和美学方向（如极简主义、拟物化、扁平化等）
-- 符合品牌和目标受众的设计语言建议
-- 情绪板和视觉参考建议
+- Recommended design style and aesthetic direction (such as minimalism, skeuomorphism, flat design)
+- Design language suggestions that fit the brand and target audience
+- Mood board and visual reference suggestions
 
-### 2. 色彩方案
+### 2. Color Scheme
 
-- 主色调和辅助色彩推荐（提供具体色号）
-- 色彩运用策略和心理影响分析
-- 文本和背景色彩关系建议
+- Recommended primary and secondary colors (with specific color codes)
+- Color usage strategy and analysis of its psychological impact
+- Suggestions for the relationship between text and background colors
 
-### 3. 排版和字体选择
+### 3. Typography and Font Selection
 
-- 标题和正文字体推荐（考虑可读性和品牌调性）
-- 字体大小、行高和间距指南
-- 文本层次结构建议
+- Recommended heading and body fonts (considering readability and brand tone)
+- Font size, line height, and spacing guidelines
+- Text hierarchy suggestions
 
-### 4. 页面布局和结构
+### 4. Page Layout and Structure
 
-- 首页和关键内部页面的布局建议
-- 内容组织和信息层次结构
-- 响应式设计考虑（不同设备上的展示策略）
+- Layout suggestions for the homepage and key internal pages
+- Content organization and information hierarchy
+- Responsive design considerations (display strategy across devices)
 
-### 5. 导航和用户流程
+### 5. Navigation and User Flow
 
-- 导航结构和菜单设计
-- 用户旅程优化建议
-- 页面间过渡和连接策略
+- Navigation structure and menu design
+- User journey optimization suggestions
+- Page transition and linking strategy
 
-### 6. 视觉元素
+### 6. Visual Elements
 
-- 图像、图标和插图风格建议
-- 按钮、表单和交互元素设计
-- 空白空间利用策略
+- Style suggestions for images, icons, and illustrations
+- Design of buttons, forms, and interactive elements
+- Strategy for using white space
 
-### 7. 用户体验优化
+### 7. User Experience Optimization
 
-- 提高可用性的具体建议
-- 无障碍设计考虑
-- 页面加载和性能优化建议
+- Specific suggestions for improving usability
+- Accessibility considerations
+- Page load and performance optimization suggestions
 
-### 8. 转化率优化
+### 8. Conversion Rate Optimization
 
-- 行动召唤按钮设计和放置
-- 信任标志和社会证明元素
-- 引导用户目标完成的视觉策略
+- Call-to-action button design and placement
+- Trust signals and social proof elements
+- Visual strategies that guide users toward completing goals
 
-### 9. 实现建议
+### 9. Implementation Suggestions
 
-- 推荐的设计和开发工具或平台
-- 可能的模板或框架建议
-- 实施过程中的优先事项
+- Recommended design and development tools or platforms
+- Possible template or framework suggestions
+- Priorities during implementation
 
-请提供具体、可操作的建议，而不是泛泛而谈。尽可能包含具体的例子、参考和可视化描述，帮助我理解和实施这些设计建议。
+Provide specific, actionable recommendations rather than generalities. Include concrete examples, references, and visual descriptions wherever possible to help me understand and implement them.

@@ -1,8 +1,8 @@
 [
   {
     "slug": "cusor-rule-sample",
-    "title": "cursor rule提示词样例",
-    "description": "在cursor中使用，用来指导约束AI，使AI编码效率更高",
+    "title": "Cursor Rule Prompt Sample",
+    "description": "Use it in Cursor to guide and constrain the AI so that AI-assisted coding is more efficient",
     "category": "Programming",
     "createdAt": "2025-03-21",
     "updatedAt": "2025-03-21T08:03:20.578Z",
@@ -22,8 +22,8 @@
   },
   {
     "slug": "email-marketing-campaign",
-    "title": "电子邮件营销活动策划",
-    "description": "设计完整的电子邮件营销活动，包括目标设定、分段策略、邮件序列设计和性能预测。",
+    "title": "Email Marketing Campaign Planning",
+    "description": "Design a complete email marketing campaign, including goal setting, segmentation strategy, email sequence design, and performance forecasting.",
     "category": "Marketing",
     "rating": 9,
     "createdAt": "2025-02-18",
@@ -31,8 +31,8 @@
   },
   {
     "slug": "social-media-content-calendar",
-    "title": "社交媒体内容日历生成器",
-    "description": "根据营销目标和受众特征，创建结构化的社交媒体内容日历，包括帖子类型、主题和发布时间。",
+    "title": "Social Media Content Calendar Generator",
+    "description": "Creates a structured social media content calendar based on your marketing goals and audience, covering post types, themes, and publishing times.",
     "category": "Marketing",
     "rating": 8.9,
     "createdAt": "2025-02-12",
@@ -40,8 +40,8 @@
   },
   {
     "slug": "ui-design-system-creator",
-    "title": "UI设计系统创建器",
-    "description": "构建完整的用户界面设计系统，包括组件规范、色彩系统、排版规则和交互模式。",
+    "title": "UI Design System Creator",
+    "description": "Builds a complete user interface design system, including component specifications, color system, typography rules, and interaction patterns.",
     "category": "Creative Design",
     "author": "",
     "tags": [],
@@ -52,8 +52,8 @@
   },
   {
     "slug": "learning-plan-generator",
-    "title": "学习计划生成器",
-    "description": "为任何主题或技能创建个性化的、结构化的学习路径，包含里程碑、资源和时间表。",
+    "title": "Learning Plan Generator",
+    "description": "Create a personalized, structured learning path for any topic or skill, complete with milestones, resources and a schedule.",
     "category": "Education",
     "author": "",
     "tags": [],
@@ -64,8 +64,8 @@
   },
   {
     "slug": "website-design-consultant",
-    "title": "网站设计顾问",
-    "description": "根据业务需求和目标受众提供详细的网站设计建议，包括布局、色彩方案和用户体验优化。",
+    "title": "Website Design Consultant",
+    "description": "Provides detailed website design recommendations based on your business needs and target audience, covering layout, color scheme, and user experience improvements.",
     "category": "Creative Design",
     "author": "",
     "tags": [],
@@ -76,8 +76,8 @@
   },
   {
     "slug": "blog-content-planner",
-    "title": "博客内容规划师",
-    "description": "生成全面的博客内容计划，包括标题创意、关键词建议和主题大纲。",
+    "title": "Blog Content Planner",
+    "description": "Generate a comprehensive blog content plan, including title ideas, keyword suggestions, and topic outlines.",
     "category": "Content Creation",
     "rating": 9.4,
     "createdAt": "2025-02-05",
@@ -85,8 +85,8 @@
   },
   {
     "slug": "digital-marketing-strategy",
-    "title": "数字营销策略规划",
-    "description": "根据业务目标和目标受众创建全面的数字营销策略，包括渠道选择、内容计划和KPI设定。",
+    "title": "Digital Marketing Strategy Planning",
+    "description": "Create a comprehensive digital marketing strategy from your business goals and target audience, including channel selection, a content plan, and KPI definitions.",
     "category": "Marketing",
     "author": "",
     "tags": [],

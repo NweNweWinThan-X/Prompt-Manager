@@ -1,82 +1,82 @@
 ---
-title: "数据分析计划生成器"
-description: "根据具体业务问题和可用数据创建完整的数据分析计划，包括方法选择、工具建议和预期结果。"
+title: "Data Analysis Plan Generator"
+description: "Create a complete data analysis plan from a specific business problem and the available data, including method selection, tool recommendations, and expected results."
 category: Data Analysis
 author: ""
 tags: []
 ---
 
 
-# 数据分析计划生成器
+# Data Analysis Plan Generator
 
-你是一位经验丰富的数据科学家和分析专家。请根据以下信息，为我创建一个全面的数据分析计划：
+You are an experienced data scientist and analytics expert. Based on the information below, create a comprehensive data analysis plan for me:
 
-## 基本信息
+## Basic Information
 
-请提供以下详细信息：
+Please provide the following details:
 
-- 业务问题/目标：[描述您希望通过数据分析解决的具体问题或达成的目标]
-- 可用数据描述：[数据来源、类型、规模、时间范围、关键变量等]
-- 分析目的：[探索性分析、假设验证、预测建模、分类、聚类等]
-- 利益相关者：[谁将使用分析结果，他们的技术背景如何]
-- 时间和资源限制：[分析需要在何时完成，可用的工具和计算资源]
-- 已有知识：[您对该领域的已有理解，之前的分析尝试]
+- Business problem/goal: [describe the specific problem you want to solve or the goal you want to reach through data analysis]
+- Description of available data: [data sources, types, size, time range, key variables, etc.]
+- Purpose of the analysis: [exploratory analysis, hypothesis testing, predictive modeling, classification, clustering, etc.]
+- Stakeholders: [who will use the results, and what their technical background is]
+- Time and resource constraints: [when the analysis must be finished, and the available tools and computing resources]
+- Existing knowledge: [what you already understand about the domain, and any previous analysis attempts]
 
-## 请提供以下内容：
+## Please provide the following:
 
-### 1. 分析计划概述
+### 1. Analysis Plan Overview
 
-- 项目范围和主要阶段
-- 核心分析问题和子问题
-- 成功标准和预期结果
+- Project scope and main phases
+- Core analytical questions and sub-questions
+- Success criteria and expected results
 
-### 2. 数据准备和预处理策略
+### 2. Data Preparation and Preprocessing Strategy
 
-- 数据质量评估步骤
-- 缺失值和异常值处理方法
-- 变量转换和特征工程建议
-- 数据集分割建议（如适用）
+- Data quality assessment steps
+- Methods for handling missing values and outliers
+- Variable transformation and feature engineering recommendations
+- Dataset splitting recommendations (if applicable)
 
-### 3. 探索性数据分析计划
+### 3. Exploratory Data Analysis Plan
 
-- 建议的单变量和多变量分析
-- 关键可视化类型及其目的
-- 潜在模式和关系探索方法
+- Recommended univariate and multivariate analyses
+- Key visualization types and their purpose
+- Methods for exploring potential patterns and relationships
 
-### 4. 高级分析方法选择
+### 4. Advanced Analysis Method Selection
 
-- 建议的统计或机器学习方法及其理由
-- 各方法的优缺点分析
-- 模型参数调优策略（如适用）
-- 替代方法和权衡考虑
+- Recommended statistical or machine learning methods and the reasoning behind them
+- Analysis of the strengths and weaknesses of each method
+- Model hyperparameter tuning strategy (if applicable)
+- Alternative methods and trade-offs to consider
 
-### 5. 评估框架
+### 5. Evaluation Framework
 
-- 模型/分析性能评估指标
-- 验证策略（交叉验证、测试集等）
-- 结果解释方法
+- Metrics for evaluating model/analysis performance
+- Validation strategy (cross-validation, test sets, etc.)
+- Methods for interpreting the results
 
-### 6. 技术实施建议
+### 6. Technical Implementation Recommendations
 
-- 推荐的工具和库（如 Python/R 包、BI 工具等）
-- 代码结构建议或伪代码示例
-- 计算效率考虑
+- Recommended tools and libraries (such as Python/R packages, BI tools, etc.)
+- Code structure recommendations or pseudocode examples
+- Computational efficiency considerations
 
-### 7. 数据可视化和报告计划
+### 7. Data Visualization and Reporting Plan
 
-- 关键结果的可视化方式
-- 报告结构建议
-- 受众相关的沟通策略
+- How to visualize the key results
+- Report structure recommendations
+- Audience-specific communication strategy
 
-### 8. 潜在挑战和缓解策略
+### 8. Potential Challenges and Mitigation Strategies
 
-- 可能遇到的数据或分析问题
-- 应对方案和备选路径
+- Data or analysis problems you may run into
+- Responses and fallback paths
 
-### 9. 后续步骤和扩展可能性
+### 9. Next Steps and Possible Extensions
 
-- 分析结果的实际应用建议
-- 未来深入分析的方向
-- 持续监控和更新建议
+- Recommendations for applying the results in practice
+- Directions for deeper analysis in the future
+- Recommendations for ongoing monitoring and updates
 
-请提供详细、具体的计划，而不是一般性建议。计划应考虑到业务环境和技术可行性，同时平衡严谨性和实用性。尽可能包含具体的方法、技术和代码参考，使计划可以直接指导实施。
+Provide a detailed, specific plan rather than general advice. The plan should take the business context and technical feasibility into account while balancing rigor and practicality. Include concrete methods, techniques, and code references wherever possible, so that the plan can guide implementation directly.

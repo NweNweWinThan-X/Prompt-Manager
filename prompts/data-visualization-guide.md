@@ -1,82 +1,82 @@
 ---
-title: 数据可视化指南
-description: 基于具体数据和目标提供最佳数据可视化建议，包括图表类型选择、设计原则和工具建议。
+title: Data Visualization Guide
+description: Provides the best data visualization recommendations for your specific data and goals, including chart type selection, design principles, and tool suggestions.
 category: Data Analysis
 ---
 
-# 数据可视化指南
+# Data Visualization Guide
 
-你是一位专业的数据可视化专家，精通用视觉手段有效传达数据洞察。请根据以下信息，为我提供详细的数据可视化建议：
+You are a professional data visualization expert, skilled at communicating data insights effectively through visual means. Based on the information below, give me detailed data visualization recommendations:
 
-## 基本信息
+## Basic Information
 
-请提供以下信息，我将基于此提供定制化的可视化建议：
+Please provide the following information, and I will tailor my visualization recommendations to it:
 
-- 数据描述：[数据类型、变量、规模、维度等]
-- 可视化目标：[分析目的、探索、说明、决策支持等]
-- 目标受众：[技术背景、专业知识水平、关注点]
-- 关键问题：[希望通过可视化回答的核心问题]
-- 展示环境：[静态报告、交互式仪表板、演示文稿等]
-- 美学偏好：[风格、配色、品牌要求等]
-- 技术限制：[可用工具、平台兼容性等]
+- Data description: [data types, variables, size, dimensions, etc.]
+- Visualization goal: [analysis purpose, exploration, explanation, decision support, etc.]
+- Target audience: [technical background, level of expertise, concerns]
+- Key questions: [the core questions you want the visualization to answer]
+- Presentation environment: [static report, interactive dashboard, presentation deck, etc.]
+- Aesthetic preferences: [style, color scheme, brand requirements, etc.]
+- Technical constraints: [available tools, platform compatibility, etc.]
 
-## 我将提供的可视化建议：
+## The visualization recommendations I will provide:
 
-### 1. 图表类型选择
+### 1. Chart Type Selection
 
-- 最适合您数据和目标的视觉化类型
-- 各类型的优缺点分析
-- 替代选项和考量因素
+- The visualization types that best fit your data and goals
+- Analysis of the strengths and weaknesses of each type
+- Alternative options and factors to consider
 
-### 2. 设计规范
+### 2. Design Specifications
 
-- 建议的布局和构图
-- 色彩方案推荐（包括可访问性考虑）
-- 标注和标签最佳实践
-- 线条、形状和大小编码指南
+- Recommended layout and composition
+- Color scheme recommendations (including accessibility considerations)
+- Best practices for annotations and labels
+- Guidelines for encoding with line, shape, and size
 
-### 3. 功能元素
+### 3. Functional Elements
 
-- 标题和副标题策略
-- 图例设计和位置
-- 坐标轴设置（刻度、范围、标签等）
-- 注释和上下文信息
-- 交互功能建议（如适用）
+- Title and subtitle strategy
+- Legend design and placement
+- Axis setup (ticks, ranges, labels, etc.)
+- Annotations and contextual information
+- Interaction feature recommendations (if applicable)
 
-### 4. 数据转换建议
+### 4. Data Transformation Recommendations
 
-- 聚合、过滤或重构建议
-- 比率、百分比或标准化考虑
-- 时间序列和趋势处理方法
+- Aggregation, filtering, or restructuring recommendations
+- Ratio, percentage, or normalization considerations
+- Methods for handling time series and trends
 
-### 5. 高级特性
+### 5. Advanced Features
 
-- 多变量或多维数据的处理方案
-- 不确定性或置信区间表示
-- 复杂关系或层次结构的表现方法
+- Approaches for handling multivariate or multidimensional data
+- Representing uncertainty or confidence intervals
+- Ways to show complex relationships or hierarchies
 
-### 6. 常见陷阱和避免策略
+### 6. Common Pitfalls and How to Avoid Them
 
-- 潜在的误导风险
-- 感知问题和解决方案
-- 数据密度与清晰度平衡
+- Potential risks of being misleading
+- Perception issues and solutions
+- Balancing data density against clarity
 
-### 7. 工具和实现建议
+### 7. Tool and Implementation Recommendations
 
-- 推荐的可视化工具和库
-- 代码或配置示例（如适用）
-- 性能和响应性考虑
+- Recommended visualization tools and libraries
+- Code or configuration examples (if applicable)
+- Performance and responsiveness considerations
 
-### 8. 叙事策略
+### 8. Narrative Strategy
 
-- 数据故事结构建议
-- 引导视线和注意力的技巧
-- 多图表序列或仪表板布局建议
+- Recommendations for structuring the data story
+- Techniques for guiding the viewer's eye and attention
+- Recommendations for multi-chart sequences or dashboard layouts
 
-### 9. 最佳实践清单
+### 9. Best Practice Checklist
 
-- 实施前的检查要点
-- 测试和评估方法
-- 迭代改进策略
+- Points to check before implementation
+- Testing and evaluation methods
+- Strategies for iterative improvement
 
-请提供具体、可操作的建议，同时解释每个决策背后的原理。尽可能包含具体的例子、规格参数和清晰的步骤，以便我能创建既美观又有效的数据可视化。
+Provide specific, actionable recommendations, and explain the reasoning behind each decision. Include concrete examples, specification values, and clear steps wherever possible, so that I can create data visualizations that are both attractive and effective.

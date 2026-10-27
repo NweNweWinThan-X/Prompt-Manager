@@ -1,162 +1,162 @@
 [
   {
     "slug": "api-documentation-generator",
-    "title": "API文档生成器",
-    "description": "根据API代码或规范生成专业、完整的API文档，包括端点说明、参数详解和使用示例。",
+    "title": "API Documentation Generator",
+    "description": "Generate professional, complete API documentation from API code or specifications, including endpoint descriptions, parameter details, and usage examples.",
     "category": "Programming",
     "tags": [],
-    "date": "2026-10-27T06:15:30.420Z"
+    "date": "2026-10-27T06:23:51.842Z"
   },
   {
     "slug": "blog-content-planner",
-    "title": "博客内容规划师",
-    "description": "生成全面的博客内容计划，包括标题创意、关键词建议和主题大纲。",
+    "title": "Blog Content Planner",
+    "description": "Generate a comprehensive blog content plan, including title ideas, keyword suggestions, and topic outlines.",
     "category": "Content Creation",
     "tags": [],
-    "date": "2026-10-27T06:15:30.423Z"
+    "date": "2026-10-27T06:23:51.850Z"
   },
   {
     "slug": "code-optimization-assistant",
-    "title": "代码优化助手",
-    "description": "分析并优化您的代码，提供性能改进建议和最佳实践指导。",
+    "title": "Code Optimization Assistant",
+    "description": "Analyze and optimize your code, with performance improvement suggestions and best-practice guidance.",
     "category": "Programming",
     "tags": [],
-    "date": "2026-10-27T06:15:30.424Z"
+    "date": "2026-10-27T06:23:51.851Z"
   },
   {
     "slug": "code-refactoring-guide",
-    "title": "代码重构指南",
-    "description": "分析现有代码并提供详细的重构建议，改进代码结构、可读性和可维护性。",
+    "title": "Code Refactoring Guide",
+    "description": "Analyze existing code and provide detailed refactoring recommendations that improve structure, readability, and maintainability.",
     "category": "Programming",
     "tags": [],
-    "date": "2026-10-27T06:15:30.425Z"
+    "date": "2026-10-27T06:23:51.853Z"
   },
   {
     "slug": "concept-explainer",
-    "title": "概念解释专家",
-    "description": "将复杂概念分解成简单易懂的解释，使用类比、例子和视觉描述帮助理解。",
+    "title": "Concept Explainer",
+    "description": "Break complex concepts down into simple, understandable explanations, using analogies, examples, and visual descriptions to aid understanding.",
     "category": "Education",
     "tags": [],
-    "date": "2026-10-27T06:15:30.426Z"
+    "date": "2026-10-27T06:23:51.854Z"
   },
   {
     "slug": "cusor-rule-sample",
-    "title": "cursor rule提示词样例",
-    "description": "在cursor中使用，用来指导约束AI，使AI编码效率更高",
+    "title": "Cursor Rule Prompt Sample",
+    "description": "Use it in Cursor to guide and constrain the AI so that AI-assisted coding is more efficient",
     "category": "Programming",
     "tags": [],
-    "date": "2026-10-27T06:15:30.426Z"
+    "date": "2026-10-27T06:23:51.858Z"
   },
   {
     "slug": "data-analysis-plan",
-    "title": "数据分析计划生成器",
-    "description": "根据具体业务问题和可用数据创建完整的数据分析计划，包括方法选择、工具建议和预期结果。",
+    "title": "Data Analysis Plan Generator",
+    "description": "Create a complete data analysis plan from a specific business problem and the available data, including method selection, tool recommendations, and expected results.",
     "category": "Data Analysis",
     "tags": [],
-    "date": "2026-10-27T06:15:30.427Z"
+    "date": "2026-10-27T06:23:51.861Z"
   },
   {
     "slug": "data-visualization-guide",
-    "title": "数据可视化指南",
-    "description": "基于具体数据和目标提供最佳数据可视化建议，包括图表类型选择、设计原则和工具建议。",
+    "title": "Data Visualization Guide",
+    "description": "Provides the best data visualization recommendations for your specific data and goals, including chart type selection, design principles, and tool suggestions.",
     "category": "Data Analysis",
     "tags": [],
-    "date": "2026-10-27T06:15:30.428Z"
+    "date": "2026-10-27T06:23:51.863Z"
   },
   {
     "slug": "digital-marketing-strategy",
-    "title": "数字营销策略规划",
-    "description": "根据业务目标和目标受众创建全面的数字营销策略，包括渠道选择、内容计划和KPI设定。",
+    "title": "Digital Marketing Strategy Planning",
+    "description": "Create a comprehensive digital marketing strategy from your business goals and target audience, including channel selection, a content plan, and KPI definitions.",
     "category": "Marketing",
     "tags": [],
-    "date": "2026-10-27T06:15:30.429Z"
+    "date": "2026-10-27T06:23:51.866Z"
   },
   {
     "slug": "email-marketing-campaign",
-    "title": "电子邮件营销活动策划",
-    "description": "设计完整的电子邮件营销活动，包括目标设定、分段策略、邮件序列设计和性能预测。",
+    "title": "Email Marketing Campaign Planning",
+    "description": "Design a complete email marketing campaign, including goal setting, segmentation strategy, email sequence design, and performance forecasting.",
     "category": "Marketing",
     "tags": [],
-    "date": "2026-10-27T06:15:30.430Z"
+    "date": "2026-10-27T06:23:51.869Z"
   },
   {
     "slug": "exam-question-generator",
-    "title": "考试题目生成器",
-    "description": "根据指定主题和难度生成各种类型的考试题目，包括选择题、填空题和论述题。",
+    "title": "Exam Question Generator",
+    "description": "Generate exam questions of various types, including multiple choice, fill-in-the-blank and essay questions, for a given topic and difficulty level.",
     "category": "Education",
     "tags": [],
-    "date": "2026-10-27T06:15:30.430Z"
+    "date": "2026-10-27T06:23:51.872Z"
   },
   {
     "slug": "learning-plan-generator",
-    "title": "学习计划生成器",
-    "description": "为任何主题或技能创建个性化的、结构化的学习路径，包含里程碑、资源和时间表。",
+    "title": "Learning Plan Generator",
+    "description": "Create a personalized, structured learning path for any topic or skill, complete with milestones, resources and a schedule.",
     "category": "Education",
     "tags": [],
-    "date": "2026-10-27T06:15:30.432Z"
+    "date": "2026-10-27T06:23:51.873Z"
   },
   {
     "slug": "logo-design-brief",
-    "title": "Logo设计指南",
-    "description": "根据品牌价值观和目标受众创建详细的Logo设计方案，包括风格、颜色、字体和应用场景建议。",
+    "title": "Logo Design Guide",
+    "description": "Create a detailed logo design proposal based on brand values and target audience, covering style, color, typography and usage scenarios.",
     "category": "Creative Design",
     "tags": [],
-    "date": "2026-10-27T06:15:30.432Z"
+    "date": "2026-10-27T06:23:51.874Z"
   },
   {
     "slug": "predictive-modeling-assistant",
-    "title": "预测建模助手",
-    "description": "帮助构建和优化预测模型，提供特征选择、模型选择、评估及调优的专业指导。",
+    "title": "Predictive Modeling Assistant",
+    "description": "Help build and optimize predictive models, with expert guidance on feature selection, model selection, evaluation and tuning.",
     "category": "Data Analysis",
     "tags": [],
-    "date": "2026-10-27T06:15:30.433Z"
+    "date": "2026-10-27T06:23:51.875Z"
   },
   {
     "slug": "professional-article-generator",
-    "title": "专业文章生成器",
-    "description": "创建结构化、专业的文章，包含引人入胜的标题、精确的小标题和丰富的内容。",
+    "title": "Professional Article Generator",
+    "description": "Create structured, professional articles with a compelling headline, precise subheadings and substantial content.",
     "category": "Content Creation",
     "tags": [],
-    "date": "2026-10-27T06:15:30.434Z"
+    "date": "2026-10-27T06:23:51.876Z"
   },
   {
     "slug": "social-media-content-calendar",
-    "title": "社交媒体内容日历生成器",
-    "description": "根据营销目标和受众特征，创建结构化的社交媒体内容日历，包括帖子类型、主题和发布时间。",
+    "title": "Social Media Content Calendar Generator",
+    "description": "Creates a structured social media content calendar based on your marketing goals and audience, covering post types, themes, and publishing times.",
     "category": "Marketing",
     "tags": [],
-    "date": "2026-10-27T06:15:30.434Z"
+    "date": "2026-10-27T06:23:51.877Z"
   },
   {
     "slug": "story-claude-generator",
-    "title": "故事创作助手",
-    "description": "与用户协作创作引人入胜的故事，提供情节转折和人物发展建议。",
+    "title": "Collaborative Story Writer",
+    "description": "Writes engaging stories together with you, offering plot twists and character development suggestions.",
     "category": "Content Creation",
     "tags": [],
-    "date": "2026-10-27T06:15:30.436Z"
+    "date": "2026-10-27T06:23:51.878Z"
   },
   {
     "slug": "story-idea-generator",
-    "title": "故事创意生成器",
-    "description": "生成原创故事创意，包括情节、角色设定和情感弧线，适用于小说、剧本或短篇故事。",
+    "title": "Story Idea Generator",
+    "description": "Generates original story ideas with plot, character profiles, and emotional arcs for novels, screenplays, or short fiction.",
     "category": "Content Creation",
     "tags": [],
-    "date": "2026-10-27T06:15:30.437Z"
+    "date": "2026-10-27T06:23:51.880Z"
   },
   {
     "slug": "ui-design-system-creator",
-    "title": "UI设计系统创建器",
-    "description": "构建完整的用户界面设计系统，包括组件规范、色彩系统、排版规则和交互模式。",
+    "title": "UI Design System Creator",
+    "description": "Builds a complete user interface design system, including component specifications, color system, typography rules, and interaction patterns.",
     "category": "Creative Design",
     "tags": [],
-    "date": "2026-10-27T06:15:30.437Z"
+    "date": "2026-10-27T06:23:51.882Z"
   },
   {
     "slug": "website-design-consultant",
-    "title": "网站设计顾问",
-    "description": "根据业务需求和目标受众提供详细的网站设计建议，包括布局、色彩方案和用户体验优化。",
+    "title": "Website Design Consultant",
+    "description": "Provides detailed website design recommendations based on your business needs and target audience, covering layout, color scheme, and user experience improvements.",
     "category": "Creative Design",
     "tags": [],
-    "date": "2026-10-27T06:15:30.437Z"
+    "date": "2026-10-27T06:23:51.883Z"
   }
 ]

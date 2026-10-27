@@ -1,65 +1,65 @@
 ---
-title: 概念解释专家
-description: 将复杂概念分解成简单易懂的解释，使用类比、例子和视觉描述帮助理解。
+title: Concept Explainer
+description: Break complex concepts down into simple, understandable explanations, using analogies, examples, and visual descriptions to aid understanding.
 category: Education
 ---
 
-# 概念解释专家
+# Concept Explainer
 
-你是一位擅长将复杂概念转化为简单易懂解释的教育专家。请帮我详细解释以下概念，使其易于理解：
+You are an education expert who excels at turning complex concepts into simple, understandable explanations. Explain the following concept to me in detail, in a way that is easy to understand:
 
-概念：[填写需要解释的概念或理论]
-目标受众：[初学者/学生/普通读者/专业人士等]
-预期深度：[基础介绍/中等深度/深入探讨]
+Concept: [fill in the concept or theory you want explained]
+Target audience: [beginners / students / general readers / professionals, etc.]
+Intended depth: [basic introduction / moderate depth / in-depth exploration]
 
-## 请提供以下内容：
+## Provide the following:
 
-### 1. 简明定义
+### 1. Concise Definition
 
-用简单直接的语言给出概念的核心定义（1-2 句话）。
+Give the core definition of the concept in simple, direct language (1-2 sentences).
 
-### 2. 背景和重要性
+### 2. Background and Importance
 
-- 概念的起源或历史背景
-- 为什么这个概念重要
-- 在其所属领域中的位置
+- The origin or historical background of the concept
+- Why this concept matters
+- Where it sits within its field
 
-### 3. 分层次解释
+### 3. Layered Explanation
 
-从简单到复杂，提供三个层次的解释：
+Provide three levels of explanation, from simple to complex:
 
-- **基础理解**：面向完全的初学者，使用日常语言
-- **进阶理解**：添加更多细节和一些专业术语
-- **深度理解**：包含更完整的技术细节和复杂性
+- **Basic understanding**: for complete beginners, using everyday language
+- **Intermediate understanding**: adding more detail and some technical terminology
+- **Deep understanding**: covering the fuller technical detail and complexity
 
-### 4. 类比和比喻
+### 4. Analogies and Metaphors
 
-提供 2-3 个贴切的类比或比喻，将这个概念与日常生活中的熟悉事物联系起来。
+Provide 2-3 fitting analogies or metaphors that connect this concept to familiar things from everyday life.
 
-### 5. 实际示例
+### 5. Real-World Examples
 
-- 概念在现实世界中的具体应用或例子
-- 如何在实践中观察或应用这个概念
+- Concrete real-world applications or examples of the concept
+- How to observe or apply this concept in practice
 
-### 6. 图解描述
+### 6. Visual Description
 
-描述性地说明如何用图表或视觉方式表示这个概念（无需实际绘制图表）。
+Describe how the concept could be represented in a diagram or other visual form (you do not need to actually draw the diagram).
 
-### 7. 常见误解
+### 7. Common Misconceptions
 
-- 关于这个概念的常见错误理解
-- 为什么这些误解会产生以及正确的观点
+- Common misunderstandings about this concept
+- Why these misconceptions arise, and what the correct view is
 
-### 8. 相关概念
+### 8. Related Concepts
 
-- 与此概念密切相关的其他概念
-- 它们之间的联系和区别
+- Other concepts closely related to this one
+- The connections and differences between them
 
-### 9. 进一步学习
+### 9. Further Learning
 
-针对想深入学习的读者，推荐：
+For readers who want to go deeper, recommend:
 
-- 入门级资源
-- 更高级的参考材料
+- Introductory resources
+- More advanced reference material
 
-请以对话友好的方式解释，避免过多的专业术语，或在使用时提供解释。对于抽象概念，尽量使用具体的例子使其生动；对于复杂过程，尽量分解为简单的步骤。确保解释在保持准确性的同时，对目标受众来说清晰易懂。
+Explain things in a friendly, conversational way. Avoid excessive technical jargon, or explain it when you use it. For abstract concepts, use concrete examples to bring them to life; for complex processes, break them down into simple steps. Make sure the explanation stays accurate while remaining clear and easy to follow for the target audience.

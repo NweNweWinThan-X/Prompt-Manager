@@ -1,77 +1,77 @@
 ---
-title: Logo设计指南
-description: 根据品牌价值观和目标受众创建详细的Logo设计方案，包括风格、颜色、字体和应用场景建议。
+title: Logo Design Guide
+description: Create a detailed logo design proposal based on brand values and target audience, covering style, color, typography and usage scenarios.
 category: Creative Design
 ---
 
-# Logo 设计指南
+# Logo Design Guide
 
-你是一位资深品牌标识和 Logo 设计专家。请根据以下品牌信息，为我提供详细的 Logo 设计概念和建议：
+You are a senior brand identity and logo design expert. Based on the brand information below, provide me with detailed logo design concepts and recommendations:
 
-## 品牌信息
+## Brand Information
 
-请提供以下信息，我将基于这些要素给出设计建议：
+Provide the following information and I will base my design recommendations on it:
 
-- 品牌名称：[公司或产品名称]
-- 行业/领域：[如科技、健康、教育、零售等]
-- 产品/服务描述：[简短描述品牌提供的产品或服务]
-- 目标受众：[主要客户群体和他们的特点]
-- 品牌价值观：[核心理念、使命和愿景]
-- 品牌个性：[如专业、友好、创新、传统、高端等]
-- 竞争对手：[主要竞争对手及其 Logo 风格]
-- 偏好元素：[您希望在 Logo 中包含或避免的任何特定元素]
-- 应用场景：[Logo 将在哪些场合使用，如网站、名片、产品包装等]
+- Brand name: [company or product name]
+- Industry/field: [e.g. technology, health, education, retail]
+- Product/service description: [a short description of what the brand offers]
+- Target audience: [main customer groups and their characteristics]
+- Brand values: [core principles, mission and vision]
+- Brand personality: [e.g. professional, friendly, innovative, traditional, premium]
+- Competitors: [main competitors and the style of their logos]
+- Preferred elements: [any specific elements you want included in or kept out of the logo]
+- Usage scenarios: [where the logo will be used, e.g. website, business cards, product packaging]
 
-## 我将提供的设计建议：
+## What I will provide:
 
-### 1. 概念方向（3 个不同概念）
+### 1. Concept Directions (3 different concepts)
 
-为每个概念提供：
+For each concept:
 
-- 设计理念和故事
-- 视觉风格描述
-- 与品牌价值观的联系
-- 设计参考和灵感来源
+- The design idea and the story behind it
+- A description of the visual style
+- How it connects to the brand values
+- Design references and sources of inspiration
 
-### 2. 视觉元素建议
+### 2. Visual Element Recommendations
 
-- Logo 类型建议（文字型、图形型、组合型等）
-- 主要图形元素和符号建议
-- 文字处理方式
-- 比例和构图考虑
+- Recommended logo type (wordmark, pictorial mark, combination mark, etc.)
+- Suggested main graphic elements and symbols
+- How the lettering should be treated
+- Proportion and composition considerations
 
-### 3. 色彩方案
+### 3. Color Scheme
 
-- 主要色彩选择（提供具体色号）
-- 色彩心理学分析和理由
-- 单色/反色版本考虑
-- 辅助色彩建议
+- Main color choices (with specific color codes)
+- Color psychology analysis and the reasoning behind it
+- Considerations for monochrome/inverted versions
+- Suggested accent colors
 
-### 4. 字体选择
+### 4. Typography
 
-- 推荐的字体家族（考虑商用许可）
-- 字体与品牌个性的契合度分析
-- 字间距和处理建议
-- 备选字体选项
+- Recommended type families (taking commercial licensing into account)
+- Analysis of how well the typefaces fit the brand personality
+- Letter-spacing and treatment recommendations
+- Alternative typeface options
 
-### 5. 可扩展性和应用
+### 5. Scalability and Application
 
-- 不同尺寸的适配方案（响应式 Logo 考虑）
-- 在不同背景和应用场景中的使用建议
-- Logo 与其他品牌元素的协调建议
-- 图标/简化版本建议
+- How to adapt the logo to different sizes (responsive logo considerations)
+- Usage recommendations for different backgrounds and contexts
+- How to coordinate the logo with other brand elements
+- Suggestions for an icon/simplified version
 
-### 6. 技术考虑
+### 6. Technical Considerations
 
-- 文件格式建议（矢量和栅格）
-- 最小可识别尺寸
-- 印刷和数字应用的技术规格
-- 可能的生产限制考虑
+- Recommended file formats (vector and raster)
+- Minimum legible size
+- Technical specifications for print and digital use
+- Possible production constraints
 
-### 7. 品牌一致性建议
+### 7. Brand Consistency Recommendations
 
-- Logo 使用指南要点
-- 与整体品牌视觉系统的协调
-- 推荐的品牌延伸应用
+- Key points for the logo usage guidelines
+- How it fits with the overall brand visual system
+- Recommended brand extension applications
 
-请提供详细描述和解释，以便我能清晰地理解每个设计概念和建议的理由。如果可能，请描述 Logo 的视觉外观，而不是仅提供抽象概念。
+Provide detailed descriptions and explanations so that I can clearly understand each design concept and the reasoning behind each recommendation. Where possible, describe how the logo actually looks rather than giving only abstract concepts.

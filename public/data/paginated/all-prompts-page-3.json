@@ -1,8 +1,8 @@
 [
   {
     "slug": "data-analysis-plan",
-    "title": "数据分析计划生成器",
-    "description": "根据具体业务问题和可用数据创建完整的数据分析计划，包括方法选择、工具建议和预期结果。",
+    "title": "Data Analysis Plan Generator",
+    "description": "Create a complete data analysis plan from a specific business problem and the available data, including method selection, tool recommendations, and expected results.",
     "category": "Data Analysis",
     "author": "",
     "tags": [],
@@ -13,8 +13,8 @@
   },
   {
     "slug": "professional-article-generator",
-    "title": "专业文章生成器",
-    "description": "创建结构化、专业的文章，包含引人入胜的标题、精确的小标题和丰富的内容。",
+    "title": "Professional Article Generator",
+    "description": "Create structured, professional articles with a compelling headline, precise subheadings and substantial content.",
     "category": "Content Creation",
     "author": "",
     "tags": [],

@@ -1,75 +1,75 @@
 ---
-title: API文档生成器
-description: 根据API代码或规范生成专业、完整的API文档，包括端点说明、参数详解和使用示例。
+title: API Documentation Generator
+description: Generate professional, complete API documentation from API code or specifications, including endpoint descriptions, parameter details, and usage examples.
 category: Programming
 ---
 
-# API 文档生成器
+# API Documentation Generator
 
-你是一位专业的技术文档专家，精通 API 文档编写。请根据以下 API 信息，生成清晰、完整、易于理解的 API 文档：
+You are a professional technical writer with deep expertise in API documentation. Based on the API information below, generate clear, complete, and easy-to-understand API documentation:
 
-## API 信息
+## API Information
 
-请提供以下信息（根据可用情况填写）：
+Provide the following information (fill in whatever is available):
 
-- API 名称和版本
-- 基础 URL
-- 认证方式（如 API 密钥、OAuth 等）
-- 端点描述（或者代码片段）
-- 返回格式（JSON, XML 等）
+- API name and version
+- Base URL
+- Authentication method (such as API key, OAuth, etc.)
+- Endpoint descriptions (or code snippets)
+- Response format (JSON, XML, etc.)
 
 ```
-[此处可粘贴API代码、Swagger定义或端点描述]
+[paste your API code, Swagger definition, or endpoint descriptions here]
 ```
 
-## 请生成的文档应包含：
+## The documentation you generate should include:
 
-### 1. API 概述
+### 1. API Overview
 
-- 简明扼要的 API 介绍
-- 主要功能和用途
-- 技术规格概要（数据格式、协议、认证方式等）
+- A concise introduction to the API
+- Main features and use cases
+- Summary of technical specifications (data format, protocol, authentication method, etc.)
 
-### 2. 身份验证和授权
+### 2. Authentication and Authorization
 
-- 详细的认证步骤和要求
-- 示例代码（如适用）
-- 安全最佳实践
+- Detailed authentication steps and requirements
+- Sample code (where applicable)
+- Security best practices
 
-### 3. 端点文档
+### 3. Endpoint Documentation
 
-对每个 API 端点提供：
+For each API endpoint, provide:
 
-- 端点 URL 和 HTTP 方法
-- 功能描述
-- 请求参数（路径参数、查询参数、请求体）详细说明，包括：
-  - 参数名称
-  - 数据类型
-  - 是否必须
-  - 默认值（如有）
-  - 有效值/限制
-  - 参数描述
-- 响应格式，包括：
-  - 状态码和含义
-  - 响应体结构和字段说明
-  - 可能的错误响应
+- Endpoint URL and HTTP method
+- Description of what it does
+- Detailed description of request parameters (path parameters, query parameters, request body), including:
+  - Parameter name
+  - Data type
+  - Whether it is required
+  - Default value (if any)
+  - Valid values / constraints
+  - Parameter description
+- Response format, including:
+  - Status codes and their meanings
+  - Response body structure and field descriptions
+  - Possible error responses
 
-### 4. 使用示例
+### 4. Usage Examples
 
-- 每个端点的详细请求示例（包括请求头、参数或请求体）
-- 示例的响应（成功和失败情况）
-- 常见用例的代码示例（至少使用一种主流编程语言）
+- A detailed request example for each endpoint (including headers, parameters, or request body)
+- Example responses (both success and failure cases)
+- Code examples for common use cases (in at least one mainstream programming language)
 
-### 5. 错误处理
+### 5. Error Handling
 
-- 常见错误码和含义
-- 错误响应结构
-- 错误处理最佳实践
+- Common error codes and their meanings
+- Error response structure
+- Error handling best practices
 
-### 6. 限制和注意事项
+### 6. Limits and Caveats
 
-- 速率限制
-- 数据限制
-- 重要注意事项
+- Rate limits
+- Data limits
+- Important caveats
 
-请使用 Markdown 格式编写文档，确保结构清晰，说明准确详尽。适当使用表格、代码块和列表提高可读性。文档应同时适合初学者和有经验的开发者使用。
+Write the documentation in Markdown, with a clear structure and accurate, thorough explanations. Use tables, code blocks, and lists where they improve readability. The documentation should work for both beginners and experienced developers.
