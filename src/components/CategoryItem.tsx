@@ -13,9 +13,9 @@ export default function CategoryItem({ category }: CategoryItemProps) {
   const { locale } = useLanguage();
   const { t } = useTranslation();
 
-  // 确保count有值
+  // Make sure count has a value
   const promptCount = category.count?.toString() || '0';
-  // 使用翻译键或直接使用名称
+  // Use the translation key, or the raw name
   const categoryName = category.nameKey ? t(category.nameKey) : category.name;
 
   return (

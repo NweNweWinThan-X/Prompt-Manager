@@ -4,10 +4,10 @@ const zlib = require("zlib");
 
 console.log("开始优化生产构建...");
 
-// 输出目录
+// Output directory
 const outDir = path.join(process.cwd(), "out");
 
-// 遍历所有HTML，JS和CSS文件
+// Walk the output tree, handling every HTML, JS and CSS file
 function optimizeFiles(dir) {
   const files = fs.readdirSync(dir, { withFileTypes: true });
 
@@ -19,33 +19,33 @@ function optimizeFiles(dir) {
       continue;
     }
 
-    // 处理HTML, JS和CSS文件
+    // Only HTML, JS and CSS files
     if (/\.(html|js|css)$/.test(file.name)) {
       console.log(`优化文件: ${fullPath}`);
       let content = fs.readFileSync(fullPath, "utf8");
 
-      // 压缩HTML
+      // Minify HTML
       if (file.name.endsWith(".html")) {
-        // 简单的HTML最小化（移除注释和多余空白）
+        // Crude minification: strip comments and extra whitespace
         content = content
-          .replace(/<!--(?!<!)[^\[>][\s\S]*?-->/g, "") // 移除注释
-          .replace(/\s{2,}/g, " ") // 减少多个空白为一个
-          .replace(/>\s+</g, "><"); // 移除标签之间的空白
+          .replace(/<!--(?!<!)[^\[>][\s\S]*?-->/g, "") // strip comments
+          .replace(/\s{2,}/g, " ") // collapse runs of whitespace
+          .replace(/>\s+</g, "><"); // drop whitespace between tags
       }
 
-      // 写回优化后的文件
+      // Write the optimized file back
       fs.writeFileSync(fullPath, content, "utf8");
 
-      // 创建gzip版本，GitHub Pages会自动使用这些文件（如果存在）
+      // Also write a gzipped copy; GitHub Pages serves it when it exists
       const gzipped = zlib.gzipSync(content);
       fs.writeFileSync(`${fullPath}.gz`, gzipped);
     }
   }
 }
 
-// 检查输出目录是否存在
+// Nothing to do unless the build output is there
 if (fs.existsSync(outDir)) {
-  // 开始优化
+  // Go
   optimizeFiles(outDir);
   console.log("优化完成！");
 } else {

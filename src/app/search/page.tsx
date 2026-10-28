@@ -7,7 +7,7 @@ import { useTranslation } from '../../lib/i18n';
 import { useLanguage } from '../../context/LanguageContext';
 import { withBasePath } from '../../config/site';
 
-// 定义搜索结果类型
+// Shape of a search result
 interface SearchResult {
   id: string;
   title: string;
@@ -15,7 +15,7 @@ interface SearchResult {
   path: string;
 }
 
-// 定义索引项类型
+// Shape of an entry in the search index
 interface IndexItem {
   slug: string;
   title: string;
@@ -25,7 +25,7 @@ interface IndexItem {
   date: string;
 }
 
-// 清理HTML标签的函数
+// Strips HTML tags
 function stripHtml(html: string) {
   return html.replace(/<[^>]*>/g, '');
 }
@@ -42,13 +42,13 @@ export default function SearchPage() {
   const [index, setIndex] = useState<IndexItem[]>([]);
   const [indexLoaded, setIndexLoaded] = useState(false);
 
-  // 使用ref跟踪已加载状态，避免重复加载
+  // Refs rather than state, so a re-render can't trigger a second load
   const hasLoadedIndex = useRef(false);
   const hasSearched = useRef(false);
 
-  // 加载索引文件
+  // Load the index file
   useEffect(() => {
-    // 如果已经加载过索引，或者已经在加载中，则跳过
+    // Skip if the index is already loaded or a load is in flight
     if (hasLoadedIndex.current || loading) return;
 
     async function loadIndex() {
@@ -58,7 +58,7 @@ export default function SearchPage() {
       setLoading(true);
 
       try {
-        // 使用绝对路径加载索引文件
+        // Fetch the index by absolute URL
         const baseUrl = window.location.origin;
         const indexUrl = `${baseUrl}${withBasePath('/data/prompts-index.json')}`;
 
@@ -71,7 +71,7 @@ export default function SearchPage() {
         setIndex(data);
         setIndexLoaded(true);
 
-        // 如果有查询参数，触发搜索
+        // Search straight away if the URL already carries a query
         if (query) {
           performSearch(data, query);
         }
@@ -84,9 +84,9 @@ export default function SearchPage() {
     }
 
     loadIndex();
-  }, [query]); // 只在query变化时重新加载
+  }, [query]); // Only reload when the query changes
 
-  // 执行搜索函数
+  // Runs the search
   const performSearch = useCallback((indexData: IndexItem[], searchQuery: string) => {
     if (!searchQuery || !indexData.length || hasSearched.current) return;
 
@@ -94,7 +94,7 @@ export default function SearchPage() {
     setLoading(true);
 
     try {
-      // 从索引中筛选匹配项
+      // Pick the matching entries out of the index
       const possibleMatches = indexData.filter(item => {
         if (!item.slug || typeof item.slug !== 'string') {
           return false;
@@ -105,7 +105,7 @@ export default function SearchPage() {
           item.tags?.some((tag: string) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
       });
 
-      // 构建搜索结果
+      // Turn them into search results
       const searchResults = possibleMatches.map(item => ({
         id: item.slug,
         title: item.title,
@@ -121,24 +121,24 @@ export default function SearchPage() {
     }
   }, [t]);
 
-  // 当索引加载完成且有查询参数时执行搜索
+  // Search once the index has loaded and there is a query
   useEffect(() => {
     if (indexLoaded && query && !hasSearched.current) {
       performSearch(index, query);
     }
   }, [indexLoaded, query, index, performSearch]);
 
-  // 在路由变化时重置搜索状态
+  // Reset the search state when the route changes
   useEffect(() => {
     return () => {
-      hasSearched.current = false; // 组件卸载时重置搜索状态
+      hasSearched.current = false; // Reset on unmount
     };
   }, [query]);
 
-  // 处理搜索表单提交
+  // Handle the search form submit
   const handleSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    hasSearched.current = false; // 重置搜索状态
+    hasSearched.current = false; // Allow the next search to run
     const formData = new FormData(e.currentTarget);
     const searchQuery = formData.get('q')?.toString() || '';
     if (searchQuery.trim()) {
@@ -146,25 +146,25 @@ export default function SearchPage() {
     }
   }, [router]);
 
-  // 处理点击链接
+  // Handle clicks on a link
   const handleLinkClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.stopPropagation(); // 仅阻止事件冒泡，不阻止默认行为
+    e.stopPropagation(); // Stop the bubble only; let the link navigate
   }, []);
 
-  // 处理点击搜索结果项
+  // Handle clicks on a result card
   const handleResultClick = useCallback((path: string, e: React.MouseEvent) => {
     const target = e.target as HTMLElement;
 
-    // 如果点击的是链接或链接内部元素，让链接自己处理
+    // Let the link handle it if the click landed on one
     if (target.tagName === 'A' || target.closest('a')) {
       return;
     }
 
-    // 否则手动导航
+    // Otherwise navigate by hand
     router.push(path);
   }, [router]);
 
-  // 搜索结果为空时的提示文本
+  // Message shown when nothing matched
   const emptySearchDescription = (
     <>
       {t('ui.try_again')} {t('ui.browse_by_category')}
@@ -184,7 +184,7 @@ export default function SearchPage() {
         {query && <p className="search-query">{t('hero.search_placeholder')}: "{query}"</p>}
       </section>
 
-      {/* 搜索表单 */}
+      {/* Search form */}
       <section>
         <form className="mb-8" onSubmit={handleSubmit}>
           <div className="search-container mx-auto max-w-3xl flex items-center border rounded-full shadow-lg overflow-hidden bg-white">
@@ -206,7 +206,7 @@ export default function SearchPage() {
         </form>
       </section>
 
-      {/* 搜索结果 */}
+      {/* Search results */}
       <section>
         {loading ? (
           <div className="loading-container">

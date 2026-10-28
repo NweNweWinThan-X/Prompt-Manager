@@ -1,6 +1,6 @@
 /* additional-styles.css */
 
-/* 页面通用样式 */
+/* Shared page styles */
 .page-header {
   text-align: center;
   margin-bottom: 48px;
@@ -63,7 +63,7 @@
   color: var(--primary-color);
 }
 
-/* 提示词详情页样式 */
+/* Prompt detail page */
 .prompt-detail {
   max-width: 800px;
   margin: 0 auto;
@@ -97,13 +97,13 @@
   margin-bottom: 32px;
 }
 
-/* 内容容器 */
+/* Content container */
 .content-container {
   position: relative;
   margin-bottom: 16px;
 }
 
-/* 内容遮罩样式 */
+/* Fade-out mask over the content */
 .content-mask {
   position: absolute;
   bottom: 0;
@@ -117,23 +117,23 @@
   transition: opacity 0.3s ease;
 }
 
-/* 隐藏遮罩 */
+/* Hide the mask */
 .content-mask.hidden {
   opacity: 0;
 }
 
-/* 修改markdown内容区域样式 */
+/* Markdown content area */
 .markdown-content {
   line-height: 1.6;
   margin-bottom: 0;
-  /* 移除底部边距，由容器控制 */
+  /* No bottom margin here; the container handles it */
   position: relative;
   max-height: 300px;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--border-color) transparent;
   padding-bottom: 20px;
-  /* 增加底部内边距，防止内容被遮罩遮挡 */
+  /* Bottom padding so the mask doesn't cover the last line */
 }
 
 .markdown-content::-webkit-scrollbar {
@@ -153,7 +153,7 @@
   max-height: none;
 }
 
-/* 移除之前的渐变遮罩样式，现在我们使用独立元素实现 */
+/* The gradient mask is a separate element now, not a pseudo-element */
 .markdown-content:not(.expanded)::after {
   display: none;
 }
@@ -245,8 +245,8 @@ body .markdown-content.scrolled-bottom:not(.expanded)::after {
   background-color: var(--border-color);
 }
 
-/* 贡献页面样式 */
-/* 贡献页面样式 */
+/* Contribute page */
+/* Contribute page */
 .steps-container {
   margin: 32px 0;
 }
@@ -314,7 +314,7 @@ body .markdown-content.scrolled-bottom:not(.expanded)::after {
   background-color: var(--border-color);
 }
 
-/* 404页面样式 */
+/* 404 page */
 .not-found {
   text-align: center;
   padding: 80px 0;
@@ -333,7 +333,7 @@ body .markdown-content.scrolled-bottom:not(.expanded)::after {
   margin-bottom: 32px;
 }
 
-/* 搜索页面样式 */
+/* Search page */
 .search-page-header {
   text-align: center;
   margin-bottom: 48px;
@@ -438,7 +438,7 @@ body .markdown-content.scrolled-bottom:not(.expanded)::after {
   }
 }
 
-/* 平板设备响应式设计 */
+/* Tablets */
 @media (min-width: 769px) and (max-width: 1024px) {
   .prompt-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -484,7 +484,7 @@ body .markdown-content.scrolled-bottom:not(.expanded)::after {
   opacity: 0.8;
 }
 
-/* 模态框样式 */
+/* Modal */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -689,7 +689,7 @@ body .markdown-content.scrolled-bottom:not(.expanded)::after {
   color: white;
 }
 
-/* 复制提示样式 */
+/* Copy confirmation tooltip */
 .copy-status {
   position: absolute;
   top: -35px;
@@ -736,7 +736,7 @@ body .markdown-content.scrolled-bottom:not(.expanded)::after {
   }
 }
 
-/* 添加展开/收起按钮样式 */
+/* Expand/collapse button */
 .content-toggle {
   text-align: center;
   margin-top: 16px;
@@ -778,18 +778,18 @@ body .markdown-content.scrolled-bottom:not(.expanded)::after {
   font-weight: 500;
 }
 
-/* SVG图标样式 */
+/* SVG icon */
 .content-toggle button svg {
   width: 16px;
   height: 16px;
   transition: transform 0.3s ease;
 }
 
-/* 确保按钮在不同状态下都可见 */
+/* Keep the button visible in every state */
 .content-toggle button:focus {
   outline: none;
   border-color: var(--primary-color);
 }
 
-/* 响应式设计 */
+/* Responsive design */
 /* ... existing code ... */

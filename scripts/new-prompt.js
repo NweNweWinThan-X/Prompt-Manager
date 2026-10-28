@@ -2,12 +2,12 @@ const fs = require("fs");
 const path = require("path");
 const { CATEGORIES, resolveCategorySlug, resolveCategoryName } = require("../categories.config");
 
-// 新建一个提示词：写入 prompts/<slug>.md 和 prompts/<slug>.json
+// Create a new prompt: writes prompts/<slug>.md and prompts/<slug>.json
 //
 //   npm run new-prompt -- "My Prompt Title" --category programming
 //   npm run new-prompt -- "My Prompt Title" --category programming --tags api,review
 //
-// 之后运行 npm run dev（或 npm run generate-data）即可在站点中看到。
+// Then run npm run dev (or npm run generate-data) to see it on the site.
 
 const promptsDirectory = path.join(process.cwd(), "prompts");
 
@@ -35,7 +35,7 @@ function parseArgs(argv) {
   return options;
 }
 
-// 标题转 slug：英文转连字符，其它文字保留，确保文件名可用
+// Title to slug: non-alphanumerics become hyphens, letters of any script are kept, so the filename stays usable
 function slugify(title) {
   const slug = title
     .trim()

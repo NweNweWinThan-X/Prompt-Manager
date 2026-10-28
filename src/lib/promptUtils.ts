@@ -14,19 +14,19 @@ import {
   generateUniqueSlug
 } from './utils';
 
-// 确保提示词目录存在
+// Make sure the prompts directory exists
 ensureDirectoryExists(PROMPTS_DIRECTORY);
 
 /**
- * 获取所有提示词的slug列表
- * @returns 所有提示词的slug列表
+ * Get the slugs of all prompts
+ * @returns the slugs of all prompts
  */
 export function getPromptSlugs(): string[] {
   try {
-    // 读取目录下的所有文件
+    // Read every file in the directory
     const files = fs.readdirSync(PROMPTS_DIRECTORY);
     
-    // 过滤出.md文件并去掉扩展名
+    // Keep only .md files and strip the extension
     return files
       .filter(file => file.endsWith('.md'))
       .map(file => file.replace(/\.md$/, ''));
@@ -37,15 +37,15 @@ export function getPromptSlugs(): string[] {
 }
 
 /**
- * 获取所有提示词数据
- * @returns 所有提示词数据
+ * Get the data for every prompt
+ * @returns the data for every prompt
  */
 export function getAllPrompts(): Prompt[] {
   const slugs = getPromptSlugs();
   const prompts = slugs.map(slug => getPromptBySlug(slug))
     .filter((prompt): prompt is Prompt => prompt !== null);
   
-  // 按创建日期排序，最新的排在前面
+  // Sort by creation date, newest first
   return prompts.sort((a, b) => {
     const dateA = new Date(a.createdAt).getTime();
     const dateB = new Date(b.createdAt).getTime();
@@ -54,31 +54,31 @@ export function getAllPrompts(): Prompt[] {
 }
 
 /**
- * 根据slug获取提示词数据
- * @param slug 提示词slug
- * @returns 提示词数据或null
+ * Get a prompt's data by slug
+ * @param slug the prompt's slug
+ * @returns the prompt data, or null
  */
 export function getPromptBySlug(slug: string): Prompt | null {
   try {
-    // 清理slug，移除可能的扩展名
+    // Clean up the slug, removing any extension
     const cleanSlug = slug.replace(/\.md$/, '');
     
-    // 检查.md文件是否存在
+    // Check whether the .md file exists
     const mdPath = path.join(PROMPTS_DIRECTORY, `${cleanSlug}.md`);
     if (!fs.existsSync(mdPath)) {
       return null;
     }
     
-    // 读取.md文件
+    // Read the .md file
     const fileContent = safeReadFile(mdPath);
     const { data, content } = matter(fileContent);
     
-    // 读取元数据文件
+    // Read the metadata file
     const metadataPath = path.join(PROMPTS_DIRECTORY, `${cleanSlug}.json`);
     const metadataContent = safeReadFile(metadataPath);
     const metadata = safeParseJson<Partial<PromptMetadata>>(metadataContent, {});
     
-    // 构建完整的提示词对象
+    // Build the complete prompt object
     return {
       slug: cleanSlug,
       title: data.title || '',
@@ -99,15 +99,15 @@ export function getPromptBySlug(slug: string): Prompt | null {
 }
 
 /**
- * 获取提示词内容（处理为HTML）
- * @param slug 提示词slug
- * @returns 提示词HTML内容
+ * Get a prompt's content rendered as HTML
+ * @param slug the prompt's slug
+ * @returns the prompt's HTML content
  */
 export async function getPromptContentHtml(slug: string): Promise<string> {
   const prompt = getPromptBySlug(slug);
   if (!prompt) return '';
   
-  // 处理Markdown内容为HTML
+  // Render the Markdown content as HTML
   const processedContent = await remark()
     .use(html)
     .process(prompt.content);
@@ -116,20 +116,20 @@ export async function getPromptContentHtml(slug: string): Promise<string> {
 }
 
 /**
- * 创建新的提示词
- * @param promptData 提示词数据（不含slug）
- * @param customSlug 自定义slug（可选）
- * @returns 创建的提示词数据或null
+ * Create a new prompt
+ * @param promptData the prompt data (without the slug)
+ * @param customSlug a custom slug (optional)
+ * @returns the created prompt data, or null
  */
 export function createPrompt(
   promptData: Omit<Prompt, 'slug'>, 
   customSlug?: string
 ): Prompt | null {
   try {
-    // 生成或使用自定义slug
+    // Generate a slug, or use the custom one
     const slug = customSlug || generateUniqueSlug(promptData.title);
     
-    // 创建front matter数据
+    // Build the front matter data
     const frontmatter: PromptFrontmatter = {
       title: promptData.title,
       description: promptData.description,
@@ -138,7 +138,7 @@ export function createPrompt(
       tags: promptData.tags,
     };
     
-    // 使用字符串格式生成markdown文件内容
+    // Build the markdown file content as a string
     const content = promptData.content || '';
     const yamlFrontmatter = Object.entries(frontmatter)
       .map(([key, value]) => {
@@ -151,13 +151,13 @@ export function createPrompt(
 
     const markdownContent = `---\n${yamlFrontmatter}\n---\n\n${content}`;
     
-    // 保存.md文件
+    // Save the .md file
     const mdPath = path.join(PROMPTS_DIRECTORY, `${slug}.md`);
     if (!safeWriteFile(mdPath, markdownContent)) {
       return null;
     }
     
-    // 准备元数据
+    // Prepare the metadata
     const metadata: PromptMetadata = {
       featured: promptData.featured,
       createdAt: promptData.createdAt,
@@ -165,15 +165,15 @@ export function createPrompt(
       rating: promptData.rating
     };
     
-    // 保存元数据文件
+    // Save the metadata file
     const metadataPath = path.join(PROMPTS_DIRECTORY, `${slug}.json`);
     if (!safeWriteFile(metadataPath, JSON.stringify(metadata, null, 2))) {
-      // 如果元数据保存失败，删除已创建的md文件
+      // If saving the metadata failed, delete the md file we just created
       safeDeleteFile(mdPath);
       return null;
     }
     
-    // 返回完整的提示词数据
+    // Return the complete prompt data
     return {
       ...promptData,
       slug,
@@ -185,28 +185,28 @@ export function createPrompt(
 }
 
 /**
- * 更新提示词
- * @param slug 提示词slug
- * @param promptData 更新的数据
- * @returns 是否更新成功
+ * Update a prompt
+ * @param slug the prompt's slug
+ * @param promptData the updated data
+ * @returns whether the update succeeded
  */
 export function updatePrompt(slug: string, promptData: Partial<Prompt>): boolean {
   try {
-    // 获取现有提示词
+    // Get the existing prompt
     const existingPrompt = getPromptBySlug(slug);
     if (!existingPrompt) {
       return false;
     }
     
-    // 合并数据
+    // Merge the data
     const updatedPrompt = {
       ...existingPrompt,
       ...promptData,
-      slug, // 确保slug不变
-      updatedAt: new Date().toISOString(), // 更新修改时间
+      slug, // keep the slug unchanged
+      updatedAt: new Date().toISOString(), // bump the modified time
     };
     
-    // 创建front matter
+    // Build the front matter
     const frontmatter: PromptFrontmatter = {
       title: updatedPrompt.title,
       description: updatedPrompt.description,
@@ -215,7 +215,7 @@ export function updatePrompt(slug: string, promptData: Partial<Prompt>): boolean
       tags: updatedPrompt.tags,
     };
     
-    // 生成markdown内容
+    // Build the markdown content
     const content = updatedPrompt.content || '';
     const yamlFrontmatter = Object.entries(frontmatter)
       .map(([key, value]) => {
@@ -228,13 +228,13 @@ export function updatePrompt(slug: string, promptData: Partial<Prompt>): boolean
 
     const markdownContent = `---\n${yamlFrontmatter}\n---\n\n${content}`;
     
-    // 更新.md文件
+    // Update the .md file
     const mdPath = path.join(PROMPTS_DIRECTORY, `${slug}.md`);
     if (!safeWriteFile(mdPath, markdownContent)) {
       return false;
     }
     
-    // 更新元数据
+    // Update the metadata
     const metadata: PromptMetadata = {
       featured: updatedPrompt.featured,
       createdAt: updatedPrompt.createdAt,
@@ -242,7 +242,7 @@ export function updatePrompt(slug: string, promptData: Partial<Prompt>): boolean
       rating: updatedPrompt.rating
     };
     
-    // 保存元数据文件
+    // Save the metadata file
     const metadataPath = path.join(PROMPTS_DIRECTORY, `${slug}.json`);
     return safeWriteFile(metadataPath, JSON.stringify(metadata, null, 2));
   } catch (error) {
@@ -252,20 +252,20 @@ export function updatePrompt(slug: string, promptData: Partial<Prompt>): boolean
 }
 
 /**
- * 删除提示词
- * @param slug 提示词slug
- * @returns 是否删除成功
+ * Delete a prompt
+ * @param slug the prompt's slug
+ * @returns whether the delete succeeded
  */
 export function deletePrompt(slug: string): boolean {
   try {
     const mdPath = path.join(PROMPTS_DIRECTORY, `${slug}.md`);
     const jsonPath = path.join(PROMPTS_DIRECTORY, `${slug}.json`);
     
-    // 删除两个文件
+    // Delete both files
     const mdDeleted = safeDeleteFile(mdPath);
     const jsonDeleted = safeDeleteFile(jsonPath);
     
-    // 只要有一个文件删除成功，就认为删除操作成功
+    // Count the delete as successful if either file was removed
     return mdDeleted || jsonDeleted;
   } catch (error) {
     console.error(`删除提示词 ${slug} 出错:`, error);
@@ -274,13 +274,13 @@ export function deletePrompt(slug: string): boolean {
 }
 
 /**
- * 获取精选提示词
- * @param limit 限制数量
- * @returns 精选提示词列表
+ * Get the featured prompts
+ * @param limit how many to return
+ * @returns the list of featured prompts
  */
 export function getFeaturedPrompts(limit: number = 3): Prompt[] {
   const allPrompts = getAllPrompts();
-  // 只返回featured=true的提示，并按评分降序排序
+  // Return only prompts with featured=true, sorted by rating descending
   return allPrompts
     .filter(prompt => prompt.featured)
     .sort((a, b) => (b.rating || 0) - (a.rating || 0))
@@ -288,22 +288,22 @@ export function getFeaturedPrompts(limit: number = 3): Prompt[] {
 }
 
 /**
- * 获取最新提示词
- * @param limit 限制数量
- * @returns 最新提示词列表
+ * Get the most recent prompts
+ * @param limit how many to return
+ * @returns the list of recent prompts
  */
 export function getRecentPrompts(limit: number = 9): Prompt[] {
   const allPrompts = getAllPrompts();
-  // 确保按创建日期降序排序（最新的排在前面）
+  // Make sure they are sorted by creation date descending (newest first)
   return allPrompts
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
     .slice(0, limit);
 }
 
 /**
- * 按分类获取提示词
- * @param category 分类名称
- * @returns 该分类下的提示词列表
+ * Get the prompts in a category
+ * @param category the category name
+ * @returns the list of prompts in that category
  */
 export function getPromptsByCategory(category: string): Prompt[] {
   const allPrompts = getAllPrompts();

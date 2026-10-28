@@ -7,7 +7,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { CategoryData, PromptData } from '@/types';
 import dynamic from 'next/dynamic';
 
-// 动态导入客户端组件，避免服务器端渲染错误
+// Import the client component dynamically to avoid server-side rendering errors
 const PaginatedPrompts = dynamic(() => import('@/components/PaginatedPrompts'), { ssr: false });
 
 interface CategoryDetailContentProps {
@@ -26,10 +26,10 @@ export default function CategoryDetailContent({ category, categoryPrompts }: Cat
         }
     }, [isLoaded]);
 
-    // 使用翻译键或直接使用名称
+    // Use the translation key, or the raw name
     const categoryName = category.nameKey ? t(category.nameKey) : category.name;
 
-    // 只传递第一页数据作为初始数据
+    // Pass only the first page as initial data
     const initialPageData = categoryPrompts.slice(0, 9);
     const totalPages = Math.ceil(categoryPrompts.length / 9);
 

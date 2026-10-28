@@ -1,4 +1,4 @@
-/* 热门提示词页面样式 */
+/* Popular prompts page */
 .page-header {
     text-align: center;
     margin-bottom: 2.5rem;
@@ -133,7 +133,7 @@
     background-color: var(--bg-hover);
 }
 
-/* 响应式设计 */
+/* Responsive design */
 @media (max-width: 768px) {
     .filter-bar {
         flex-direction: column;
@@ -169,7 +169,7 @@
     }
 }
 
-/* 平板电脑响应式设计 */
+/* Tablets */
 @media (min-width: 769px) and (max-width: 1024px) {
     .prompt-grid {
         grid-template-columns: repeat(2, 1fr);

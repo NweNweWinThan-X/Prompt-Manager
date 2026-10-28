@@ -16,9 +16,9 @@ export default function PopularPromptsContent({ prompts }: PopularPromptsContent
     const { locale } = useLanguage();
     const { t, isLoaded } = useTranslation();
     const [loading, setLoading] = useState(true);
-    // 设置排序方式的状态
+    // Current sort method
     const [sortMethod, setSortMethod] = useState<'rating' | 'date'>('rating');
-    // 获取最近9个提示的创建时间
+    // Creation dates of the 9 most recent prompts
     const [recentPromptDates, setRecentPromptDates] = useState<Date[]>([]);
 
     useEffect(() => {
@@ -26,7 +26,7 @@ export default function PopularPromptsContent({ prompts }: PopularPromptsContent
             setLoading(false);
         }
 
-        // 获取最近9个提示的创建时间
+        // Collect the creation dates of the 9 most recent prompts
         if (prompts.length > 0) {
             const dates = [...prompts]
                 .sort((a, b) => {
@@ -42,37 +42,37 @@ export default function PopularPromptsContent({ prompts }: PopularPromptsContent
         }
     }, [isLoaded, prompts]);
 
-    // 检查提示是否为新提示
+    // Is this prompt one of the new ones?
     const isNewPrompt = (prompt: PromptData) => {
         if (!prompt.createdAt) return false;
         const promptDate = new Date(prompt.createdAt);
         return recentPromptDates.some(date =>
             date.getTime() === promptDate.getTime() ||
-            // 容忍1秒的误差，解决可能的精度问题
+            // Allow 1s of slack to work around precision issues
             Math.abs(date.getTime() - promptDate.getTime()) < 1000
         );
     };
 
-    // 排序函数
+    // Sorting
     const sortPrompts = (promptList: PromptData[], sortMethod: 'rating' | 'date'): PromptData[] => {
         try {
             if (sortMethod === 'rating') {
                 return [...promptList].sort((a, b) => {
                     if (a.rating !== undefined && b.rating !== undefined) {
-                        return b.rating - a.rating; // 降序排列，最高评分排在前面
+                        return b.rating - a.rating; // Descending, highest rated first
                     }
-                    // 如果没有评分，则将有评分的排在前面
+                    // No rating: rated prompts come first
                     if (a.rating !== undefined) return -1;
                     if (b.rating !== undefined) return 1;
                     return 0;
                 });
             } else {
-                // 按日期排序
+                // Sort by date
                 return [...promptList].sort((a, b) => {
                     if (a.createdAt && b.createdAt) {
                         return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
                     }
-                    // 如果没有日期，则将有日期的排在前面
+                    // No date: dated prompts come first
                     if (a.createdAt) return -1;
                     if (b.createdAt) return 1;
                     return 0;
@@ -80,16 +80,16 @@ export default function PopularPromptsContent({ prompts }: PopularPromptsContent
             }
         } catch (error) {
             console.error('排序过程中出错:', error);
-            return promptList; // 发生错误时返回原始列表
+            return promptList; // Fall back to the original list on error
         }
     };
 
-    // 处理排序方式变更
+    // Handle a change of sort method
     const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setSortMethod(e.target.value as 'rating' | 'date');
     };
 
-    // 排序提示词
+    // Sort the prompts
     const sortedPrompts = sortPrompts(prompts, sortMethod);
 
     if (loading) {
@@ -122,7 +122,7 @@ export default function PopularPromptsContent({ prompts }: PopularPromptsContent
                 </p>
             </div>
 
-            {/* 筛选/排序菜单 */}
+            {/* Filter / sort menu */}
             <div className={styles['filter-bar']}>
                 <div className={styles['filter-menu']}>
                     <span className={styles['filter-label']}>{t('ui.sort_by')}：</span>
@@ -138,7 +138,7 @@ export default function PopularPromptsContent({ prompts }: PopularPromptsContent
                 <div className={styles['results-count']}>{t('search.results_count', { count: sortedPrompts.length.toString() })}</div>
             </div>
 
-            {/* 提示词列表 */}
+            {/* Prompt list */}
             {sortedPrompts.length > 0 ? (
                 <div className={styles['prompt-grid']}>
                     {sortedPrompts.slice(0, 9).map((prompt) => (
@@ -170,7 +170,7 @@ export default function PopularPromptsContent({ prompts }: PopularPromptsContent
                 </div>
             )}
 
-            {/* 底部导航 */}
+            {/* Bottom navigation */}
             <div className={styles.pagination}>
                 <Link href="/prompts" className={styles['pagination-link']}>
                     <i className="fa-solid fa-arrow-left"></i> {t('ui.all_prompts')}

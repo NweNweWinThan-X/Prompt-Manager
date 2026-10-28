@@ -5,7 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import dynamic from 'next/dynamic';
 
-// 动态导入客户端组件，避免 SSR 期间的错误
+// Load the client component dynamically to avoid errors during SSR
 const PromptDetailContent = dynamic(() => import('@/components/PromptDetailContent'), {
   ssr: false,
   loading: () => (
@@ -51,8 +51,8 @@ const PromptDetailContent = dynamic(() => import('@/components/PromptDetailConte
   )
 });
 
-// 设置静态页面重新验证时间
-export const revalidate = 3600; // 每小时重新验证一次
+// How often the static page is revalidated
+export const revalidate = 3600; // Once an hour
 
 interface PromptPageProps {
   params: {
@@ -78,7 +78,7 @@ export async function generateMetadata({ params }: PromptPageProps): Promise<Met
 export async function generateStaticParams() {
   const promptsDirectory = path.join(process.cwd(), 'prompts');
 
-  // 确保目录存在
+  // Bail out if the directory is missing
   if (!fs.existsSync(promptsDirectory)) {
     return [];
   }
@@ -89,12 +89,12 @@ export async function generateStaticParams() {
 
   files.forEach((file) => {
     if (file.endsWith('.md')) {
-      // 添加不带扩展名的路径
+      // The path without the extension
       params.push({
         slug: file.replace(/\.md$/, ''),
       });
 
-      // 也添加带扩展名的路径
+      // And the path with it
       params.push({
         slug: file,
       });

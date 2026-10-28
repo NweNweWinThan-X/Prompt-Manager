@@ -12,9 +12,9 @@ export default function Subscribe() {
     setIsSubmitting(true);
     setMessage('');
 
-    // 模拟API调用
+    // Simulate an API call
     try {
-      // 实际项目中，这里应该是一个真实的API调用
+      // In a real project this would be an actual API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       setMessage('订阅成功！感谢您的关注。');
       setEmail('');

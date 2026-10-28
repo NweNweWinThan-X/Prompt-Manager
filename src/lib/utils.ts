@@ -1,13 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 
-// 常量定义
+// Constants
 export const PROMPTS_DIRECTORY = path.join(process.cwd(), 'prompts');
 
 /**
- * 确保目录存在，如果不存在则创建
- * @param directory 目录路径
- * @returns 是否成功确保目录存在
+ * Make sure a directory exists, creating it if it does not
+ * @param directory the directory path
+ * @returns whether the directory is now guaranteed to exist
  */
 export function ensureDirectoryExists(directory: string): boolean {
   try {
@@ -23,9 +23,9 @@ export function ensureDirectoryExists(directory: string): boolean {
 }
 
 /**
- * 生成唯一的slug
- * @param title 标题
- * @returns 生成的唯一slug
+ * Generate a unique slug
+ * @param title the title
+ * @returns the generated unique slug
  */
 export function generateUniqueSlug(title: string): string {
   const base = title
@@ -40,10 +40,10 @@ export function generateUniqueSlug(title: string): string {
 }
 
 /**
- * 安全的读取文件
- * @param filePath 文件路径
- * @param defaultValue 默认值，如果读取失败
- * @returns 文件内容或默认值
+ * Read a file without throwing
+ * @param filePath the file path
+ * @param defaultValue the value to return if the read fails
+ * @returns the file content, or the default value
  */
 export function safeReadFile(filePath: string, defaultValue: string = ''): string {
   try {
@@ -58,10 +58,10 @@ export function safeReadFile(filePath: string, defaultValue: string = ''): strin
 }
 
 /**
- * 安全的写入文件
- * @param filePath 文件路径
- * @param content 文件内容
- * @returns 是否成功写入
+ * Write a file without throwing
+ * @param filePath the file path
+ * @param content the file content
+ * @returns whether the write succeeded
  */
 export function safeWriteFile(filePath: string, content: string): boolean {
   try {
@@ -74,9 +74,9 @@ export function safeWriteFile(filePath: string, content: string): boolean {
 }
 
 /**
- * 安全的删除文件
- * @param filePath 文件路径
- * @returns 是否成功删除
+ * Delete a file without throwing
+ * @param filePath the file path
+ * @returns whether the delete succeeded
  */
 export function safeDeleteFile(filePath: string): boolean {
   try {
@@ -91,10 +91,10 @@ export function safeDeleteFile(filePath: string): boolean {
 }
 
 /**
- * 安全解析JSON
- * @param content JSON字符串
- * @param defaultValue 默认值，如果解析失败
- * @returns 解析后的对象或默认值
+ * Parse JSON without throwing
+ * @param content the JSON string
+ * @param defaultValue the value to return if parsing fails
+ * @returns the parsed object, or the default value
  */
 export function safeParseJson<T>(content: string, defaultValue: T): T {
   try {

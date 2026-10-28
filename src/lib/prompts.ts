@@ -7,7 +7,7 @@ import {
   getRecentPrompts as getRecent
 } from './promptUtils';
 
-// 转换 Prompt 类型到 PromptData 类型（向下兼容）
+// Convert a Prompt into a PromptData (kept for backwards compatibility)
 function convertToPromptData(prompt: Prompt): PromptData {
   return {
     slug: prompt.slug,
@@ -23,23 +23,23 @@ function convertToPromptData(prompt: Prompt): PromptData {
 }
 
 /**
- * 获取所有提示词
- * @returns 所有提示词数据
+ * Get every prompt
+ * @returns the data for every prompt
  */
 export function getAllPrompts(): PromptData[] {
   return getPrompts().map(convertToPromptData);
 }
 
 /**
- * 获取提示词详情
- * @param slug 提示词slug
- * @returns 提示词详情
+ * Get a prompt's details
+ * @param slug the prompt's slug
+ * @returns the prompt's details
  */
 export async function getPromptData(slug: string): Promise<PromptData | null> {
   const prompt = getPromptBySlug(slug);
   if (!prompt) return null;
   
-  // 获取HTML内容
+  // Get the HTML content
   const contentHtml = await getPromptContentHtml(slug);
   
   return {
@@ -49,20 +49,20 @@ export async function getPromptData(slug: string): Promise<PromptData | null> {
 }
 
 /**
- * 获取精选提示词
- * @returns 精选提示词列表
+ * Get the featured prompts
+ * @returns the list of featured prompts
  */
 export function getFeaturedPrompts(): PromptData[] {
   return getFeatured().map(convertToPromptData);
 }
 
 /**
- * 获取最新提示词
- * @returns 最新提示词列表
+ * Get the most recent prompts
+ * @returns the list of recent prompts
  */
 export function getRecentPrompts(): PromptData[] {
   return getRecent().map(convertToPromptData);
 }
 
-// 导出所有分类相关函数
+// Re-export the category functions
 export { getAllCategories } from './categoryUtils';

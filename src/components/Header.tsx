@@ -20,7 +20,7 @@ export default function Header() {
   const { t, isLoaded: translationsLoaded } = useTranslation();
 
   useEffect(() => {
-    // 更新加载状态
+    // Update the loading state
     if (translationsLoaded) {
       setIsLoaded(true);
       setIsLoadError(false);
@@ -28,7 +28,7 @@ export default function Header() {
   }, [translationsLoaded]);
 
   useEffect(() => {
-    // 主题：以 <html data-theme> 为准（layout.tsx 在首次绘制前已设置）
+    // Theme: <html data-theme> is the source of truth (layout.tsx sets it before first paint)
     const current = document.documentElement.getAttribute('data-theme');
     setDarkMode(
       current
@@ -36,7 +36,7 @@ export default function Header() {
         : window.matchMedia('(prefers-color-scheme: dark)').matches
     );
 
-    // 没有手动选择时，跟随系统偏好变化
+    // Follow the system preference until the user picks a theme by hand
     const media = window.matchMedia('(prefers-color-scheme: dark)');
     const handleSystemChange = (event: MediaQueryListEvent) => {
       if (!localStorage.getItem('theme')) {
@@ -46,18 +46,18 @@ export default function Header() {
     };
     media.addEventListener('change', handleSystemChange);
 
-    // 检测是否为移动设备
+    // Detect mobile devices
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
-    // 初始检查
+    // Initial check
     checkIfMobile();
 
-    // 添加窗口大小变化监听
+    // Watch for window resizes
     window.addEventListener('resize', checkIfMobile);
 
-    // 清除监听器
+    // Clean up the listeners
     return () => {
       window.removeEventListener('resize', checkIfMobile);
       media.removeEventListener('change', handleSystemChange);
@@ -67,14 +67,14 @@ export default function Header() {
   const toggleTheme = () => {
     const next = darkMode ? 'light' : 'dark';
     setDarkMode(!darkMode);
-    // 所有颜色都来自 data-theme 上的 token，这里只需切换属性
+    // Every colour comes from a token on data-theme, so just flip the attribute
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
   };
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
-    // 禁止/允许背景滚动
+    // Lock / unlock background scrolling
     if (!mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -95,7 +95,7 @@ export default function Header() {
     }
   };
 
-  // 如果出错，显示基本导航
+  // On error, fall back to basic navigation
   if (isLoadError) {
     return (
       <header>
@@ -114,7 +114,7 @@ export default function Header() {
     );
   }
 
-  // 如果仍在加载中，显示加载指示器或占位符
+  // While still loading, show a loading indicator or placeholder
   if (!isLoaded) {
     return (
       <header>

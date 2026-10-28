@@ -1,8 +1,8 @@
 @import './additional-styles.css';
-/* 添加Google Fonts */
+/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* 基础样式 */
+/* Base styles */
 
 /*
  * Theme tokens.
@@ -123,7 +123,7 @@ body {
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
-  /* 让container填充可用空间 */
+  /* Let the container fill the available space */
   min-width: 100%;
   margin: 0 auto;
   padding: 0;
@@ -174,7 +174,7 @@ section {
   width: 100%;
 }
 
-/* 确保其他主要内容元素也有正确的最大宽度 */
+/* Keep the other main content blocks at the same max width */
 .section-header,
 .prompt-grid,
 .category-container,
@@ -185,7 +185,7 @@ section {
   width: 100%;
 }
 
-/* 导航栏样式 */
+/* Navigation bar */
 header {
   position: sticky;
   top: 0;
@@ -265,7 +265,7 @@ nav {
   background-color: var(--surface-hover);
 }
 
-/* 英雄区域样式 */
+/* Hero section */
 .hero {
   display: flex;
   flex-direction: column;
@@ -336,7 +336,7 @@ nav {
   box-shadow: none;
 }
 
-/* 提示词卡片样式 */
+/* Prompt cards */
 .section-header {
   display: flex;
   justify-content: space-between;
@@ -401,10 +401,10 @@ nav {
   transition: all 0.2s ease;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   white-space: nowrap;
-  /* 防止文字换行 */
+  /* Keep the label on one line */
 }
 
-/* 当同时有new和featured标签时，创建一个组合标签 */
+/* Combined badge for cards that are both new and featured */
 .prompt-card .prompt-label.combined {
   background: none;
   padding: 0;
@@ -448,7 +448,7 @@ nav {
   margin-top: 8px;
   line-height: 1.4;
   padding-right: 90px;
-  /* 保持右侧内边距，适应标签 */
+  /* Leave room on the right for the label */
   transition: padding-right 0.2s ease;
 }
 
@@ -499,7 +499,7 @@ nav {
   transform: translateY(-2px);
 }
 
-/* 分类样式 */
+/* Categories */
 .category-container {
   display: flex;
   flex-wrap: wrap;
@@ -548,7 +548,7 @@ nav {
   font-size: 14px;
 }
 
-/* 订阅区域样式 */
+/* Subscribe section */
 .subscribe {
   background-color: var(--card-background);
   border-radius: var(--radius);
@@ -594,7 +594,7 @@ nav {
   background-color: var(--highlight-color);
 }
 
-/* 页脚样式 */
+/* Footer */
 footer {
   margin-top: 80px;
   background-color: var(--card-background);
@@ -616,12 +616,12 @@ footer {
 
 .footer {
   flex-shrink: 0;
-  /* 防止footer被压缩 */
+  /* Stop the footer from being squashed */
   background-color: var(--card-background);
   color: var(--text-color);
   padding: 3rem 0 1rem;
   margin-top: auto;
-  /* 将footer推到底部 */
+  /* Push the footer to the bottom */
   border-top: 1px solid var(--border-color);
   width: 100%;
   left: 0;
@@ -648,7 +648,7 @@ footer {
 
 .footer-logo span {
   color: var(--primary-color);
-  /* 蓝色强调，与Header匹配 */
+  /* Blue accent, matching the header */
 }
 
 .footer-links {
@@ -769,7 +769,7 @@ footer {
   color: var(--primary-color);
 }
 
-/* 响应式设计 */
+/* Responsive design */
 @media (max-width: 768px) {
   .container {
     min-width: 100%;
@@ -904,7 +904,7 @@ footer {
     z-index: 1001;
   }
 
-  /* 内容区域优化 */
+  /* Content area tweaks */
   section,
   .section-header,
   .prompt-grid,
@@ -973,12 +973,12 @@ footer {
     width: 100%;
   }
 
-  /* 固定底部间距，避免被iOS底部导航栏遮挡 */
+  /* Bottom inset so the iOS home indicator doesn't cover the footer */
   .footer {
     padding-bottom: env(safe-area-inset-bottom, 1rem);
   }
 
-  /* 添加触摸反馈 */
+  /* Touch feedback */
   .footer-links-section a,
   .nav-links a {
     position: relative;
@@ -993,7 +993,7 @@ footer {
   .prompt-card h3 {
     font-size: 18px;
     padding-right: 85px;
-    /* 保持右侧内边距 */
+    /* Keep the right padding */
   }
 
   .prompt-label {
@@ -1069,7 +1069,7 @@ footer {
   }
 }
 
-/* 适配极小屏幕设备 */
+/* Very small screens */
 @media (max-width: 320px) {
   .footer-content {
     padding: 0 1rem;
@@ -1094,7 +1094,7 @@ footer {
   }
 }
 
-/* 语言切换器样式 */
+/* Language switcher */
 .language-switcher {
   position: relative;
   display: flex;
@@ -1239,7 +1239,7 @@ footer {
   }
 }
 
-/* 搜索页面样式增强 */
+/* Search page refinements */
 .search-page-header {
   margin-bottom: 2rem;
 }
@@ -1258,7 +1258,7 @@ footer {
 
 .search-results-wrapper {
   margin-bottom: 6rem;
-  /* 增加底部间距，从4rem改为6rem */
+  /* More bottom spacing: 4rem was too tight */
 }
 
 .search-results {
@@ -1266,7 +1266,7 @@ footer {
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 3rem;
-  /* 添加额外的底部间距 */
+  /* Extra bottom spacing */
 }
 
 .search-results .prompt-card {
@@ -1282,7 +1282,7 @@ footer {
   display: block;
   position: relative;
   z-index: 10;
-  /* 确保链接在最上层 */
+  /* Keep the link above the clickable card */
   color: var(--text-color);
   font-size: 1.5rem;
   font-weight: 600;
@@ -1301,7 +1301,7 @@ footer {
 .search-results .view-button {
   position: relative;
   z-index: 10;
-  /* 确保按钮在最上层 */
+  /* Keep the button above the clickable card */
   display: inline-flex;
   padding: 0.75rem 1.5rem;
   font-weight: 500;
@@ -1322,7 +1322,7 @@ footer {
   background-color: var(--card-background);
   border-radius: var(--radius);
   margin-bottom: 6rem;
-  /* 增加底部间距，从4rem改为6rem */
+  /* More bottom spacing: 4rem was too tight */
 }
 
 .empty-icon {
@@ -1353,7 +1353,7 @@ footer {
   text-decoration: underline;
 }
 
-/* 适配移动设备 */
+/* Mobile */
 @media (max-width: 768px) {
   .search-title {
     font-size: 2rem;
@@ -1372,7 +1372,7 @@ footer {
   }
 }
 
-/* 确保所有页面的主要内容元素都有一致的最大宽度和居中对齐 */
+/* Same max width and centring for the main content on every page */
 main {
   max-width: 1200px;
   margin: 0 auto;
@@ -1388,7 +1388,7 @@ section {
   width: 100%;
 }
 
-/* 确保其他主要内容元素也有正确的最大宽度 */
+/* Keep the other main content blocks at the same max width */
 .section-header,
 .prompt-grid,
 .category-container,
@@ -1399,7 +1399,7 @@ section {
   width: 100%;
 }
 
-/* 内容区域样式 */
+/* Content areas */
 main,
 .search-content-container,
 .container>div:not(.footer):not(header) {
@@ -1423,7 +1423,7 @@ main,
 }
 
 
-/* 分页控件样式 */
+/* Pagination controls */
 .paginated-prompts {
   margin-bottom: 3rem;
 }
@@ -1482,7 +1482,7 @@ main,
   color: var(--text-secondary);
 }
 
-/* 新增的页码导航样式 */
+/* Page number navigation */
 .desktop-page-numbers {
   display: flex;
   align-items: center;
@@ -1574,7 +1574,7 @@ main,
   font-weight: 500;
 }
 
-/* 响应式设计 */
+/* Responsive design */
 @media (max-width: 768px) {
   .pagination-controls {
     flex-direction: column;
@@ -1603,7 +1603,7 @@ main,
     font-size: 1rem;
   }
 
-  /* 优化对话式布局，在每页展示的条目下方显示分页工具 */
+  /* Single column, with the pagination controls below the page's items */
   .prompt-grid {
     grid-template-columns: 1fr;
     margin-bottom: 0.5rem;
@@ -1637,7 +1637,7 @@ main,
   }
 }
 
-/* 深色模式 */
+/* Dark mode */
 /*
  * The dark palette lives with the other tokens at the top of this file.
  * It must not be repeated here: a plain `@media (prefers-color-scheme: dark)`

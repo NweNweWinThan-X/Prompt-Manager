@@ -22,9 +22,9 @@ export default function PromptActions({ prompt }: PromptActionsProps) {
         }
     }, [isLoaded]);
 
-    // 获取干净的提示词内容（移除HTML标签）
+    // Get the prompt content as plain text (HTML tags stripped)
     const getCleanPromptContent = () => {
-        // 使用临时元素解析HTML
+        // Parse the HTML with a throwaway element
         if (!prompt.content) return '';
 
         const tempElement = document.createElement('div');
@@ -32,7 +32,7 @@ export default function PromptActions({ prompt }: PromptActionsProps) {
         return tempElement.textContent || tempElement.innerText || '';
     };
 
-    // 复制提示词到剪贴板
+    // Copy the prompt to the clipboard
     const handleCopy = async () => {
         const content = getCleanPromptContent();
 
@@ -40,47 +40,47 @@ export default function PromptActions({ prompt }: PromptActionsProps) {
             await navigator.clipboard.writeText(content);
             setCopyStatus('success');
 
-            // 3秒后重置状态
+            // Reset the status after 3s
             setTimeout(() => {
                 setCopyStatus('');
             }, 3000);
         } catch (err) {
             setCopyStatus('error');
 
-            // 3秒后重置状态
+            // Reset the status after 3s
             setTimeout(() => {
                 setCopyStatus('');
             }, 3000);
         }
     };
 
-    // 打开分享模态框
+    // Open the share modal
     const handleShare = () => {
         setShowShareModal(true);
     };
 
-    // 关闭分享模态框
+    // Close the share modal
     const handleCloseModal = () => {
         setShowShareModal(false);
     };
 
-    // 复制分享链接
+    // Copy the share link
     const handleCopyLink = async () => {
-        // 获取当前URL
+        // The current URL
         const shareUrl = window.location.href;
 
         try {
             await navigator.clipboard.writeText(shareUrl);
             setCopyStatus('link-copied');
 
-            // 3秒后重置状态
+            // Reset the status after 3s
             setTimeout(() => {
                 setCopyStatus('');
             }, 3000);
         } catch (err) {
             setCopyStatus('link-error');
 
-            // 3秒后重置状态
+            // Reset the status after 3s
             setTimeout(() => {
                 setCopyStatus('');
             }, 3000);
@@ -111,7 +111,7 @@ export default function PromptActions({ prompt }: PromptActionsProps) {
                 <i className="fa-solid fa-share-nodes"></i> {t('ui.share')}
             </button>
 
-            {/* 分享模态框 */}
+            {/* Share modal */}
             {showShareModal && (
                 <div className="modal-overlay" onClick={handleCloseModal}>
                     <div className="modal-content" onClick={(e) => e.stopPropagation()}>

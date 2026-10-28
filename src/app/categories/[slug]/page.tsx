@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { resolveCategorySlug } from '@/config/categories';
 import dynamic from 'next/dynamic';
 
-// 动态导入客户端组件
+// Load the client component dynamically
 const CategoryDetailContent = dynamic(() => import('@/components/CategoryDetailContent'), {
   ssr: false,
   loading: () => (

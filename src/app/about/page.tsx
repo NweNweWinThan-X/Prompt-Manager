@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 
-// 动态导入客户端组件
+// Load the client component dynamically
 const AboutContent = dynamic(() => import('@/components/AboutContent'), {
   ssr: false,
   loading: () => (

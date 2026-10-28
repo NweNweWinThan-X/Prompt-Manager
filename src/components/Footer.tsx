@@ -15,14 +15,14 @@ export default function Footer() {
   const { t, isLoaded: translationsLoaded } = useTranslation();
 
   useEffect(() => {
-    // 更新加载状态
+    // Update the loading state
     if (translationsLoaded) {
       setIsLoaded(true);
       setIsLoadError(false);
     }
   }, [translationsLoaded]);
 
-  // 如果出错，显示简化版页脚
+  // On error, show a simplified footer
   if (isLoadError) {
     return (
       <footer className="footer">
@@ -38,7 +38,7 @@ export default function Footer() {
     );
   }
 
-  // 如果仍在加载中，显示简化版页脚
+  // While still loading, show a simplified footer
   if (!isLoaded) {
     return (
       <footer className="footer">

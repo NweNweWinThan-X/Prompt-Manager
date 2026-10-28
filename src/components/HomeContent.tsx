@@ -31,7 +31,7 @@ export default function HomeContent({ featuredPrompts, recentPrompts, categories
             <main>
                 <Hero />
 
-                {/* 特色提示词 */}
+                {/* Featured prompts */}
                 <section className="featured">
                     <div className="section-header">
                         <h2>...</h2>
@@ -44,7 +44,7 @@ export default function HomeContent({ featuredPrompts, recentPrompts, categories
                     </div>
                 </section>
 
-                {/* 分类浏览 */}
+                {/* Browse by category */}
                 <section className="categories">
                     <div className="section-header">
                         <h2>...</h2>
@@ -56,7 +56,7 @@ export default function HomeContent({ featuredPrompts, recentPrompts, categories
                     </div>
                 </section>
 
-                {/* 最近添加 */}
+                {/* Recently added */}
                 <section className="recent">
                     <div className="section-header">
                         <h2>...</h2>
@@ -76,7 +76,7 @@ export default function HomeContent({ featuredPrompts, recentPrompts, categories
         <main>
             <Hero />
 
-            {/* 特色提示词 */}
+            {/* Featured prompts */}
             <section className="featured">
                 <div className="section-header">
                     <h2>{t('homepage.featured_prompts')}</h2>
@@ -96,7 +96,7 @@ export default function HomeContent({ featuredPrompts, recentPrompts, categories
                 </div>
             </section>
 
-            {/* 分类浏览 */}
+            {/* Browse by category */}
             <section className="categories">
                 <div className="section-header">
                     <h2>{t('categories.title')}</h2>
@@ -108,7 +108,7 @@ export default function HomeContent({ featuredPrompts, recentPrompts, categories
                 </div>
             </section>
 
-            {/* 最近添加 */}
+            {/* Recently added */}
             <section className="recent">
                 <div className="section-header">
                     <h2>{t('homepage.recently_added')}</h2>

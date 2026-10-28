@@ -2,21 +2,21 @@ const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
 
-// 提示词目录路径
+// Where the prompt files live
 const promptsDirectory = path.join(process.cwd(), "prompts");
-// 输出目录
+// Output directory
 const outputDirectory = path.join(process.cwd(), "public/data");
-// 确保构建输出目录也存在
+// The build output needs a copy of the data too
 const { outDir } = require("../site.config");
 const buildOutputDirectory = path.join(process.cwd(), "out", outDir, "data");
 
 function generateIndex() {
-  // 确保输出目录存在
+  // Make sure the output directory exists
   if (!fs.existsSync(outputDirectory)) {
     fs.mkdirSync(outputDirectory, { recursive: true });
   }
 
-  // 确保构建输出目录存在
+  // Same for the build output directory
   if (!fs.existsSync(buildOutputDirectory)) {
     fs.mkdirSync(buildOutputDirectory, { recursive: true });
   }
@@ -26,14 +26,14 @@ function generateIndex() {
     .filter((file) => file.endsWith(".md"));
 
   const indexData = promptFiles.map((fileName) => {
-    // 获取slug (文件名去除扩展名)
+    // The slug is the filename without its extension
     const slug = fileName.replace(/\.md$/, "");
 
-    // 读取文件内容
+    // Read the file
     const fullPath = path.join(promptsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, "utf8");
 
-    // 使用gray-matter解析frontmatter
+    // Parse the frontmatter with gray-matter
     const { data } = matter(fileContents);
 
     return {
@@ -46,13 +46,13 @@ function generateIndex() {
     };
   });
 
-  // 写入索引文件到public目录
+  // Write the index into public/
   fs.writeFileSync(
     path.join(outputDirectory, "prompts-index.json"),
     JSON.stringify(indexData, null, 2)
   );
 
-  // 同时写入到构建输出目录
+  // And into the build output
   fs.writeFileSync(
     path.join(buildOutputDirectory, "prompts-index.json"),
     JSON.stringify(indexData, null, 2)

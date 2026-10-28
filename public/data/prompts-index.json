@@ -5,7 +5,7 @@
     "description": "Generate professional, complete API documentation from API code or specifications, including endpoint descriptions, parameter details, and usage examples.",
     "category": "Programming",
     "tags": [],
-    "date": "2026-10-27T07:53:21.020Z"
+    "date": "2026-10-28T07:08:51.026Z"
   },
   {
     "slug": "blog-content-planner",
@@ -13,7 +13,7 @@
     "description": "Generate a comprehensive blog content plan, including title ideas, keyword suggestions, and topic outlines.",
     "category": "Content Creation",
     "tags": [],
-    "date": "2026-10-27T07:53:21.022Z"
+    "date": "2026-10-28T07:08:51.028Z"
   },
   {
     "slug": "code-optimization-assistant",
@@ -21,7 +21,7 @@
     "description": "Analyze and optimize your code, with performance improvement suggestions and best-practice guidance.",
     "category": "Programming",
     "tags": [],
-    "date": "2026-10-27T07:53:21.023Z"
+    "date": "2026-10-28T07:08:51.029Z"
   },
   {
     "slug": "code-refactoring-guide",
@@ -29,7 +29,7 @@
     "description": "Analyze existing code and provide detailed refactoring recommendations that improve structure, readability, and maintainability.",
     "category": "Programming",
     "tags": [],
-    "date": "2026-10-27T07:53:21.023Z"
+    "date": "2026-10-28T07:08:51.030Z"
   },
   {
     "slug": "concept-explainer",
@@ -37,7 +37,7 @@
     "description": "Break complex concepts down into simple, understandable explanations, using analogies, examples, and visual descriptions to aid understanding.",
     "category": "Education",
     "tags": [],
-    "date": "2026-10-27T07:53:21.024Z"
+    "date": "2026-10-28T07:08:51.030Z"
   },
   {
     "slug": "cusor-rule-sample",
@@ -45,7 +45,7 @@
     "description": "Use it in Cursor to guide and constrain the AI so that AI-assisted coding is more efficient",
     "category": "Programming",
     "tags": [],
-    "date": "2026-10-27T07:53:21.025Z"
+    "date": "2026-10-28T07:08:51.031Z"
   },
   {
     "slug": "data-analysis-plan",
@@ -53,7 +53,7 @@
     "description": "Create a complete data analysis plan from a specific business problem and the available data, including method selection, tool recommendations, and expected results.",
     "category": "Data Analysis",
     "tags": [],
-    "date": "2026-10-27T07:53:21.025Z"
+    "date": "2026-10-28T07:08:51.032Z"
   },
   {
     "slug": "data-visualization-guide",
@@ -61,7 +61,7 @@
     "description": "Provides the best data visualization recommendations for your specific data and goals, including chart type selection, design principles, and tool suggestions.",
     "category": "Data Analysis",
     "tags": [],
-    "date": "2026-10-27T07:53:21.026Z"
+    "date": "2026-10-28T07:08:51.033Z"
   },
   {
     "slug": "digital-marketing-strategy",
@@ -69,7 +69,7 @@
     "description": "Create a comprehensive digital marketing strategy from your business goals and target audience, including channel selection, a content plan, and KPI definitions.",
     "category": "Marketing",
     "tags": [],
-    "date": "2026-10-27T07:53:21.026Z"
+    "date": "2026-10-28T07:08:51.034Z"
   },
   {
     "slug": "email-marketing-campaign",
@@ -77,7 +77,7 @@
     "description": "Design a complete email marketing campaign, including goal setting, segmentation strategy, email sequence design, and performance forecasting.",
     "category": "Marketing",
     "tags": [],
-    "date": "2026-10-27T07:53:21.027Z"
+    "date": "2026-10-28T07:08:51.035Z"
   },
   {
     "slug": "exam-question-generator",
@@ -85,7 +85,7 @@
     "description": "Generate exam questions of various types, including multiple choice, fill-in-the-blank and essay questions, for a given topic and difficulty level.",
     "category": "Education",
     "tags": [],
-    "date": "2026-10-27T07:53:21.027Z"
+    "date": "2026-10-28T07:08:51.036Z"
   },
   {
     "slug": "learning-plan-generator",
@@ -93,7 +93,7 @@
     "description": "Create a personalized, structured learning path for any topic or skill, complete with milestones, resources and a schedule.",
     "category": "Education",
     "tags": [],
-    "date": "2026-10-27T07:53:21.027Z"
+    "date": "2026-10-28T07:08:51.037Z"
   },
   {
     "slug": "logo-design-brief",
@@ -101,7 +101,7 @@
     "description": "Create a detailed logo design proposal based on brand values and target audience, covering style, color, typography and usage scenarios.",
     "category": "Creative Design",
     "tags": [],
-    "date": "2026-10-27T07:53:21.028Z"
+    "date": "2026-10-28T07:08:51.038Z"
   },
   {
     "slug": "predictive-modeling-assistant",
@@ -109,7 +109,7 @@
     "description": "Help build and optimize predictive models, with expert guidance on feature selection, model selection, evaluation and tuning.",
     "category": "Data Analysis",
     "tags": [],
-    "date": "2026-10-27T07:53:21.028Z"
+    "date": "2026-10-28T07:08:51.039Z"
   },
   {
     "slug": "professional-article-generator",
@@ -117,7 +117,7 @@
     "description": "Create structured, professional articles with a compelling headline, precise subheadings and substantial content.",
     "category": "Content Creation",
     "tags": [],
-    "date": "2026-10-27T07:53:21.029Z"
+    "date": "2026-10-28T07:08:51.040Z"
   },
   {
     "slug": "social-media-content-calendar",
@@ -125,7 +125,7 @@
     "description": "Creates a structured social media content calendar based on your marketing goals and audience, covering post types, themes, and publishing times.",
     "category": "Marketing",
     "tags": [],
-    "date": "2026-10-27T07:53:21.029Z"
+    "date": "2026-10-28T07:08:51.041Z"
   },
   {
     "slug": "story-claude-generator",
@@ -133,7 +133,7 @@
     "description": "Writes engaging stories together with you, offering plot twists and character development suggestions.",
     "category": "Content Creation",
     "tags": [],
-    "date": "2026-10-27T07:53:21.029Z"
+    "date": "2026-10-28T07:08:51.041Z"
   },
   {
     "slug": "story-idea-generator",
@@ -141,7 +141,7 @@
     "description": "Generates original story ideas with plot, character profiles, and emotional arcs for novels, screenplays, or short fiction.",
     "category": "Content Creation",
     "tags": [],
-    "date": "2026-10-27T07:53:21.030Z"
+    "date": "2026-10-28T07:08:51.042Z"
   },
   {
     "slug": "ui-design-system-creator",
@@ -149,7 +149,7 @@
     "description": "Builds a complete user interface design system, including component specifications, color system, typography rules, and interaction patterns.",
     "category": "Creative Design",
     "tags": [],
-    "date": "2026-10-27T07:53:21.030Z"
+    "date": "2026-10-28T07:08:51.042Z"
   },
   {
     "slug": "website-design-consultant",
@@ -157,6 +157,6 @@
     "description": "Provides detailed website design recommendations based on your business needs and target audience, covering layout, color scheme, and user experience improvements.",
     "category": "Creative Design",
     "tags": [],
-    "date": "2026-10-27T07:53:21.031Z"
+    "date": "2026-10-28T07:08:51.042Z"
   }
 ]

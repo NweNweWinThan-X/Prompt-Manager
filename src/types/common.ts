@@ -1,57 +1,57 @@
 /**
- * 提示词元数据
+ * Prompt metadata
  */
 export interface PromptMetadata {
-  /** 创建时间 */
+  /** Creation time */
   createdAt: string;
-  /** 更新时间 */
+  /** Last update time */
   updatedAt: string;
-  /** 是否精选 */
+  /** Featured or not */
   featured: boolean;
-  /** 是否新提示(已废弃，由getRecentPrompts基于创建时间动态判断) */
+  /** New prompt or not (deprecated; getRecentPrompts derives this from the creation time) */
   isNew?: boolean;
-  /** 评分 (1-10) */
+  /** Rating (1-10) */
   rating?: number;
 }
 
 /**
- * 提示词前置信息
+ * Prompt frontmatter
  */
 export interface PromptFrontmatter {
-  /** 标题 */
+  /** Title */
   title: string;
-  /** 描述 */
+  /** Description */
   description: string;
-  /** 分类 */
+  /** Category */
   category: string;
-  /** 标签 */
+  /** Tags */
   tags: string[];
-  /** 作者 */
+  /** Author */
   author: string;
 }
 
 /**
- * 完整提示词信息
+ * A complete prompt
  */
 export interface Prompt extends PromptMetadata, PromptFrontmatter {
-  /** 唯一标识 */
+  /** Unique identifier */
   slug: string;
-  /** 内容 */
+  /** Content */
   content: string;
 }
 
 /**
- * 分类信息
+ * Category information
  */
 export interface CategoryData {
-  /** 唯一标识 */
+  /** Unique identifier */
   slug: string;
-  /** 名称 */
+  /** Name */
   name: string;
-  /** 名称国际化键名 */
+  /** i18n key for the name */
   nameKey?: string;
-  /** 图标 */
+  /** Icon */
   icon: string;
-  /** 数量 */
+  /** Count */
   count?: number;
 } 

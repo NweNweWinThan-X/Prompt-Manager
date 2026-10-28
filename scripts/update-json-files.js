@@ -1,32 +1,32 @@
 /**
- * 批量更新JSON文件脚本
+ * Bulk-update the prompt JSON files.
  *
- * 此脚本会移除所有JSON文件中的views、likes、usageCount、favoriteCount和slug字段
+ * Strips the views, likes, usageCount, favoriteCount and slug fields from every JSON file.
  */
 
 const fs = require("fs");
 const path = require("path");
 
-// 提示文件目录
+// Where the prompt files live
 const PROMPTS_DIRECTORY = path.join(process.cwd(), "prompts");
 
-// 获取所有JSON文件
+// Collect the JSON files
 function getAllJsonFiles() {
   const files = fs.readdirSync(PROMPTS_DIRECTORY);
   return files.filter((file) => file.endsWith(".json"));
 }
 
-// 更新单个JSON文件
+// Update one JSON file
 function updateJsonFile(filename) {
   const filePath = path.join(PROMPTS_DIRECTORY, filename);
   try {
-    // 读取文件内容
+    // Read the file
     const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
 
-    // 移除不需要的字段
+    // Drop the fields we no longer keep
     const { views, likes, usageCount, favoriteCount, slug, ...rest } = data;
 
-    // 保存更新后的文件
+    // Write it back
     fs.writeFileSync(filePath, JSON.stringify(rest, null, 2), "utf8");
     console.log(`已更新: ${filename}`);
     return true;
@@ -36,7 +36,7 @@ function updateJsonFile(filename) {
   }
 }
 
-// 主函数
+// Entry point
 function main() {
   console.log("开始批量更新JSON文件...");
 
@@ -60,5 +60,5 @@ function main() {
   console.log(`失败: ${failCount} 个文件`);
 }
 
-// 执行主函数
+// Run it
 main();

@@ -10,29 +10,29 @@ interface ClientSideSortProps {
 }
 
 export default function ClientSideSort({ prompts }: ClientSideSortProps) {
-    // 设置排序方式的状态
+    // Which sort the user has picked
     const [sortMethod, setSortMethod] = useState<'rating' | 'date'>('rating');
 
-    // 排序函数
+    // Sorts the list
     const sortPrompts = (promptList: PromptData[], sortMethod: 'rating' | 'date'): PromptData[] => {
         try {
             if (sortMethod === 'rating') {
                 return [...promptList].sort((a, b) => {
                     if (a.rating !== undefined && b.rating !== undefined) {
-                        return b.rating - a.rating; // 降序排列，最高评分排在前面
+                        return b.rating - a.rating; // Descending: highest rating first
                     }
-                    // 如果没有评分，则将有评分的排在前面
+                    // Rated prompts come before unrated ones
                     if (a.rating !== undefined) return -1;
                     if (b.rating !== undefined) return 1;
                     return 0;
                 });
             } else {
-                // 按日期排序
+                // Sort by date
                 return [...promptList].sort((a, b) => {
                     if (a.createdAt && b.createdAt) {
                         return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
                     }
-                    // 如果没有日期，则将有日期的排在前面
+                    // Dated prompts come before undated ones
                     if (a.createdAt) return -1;
                     if (b.createdAt) return 1;
                     return 0;
@@ -40,21 +40,21 @@ export default function ClientSideSort({ prompts }: ClientSideSortProps) {
             }
         } catch (error) {
             console.error('排序过程中出错:', error);
-            return promptList; // 发生错误时返回原始列表
+            return promptList; // On error, hand back the list unsorted
         }
     };
 
-    // 处理排序方式变更
+    // Handle a change of sort
     const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setSortMethod(e.target.value as 'rating' | 'date');
     };
 
-    // 排序提示词
+    // The sorted prompts
     const sortedPrompts = sortPrompts(prompts, sortMethod);
 
     return (
         <>
-            {/* 筛选/排序菜单 */}
+            {/* Filter and sort menu */}
             <div className={styles['filter-bar']}>
                 <div className={styles['filter-menu']}>
                     <span className={styles['filter-label']}>排序方式：</span>
@@ -70,14 +70,14 @@ export default function ClientSideSort({ prompts }: ClientSideSortProps) {
                 <div className={styles['results-count']}>{sortedPrompts.length} 个提示词</div>
             </div>
 
-            {/* 提示词列表 */}
+            {/* Prompt list */}
             {sortedPrompts.length > 0 ? (
                 <div className={styles['prompt-grid']}>
                     {sortedPrompts.slice(0, 9).map((prompt, index) => (
                         <PromptCard
                             key={prompt.slug}
                             prompt={prompt}
-                            featured={index < 3} // 前三个标记为热门
+                            featured={index < 3} // Mark the top three as featured
                             isNew={prompt.isNew}
                         />
                     ))}

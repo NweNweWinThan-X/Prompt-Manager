@@ -7,12 +7,20 @@ import {
 
 export { resolveCategorySlug, resolveCategoryName };
 
-// 类别配置（单一来源见根目录的 categories.config.js）
+// Category config (single source of truth: categories.config.js in the repo root)
 export const CATEGORIES: CategoryData[] = CATEGORY_DEFINITIONS.map(
   ({ slug, name, nameKey, icon }) => ({ slug, name, nameKey, icon, count: 0 })
 );
 
-// 分类名称（含别名）到 slug 的映射
+// Translation key for a prompt's `category` value, whatever spelling it uses
+// (canonical name, slug or alias). Returns '' for an unknown category, which
+// callers treat as "show the raw value".
+export const getCategoryNameKey = (category: string): string => {
+  const slug = resolveCategorySlug(category);
+  return CATEGORY_DEFINITIONS.find((entry) => entry.slug === slug)?.nameKey ?? '';
+};
+
+// Category name (including aliases) to slug
 export const CATEGORY_TO_SLUG: Record<string, string> = CATEGORY_DEFINITIONS.reduce(
   (map, { slug, name, aliases }) => {
     map[name] = slug;
@@ -24,7 +32,7 @@ export const CATEGORY_TO_SLUG: Record<string, string> = CATEGORY_DEFINITIONS.red
   {} as Record<string, string>
 );
 
-// slug 到分类名称的映射
+// Slug to category name
 export const SLUG_TO_CATEGORY: Record<string, string> = CATEGORY_DEFINITIONS.reduce(
   (map, { slug, name }) => {
     map[slug] = name;

@@ -3,7 +3,7 @@ import { PromptData } from '@/types';
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 
-// 动态导入客户端组件
+// Load the client component dynamically
 const PopularPromptsContent = dynamic(() => import('@/components/PopularPromptsContent'), {
     ssr: false,
     loading: () => (
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description: 'Discover the AI prompts the community likes most, sorted by popularity'
 };
 
-// 备用示例数据，在构建时无法读取文件系统时使用
+// Sample data to fall back on when the build can't read the filesystem
 const fallbackPrompts: PromptData[] = [
     {
         slug: 'professional-article-generator',
@@ -56,17 +56,17 @@ const fallbackPrompts: PromptData[] = [
 ];
 
 export default function PopularPromptsPage() {
-    // 获取所有提示词（带错误处理）
+    // Fetch every prompt, falling back if it throws
     let allPrompts: PromptData[] = [];
     try {
         allPrompts = getAllPrompts();
-        // 如果没有获取到任何提示词，使用备用数据
+        // Use the fallback data if no prompts came back
         if (allPrompts.length === 0) {
             allPrompts = fallbackPrompts;
         }
     } catch (error) {
         console.error('获取提示词数据时出错:', error);
-        // 错误处理 - 使用备用数据
+        // On error, use the fallback data
         allPrompts = fallbackPrompts;
     }
 

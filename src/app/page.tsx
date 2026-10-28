@@ -7,7 +7,7 @@ import {
 import { PromptData } from '@/types';
 import dynamic from 'next/dynamic';
 
-// 动态导入客户端组件
+// Load the client component dynamically
 const HomeContent = dynamic(() => import('@/components/HomeContent'), {
   ssr: false,
   loading: () => (
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   description: 'Discover and use a curated collection of high-quality AI prompts to work with AI more effectively',
 };
 
-// 备用示例数据，在构建时无法读取文件系统时使用
+// Sample data to fall back on when the build can't read the filesystem
 const fallbackPrompts: PromptData[] = [
   {
     slug: 'professional-article-generator',
@@ -73,11 +73,11 @@ const fallbackPrompts: PromptData[] = [
   }
 ];
 
-// 添加静态生成标志
-export const revalidate = 3600; // 每小时重新生成一次页面
+// Static generation settings
+export const revalidate = 3600; // Regenerate the page once an hour
 
 export default function Home() {
-  // 获取数据（带错误处理）
+  // Fetch the data, falling back if it throws
   let featuredPrompts: PromptData[] = [];
   let recentPrompts: PromptData[] = [];
 

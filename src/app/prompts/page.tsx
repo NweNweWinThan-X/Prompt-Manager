@@ -3,7 +3,7 @@ import { getAllPrompts } from '@/lib/prompts';
 import dynamic from 'next/dynamic';
 import { PromptData } from '@/types';
 
-// 动态导入客户端组件，避免服务器端渲染错误
+// Load the client component dynamically to avoid server-render errors
 const PaginatedPrompts = dynamic(() => import('@/components/PaginatedPrompts'), { ssr: false });
 
 export const metadata: Metadata = {
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: 'Browse the complete AI prompt collection and find the prompt that fits your needs',
 };
 
-// 备用示例数据，在构建时无法读取文件系统时使用
+// Sample data to fall back on when the build can't read the filesystem
 const fallbackPrompts: PromptData[] = [
   {
     slug: 'professional-article-generator',
@@ -34,23 +34,23 @@ const fallbackPrompts: PromptData[] = [
 ];
 
 export default function PromptsPage() {
-  // 获取所有提示词作为初始数据（带错误处理）
-  // 注意：在静态构建时，这些数据会用于生成静态HTML
-  // 在客户端，PaginatedPrompts组件会加载对应页面的JSON数据
+  // Fetch every prompt as the initial data, falling back if it throws.
+  // Note: during a static build this is what the HTML is generated from.
+  // On the client, PaginatedPrompts fetches the JSON for the page being viewed.
   let initialPrompts: PromptData[] = [];
   try {
     initialPrompts = getAllPrompts();
-    // 如果没有获取到任何提示词，使用备用数据
+    // Use the fallback data if no prompts came back
     if (initialPrompts.length === 0) {
       initialPrompts = fallbackPrompts;
     }
   } catch (error) {
     console.error('获取提示词数据时出错:', error);
-    // 错误处理 - 使用备用数据
+    // On error, use the fallback data
     initialPrompts = fallbackPrompts;
   }
 
-  // 只传递第一页数据作为初始数据
+  // Pass only the first page as the initial data
   const initialPageData = initialPrompts.slice(0, 9);
   const totalPages = Math.ceil(initialPrompts.length / 9);
 

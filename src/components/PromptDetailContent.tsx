@@ -6,6 +6,7 @@ import { PromptData } from '@/types';
 import { useTranslation } from '../lib/i18n';
 import { useLanguage } from '../context/LanguageContext';
 import PromptActions from '@/components/PromptActions';
+import { getCategoryNameKey } from '@/config/categories';
 
 interface PromptDetailContentProps {
     prompt: PromptData;
@@ -26,10 +27,10 @@ export default function PromptDetailContent({ prompt }: PromptDetailContentProps
         }
     }, [isLoaded]);
 
-    // 检测内容是否需要展开/收起按钮
+    // Work out whether the content needs an expand/collapse button
     useEffect(() => {
         if (contentRef.current) {
-            // 如果内容高度超过容器，显示展开/收起按钮
+            // Show the expand/collapse button when the content overflows its container
             const checkOverflow = () => {
                 if (contentRef.current) {
                     const isOverflowing = contentRef.current.scrollHeight > contentRef.current.clientHeight;
@@ -37,10 +38,10 @@ export default function PromptDetailContent({ prompt }: PromptDetailContentProps
                 }
             };
 
-            // 初始检查
+            // Initial check
             checkOverflow();
 
-            // 当窗口大小改变时重新检查
+            // Re-check when the window is resized
             window.addEventListener('resize', checkOverflow);
 
             return () => {
@@ -49,18 +50,18 @@ export default function PromptDetailContent({ prompt }: PromptDetailContentProps
         }
     }, [loading, prompt.content]);
 
-    // 监听滚动事件，检测是否滚动到底部
+    // Watch scrolling to detect when the content is scrolled to the bottom
     useEffect(() => {
         const contentElement = contentRef.current;
         if (!contentElement) return;
 
         const handleScroll = () => {
             if (contentElement) {
-                // 判断是否滚动到底部 (容差为2像素)
+                // At the bottom? (2px tolerance)
                 const scrollPosition = contentElement.scrollHeight - contentElement.scrollTop - contentElement.clientHeight;
                 const isAtBottom = scrollPosition < 2;
 
-                // 如果状态变化了，才更新状态，避免不必要的重新渲染
+                // Only update on a real change, to avoid needless re-renders
                 if (isAtBottom !== isScrolledToBottom) {
                     setIsScrolledToBottom(isAtBottom);
                 }
@@ -69,7 +70,7 @@ export default function PromptDetailContent({ prompt }: PromptDetailContentProps
 
         contentElement.addEventListener('scroll', handleScroll);
 
-        // 初始检查
+        // Initial check
         handleScroll();
 
         return () => {
@@ -77,33 +78,19 @@ export default function PromptDetailContent({ prompt }: PromptDetailContentProps
         };
     }, [isScrolledToBottom]);
 
-    // 切换展开/收起状态
+    // Toggle between expanded and collapsed
     const toggleContent = () => {
         console.log('当前状态:', isExpanded, '切换到:', !isExpanded);
         setIsExpanded(!isExpanded);
-        // 重置滚动状态
+        // Reset the scroll state
         setIsScrolledToBottom(false);
     };
 
-    // 为分类名称映射到翻译键
-    const getCategoryTranslationKey = (category: string) => {
-        switch (category) {
-            case '内容创作': return 'categories.content_creation';
-            case '编程开发': return 'categories.programming';
-            case '创意设计': return 'categories.creative_design';
-            case '数据分析': return 'categories.data_analysis';
-            case '营销推广': return 'categories.marketing';
-            case '教育学习': return 'categories.education';
-            case '其他': return 'categories.other';
-            default: return '';
-        }
-    };
-
-    // 确定分类名称显示方式
-    const categoryKey = getCategoryTranslationKey(prompt.category);
+    // Decide how to display the category name
+    const categoryKey = getCategoryNameKey(prompt.category);
     const categoryName = categoryKey ? t(categoryKey) : prompt.category;
 
-    // 格式化日期
+    // Format a date
     const formatDate = (dateString: string) => {
         try {
             const date = new Date(dateString);

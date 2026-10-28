@@ -1,7 +1,7 @@
-// 导出所有通用类型
+// Re-export all the shared types
 export * from './common';
 
-// 为了保持兼容性的旧类型定义，可以在后续版本中移除
+// Legacy type definitions kept for compatibility; can be removed in a later version
 export interface PromptData {
     slug: string;
     title: string;

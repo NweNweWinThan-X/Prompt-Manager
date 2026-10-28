@@ -26,7 +26,7 @@ export default function Hero() {
     }
   };
 
-  // 在翻译加载完成前显示基础版本
+  // Show a basic version until the translations have loaded
   if (!isLoaded) {
     return (
       <section className="hero">

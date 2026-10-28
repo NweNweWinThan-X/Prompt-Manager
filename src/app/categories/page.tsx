@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { getAllCategories } from '@/lib/prompts';
 import dynamic from 'next/dynamic';
 
-// 动态导入客户端组件
+// Load the client component dynamically
 const CategoriesContent = dynamic(() => import('@/components/CategoriesContent'), {
   ssr: false,
   loading: () => (

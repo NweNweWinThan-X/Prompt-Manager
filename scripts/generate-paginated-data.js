@@ -6,43 +6,43 @@ const {
   resolveCategoryName,
 } = require("../categories.config");
 
-// 配置项
-const ITEMS_PER_PAGE = 9; // 每页显示的提示词数量（根据您的要求设置为9）
-const CATEGORIES_ITEMS_PER_PAGE = 9; // 分类页面每页显示数量
+// Config
+const ITEMS_PER_PAGE = 9; // Prompts shown per page
+const CATEGORIES_ITEMS_PER_PAGE = 9; // Prompts shown per page on a category page
 
-// 提示词目录路径
+// Where the prompt files live
 const promptsDirectory = path.join(process.cwd(), "prompts");
-// 输出目录
+// Output directory
 const outputDirectory = path.join(process.cwd(), "public/data");
-// 确保构建输出目录也存在
+// The build output needs a copy of the data too
 const { outDir } = require("../site.config");
 const buildOutputDirectory = path.join(process.cwd(), "out", outDir, "data");
 
 /**
- * 获取所有提示词数据
+ * Read every prompt.
  */
 function getAllPrompts() {
-  // 确保目录存在
+  // Nothing to read if the directory is missing
   if (!fs.existsSync(promptsDirectory)) {
     return [];
   }
 
-  // 获取所有markdown文件
+  // Collect the markdown files
   const filenames = fs.readdirSync(promptsDirectory);
   const mdFiles = filenames.filter((filename) => filename.endsWith(".md"));
 
   const allPromptsData = mdFiles.map((filename) => {
-    // 移除 ".md" 获取 slug
+    // The slug is the filename without ".md"
     const slug = filename.replace(/\.md$/, "");
 
-    // 读取markdown文件
+    // Read the markdown file
     const fullPath = path.join(promptsDirectory, filename);
     const fileContents = fs.readFileSync(fullPath, "utf8");
 
-    // 使用gray-matter解析frontmatter
+    // Parse the frontmatter with gray-matter
     const matterResult = matter(fileContents);
 
-    // 尝试读取对应的JSON文件以获取更多元数据
+    // The matching JSON file, if any, carries extra metadata
     const jsonFilePath = path.join(promptsDirectory, `${slug}.json`);
     let jsonData = {};
 
@@ -55,7 +55,7 @@ function getAllPrompts() {
       }
     }
 
-    // 合并frontmatter和JSON数据
+    // Merge the frontmatter and the JSON metadata
     return {
       slug,
       ...matterResult.data,
@@ -63,7 +63,7 @@ function getAllPrompts() {
     };
   });
 
-  // 按创建日期排序，最新的排在前面
+  // Sort by creation date, newest first
   return allPromptsData.sort((a, b) => {
     if (a.createdAt && b.createdAt) {
       return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
@@ -73,26 +73,26 @@ function getAllPrompts() {
 }
 
 /**
- * 创建必要的输出目录
+ * Create the output directories the generator needs.
  */
 function createOutputDirectories() {
-  // 主要输出目录
+  // Main output directory
   if (!fs.existsSync(outputDirectory)) {
     fs.mkdirSync(outputDirectory, { recursive: true });
   }
 
-  // 分页数据子目录
+  // Subdirectory for the paginated data
   const paginatedDir = path.join(outputDirectory, "paginated");
   if (!fs.existsSync(paginatedDir)) {
     fs.mkdirSync(paginatedDir, { recursive: true });
   }
 
-  // 构建输出目录
+  // Build output directory
   if (!fs.existsSync(buildOutputDirectory)) {
     fs.mkdirSync(buildOutputDirectory, { recursive: true });
   }
 
-  // 构建分页数据子目录
+  // Paginated data subdirectory under the build output
   const buildPaginatedDir = path.join(buildOutputDirectory, "paginated");
   if (!fs.existsSync(buildPaginatedDir)) {
     fs.mkdirSync(buildPaginatedDir, { recursive: true });
@@ -102,21 +102,21 @@ function createOutputDirectories() {
 }
 
 /**
- * 生成所有提示词的分页数据
+ * Write the paginated data for the full prompt list.
  */
 function generateAllPromptsPages(allPrompts, paginatedDir, buildPaginatedDir) {
   const totalPages = Math.ceil(allPrompts.length / ITEMS_PER_PAGE);
 
   console.log(`生成所有提示词分页数据，共 ${totalPages} 页`);
 
-  // 生成分页元数据
+  // Pagination metadata
   const paginationMeta = {
     total: allPrompts.length,
     perPage: ITEMS_PER_PAGE,
     totalPages,
   };
 
-  // 写入分页元数据
+  // Write the pagination metadata
   fs.writeFileSync(
     path.join(paginatedDir, "all-prompts-meta.json"),
     JSON.stringify(paginationMeta, null, 2)
@@ -126,7 +126,7 @@ function generateAllPromptsPages(allPrompts, paginatedDir, buildPaginatedDir) {
     JSON.stringify(paginationMeta, null, 2)
   );
 
-  // 生成每一页的数据
+  // One file per page
   for (let page = 1; page <= totalPages; page++) {
     const startIndex = (page - 1) * ITEMS_PER_PAGE;
     const endIndex = startIndex + ITEMS_PER_PAGE;
@@ -144,15 +144,15 @@ function generateAllPromptsPages(allPrompts, paginatedDir, buildPaginatedDir) {
 }
 
 /**
- * 生成分类提示词的分页数据
+ * Write the paginated data for each category.
  */
 function generateCategoryPages(allPrompts, paginatedDir, buildPaginatedDir) {
-  // 获取所有分类及其提示词
+  // Group the prompts by category
   const categories = {};
 
   allPrompts.forEach((prompt) => {
     if (prompt.category) {
-      // 以 slug 归类，前置内容里的别名也能落到正确的分类
+      // Group by slug so frontmatter aliases land in the right category
       const slug = resolveCategorySlug(prompt.category);
       if (!categories[slug]) {
         categories[slug] = [];
@@ -161,7 +161,7 @@ function generateCategoryPages(allPrompts, paginatedDir, buildPaginatedDir) {
     }
   });
 
-  // 为每个分类生成分页数据
+  // Paginate each category
   Object.entries(categories).forEach(([categorySlug, categoryPrompts]) => {
     const categoryName = resolveCategoryName(categorySlug);
     const totalPages = Math.ceil(
@@ -170,7 +170,7 @@ function generateCategoryPages(allPrompts, paginatedDir, buildPaginatedDir) {
 
     console.log(`生成分类 "${categoryName}" 分页数据，共 ${totalPages} 页`);
 
-    // 生成分页元数据
+    // Pagination metadata
     const paginationMeta = {
       category: categoryName,
       total: categoryPrompts.length,
@@ -178,7 +178,7 @@ function generateCategoryPages(allPrompts, paginatedDir, buildPaginatedDir) {
       totalPages,
     };
 
-    // 创建分类目录
+    // Create the category directories
     const categoryDir = path.join(paginatedDir, "categories", categorySlug);
     const buildCategoryDir = path.join(
       buildPaginatedDir,
@@ -193,7 +193,7 @@ function generateCategoryPages(allPrompts, paginatedDir, buildPaginatedDir) {
       fs.mkdirSync(buildCategoryDir, { recursive: true });
     }
 
-    // 写入分页元数据
+    // Write the pagination metadata
     fs.writeFileSync(
       path.join(categoryDir, "meta.json"),
       JSON.stringify(paginationMeta, null, 2)
@@ -203,7 +203,7 @@ function generateCategoryPages(allPrompts, paginatedDir, buildPaginatedDir) {
       JSON.stringify(paginationMeta, null, 2)
     );
 
-    // 生成每一页的数据
+    // One file per page
     for (let page = 1; page <= totalPages; page++) {
       const startIndex = (page - 1) * CATEGORIES_ITEMS_PER_PAGE;
       const endIndex = startIndex + CATEGORIES_ITEMS_PER_PAGE;
@@ -222,26 +222,26 @@ function generateCategoryPages(allPrompts, paginatedDir, buildPaginatedDir) {
 }
 
 /**
- * 主函数：生成所有分页数据
+ * Entry point: generate all the paginated data.
  */
 function generatePaginatedData() {
   console.log("开始生成分页数据...");
 
-  // 获取所有提示词
+  // Read every prompt
   const allPrompts = getAllPrompts();
   console.log(`共读取 ${allPrompts.length} 个提示词`);
 
-  // 创建输出目录
+  // Create the output directories
   const { paginatedDir, buildPaginatedDir } = createOutputDirectories();
 
-  // 生成所有提示词的分页数据
+  // Paginated data for the full prompt list
   generateAllPromptsPages(allPrompts, paginatedDir, buildPaginatedDir);
 
-  // 生成分类提示词的分页数据
+  // Paginated data per category
   generateCategoryPages(allPrompts, paginatedDir, buildPaginatedDir);
 
   console.log("分页数据生成完成！");
 }
 
-// 执行生成过程
+// Run it
 generatePaginatedData();

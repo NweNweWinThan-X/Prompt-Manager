@@ -29,31 +29,31 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     const [isChangingLanguage, setIsChangingLanguage] = useState(false);
     const [translationsReady, setTranslationsReady] = useState(false);
 
-    // 初始化加载当前语言
+    // Load the current language on startup
     useEffect(() => {
         const initializeLanguage = async () => {
-            // 从localStorage获取用户设置的语言，如果存在
+            // Use the language saved in localStorage, if there is one
             const savedLocale = localStorage.getItem('language');
             let selectedLocale = DEFAULT_LOCALE;
 
             if (savedLocale && isSupportedLocale(savedLocale)) {
                 selectedLocale = savedLocale;
             } else {
-                // 检测浏览器语言
+                // Fall back to the browser language
                 const browserLocale = navigator.language.split('-')[0];
                 if (isSupportedLocale(browserLocale)) {
                     selectedLocale = browserLocale;
                     localStorage.setItem('language', browserLocale);
                 } else {
-                    // 设置默认语言
+                    // Fall back to the default language
                     localStorage.setItem('language', DEFAULT_LOCALE);
                 }
             }
 
-            // 设置初始语言
+            // Set the initial language
             setLocale(selectedLocale);
 
-            // 预加载翻译
+            // Preload the translations
             try {
                 await loadTranslation(selectedLocale);
                 setTranslationsReady(true);
@@ -65,7 +65,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
         initializeLanguage();
     }, []);
 
-    // 保持 <html lang> 与当前语言一致
+    // Keep <html lang> in sync with the current language
     useEffect(() => {
         document.documentElement.lang = locale;
     }, [locale]);
@@ -75,10 +75,10 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
             setIsChangingLanguage(true);
 
             try {
-                // 先加载翻译，确保能成功获取
+                // Load the translations first, so we know the fetch succeeded
                 const data = await loadTranslation(newLocale, 'common');
 
-                // 只有在成功加载翻译后才改变语言
+                // Only change the language once the translations have loaded
                 if (data && Object.keys(data).length > 0) {
                     setLocale(newLocale);
                     localStorage.setItem('language', newLocale);
