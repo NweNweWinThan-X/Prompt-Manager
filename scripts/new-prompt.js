@@ -51,14 +51,14 @@ function main() {
   const { title, category, tags, author } = parseArgs(process.argv.slice(2));
 
   if (!title) {
-    console.error('用法: npm run new-prompt -- "标题" [--category <分类>] [--tags a,b] [--author 名字]');
-    console.error(`可用分类: ${CATEGORIES.map((c) => c.slug).join(", ")}`);
+    console.error('Usage: npm run new-prompt -- "Title" [--category <category>] [--tags a,b] [--author Name]');
+    console.error(`Available categories: ${CATEGORIES.map((c) => c.slug).join(", ")}`);
     process.exit(1);
   }
 
   const categoryName = resolveCategoryName(category);
   if (resolveCategorySlug(category) === "other" && resolveCategorySlug("other") !== resolveCategorySlug(category)) {
-    console.warn(`分类 "${category}" 无法识别，已归入 Other`);
+    console.warn(`Unrecognized category "${category}", falling back to Other`);
   }
 
   const slug = slugify(title);
@@ -66,7 +66,7 @@ function main() {
   const jsonPath = path.join(promptsDirectory, `${slug}.json`);
 
   if (fs.existsSync(mdPath)) {
-    console.error(`已存在: ${path.relative(process.cwd(), mdPath)}`);
+    console.error(`Already exists: ${path.relative(process.cwd(), mdPath)}`);
     process.exit(1);
   }
 
@@ -104,9 +104,9 @@ function main() {
   fs.writeFileSync(mdPath, `${frontMatter}\n${body}`);
   fs.writeFileSync(jsonPath, `${JSON.stringify(metadata, null, 2)}\n`);
 
-  console.log(`已创建 ${path.relative(process.cwd(), mdPath)}`);
-  console.log(`已创建 ${path.relative(process.cwd(), jsonPath)}`);
-  console.log(`分类: ${categoryName} · 运行 npm run dev 查看`);
+  console.log(`Created ${path.relative(process.cwd(), mdPath)}`);
+  console.log(`Created ${path.relative(process.cwd(), jsonPath)}`);
+  console.log(`Category: ${categoryName} · run npm run dev to see it`);
 }
 
 main();

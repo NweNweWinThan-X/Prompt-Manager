@@ -80,7 +80,6 @@ export default function PromptDetailContent({ prompt }: PromptDetailContentProps
 
     // Toggle between expanded and collapsed
     const toggleContent = () => {
-        console.log('当前状态:', isExpanded, '切换到:', !isExpanded);
         setIsExpanded(!isExpanded);
         // Reset the scroll state
         setIsScrolledToBottom(false);

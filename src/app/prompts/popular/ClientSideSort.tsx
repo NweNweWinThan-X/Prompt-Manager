@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { PromptData } from '@/types';
 import PromptCard from '@/components/PromptCard';
+import { useTranslation } from '../../../lib/i18n';
 import styles from './page.module.css';
 
 interface ClientSideSortProps {
@@ -10,6 +11,8 @@ interface ClientSideSortProps {
 }
 
 export default function ClientSideSort({ prompts }: ClientSideSortProps) {
+    const { t } = useTranslation();
+
     // Which sort the user has picked
     const [sortMethod, setSortMethod] = useState<'rating' | 'date'>('rating');
 
@@ -39,7 +42,7 @@ export default function ClientSideSort({ prompts }: ClientSideSortProps) {
                 });
             }
         } catch (error) {
-            console.error('排序过程中出错:', error);
+            console.error('Error while sorting:', error);
             return promptList; // On error, hand back the list unsorted
         }
     };
@@ -57,17 +60,17 @@ export default function ClientSideSort({ prompts }: ClientSideSortProps) {
             {/* Filter and sort menu */}
             <div className={styles['filter-bar']}>
                 <div className={styles['filter-menu']}>
-                    <span className={styles['filter-label']}>排序方式：</span>
+                    <span className={styles['filter-label']}>{t('ui.sort_by')}:</span>
                     <select
                         className={styles['filter-select']}
                         value={sortMethod}
                         onChange={handleSortChange}
                     >
-                        <option value="rating">按热度（默认）</option>
-                        <option value="date">按日期</option>
+                        <option value="rating">{t('ui.sort_by_popularity')}</option>
+                        <option value="date">{t('ui.sort_by_date')}</option>
                     </select>
                 </div>
-                <div className={styles['results-count']}>{sortedPrompts.length} 个提示词</div>
+                <div className={styles['results-count']}>{t('categories.prompts_count', { count: String(sortedPrompts.length) })}</div>
             </div>
 
             {/* Prompt list */}
@@ -92,12 +95,12 @@ export default function ClientSideSort({ prompts }: ClientSideSortProps) {
                             <path d="M15 10H15.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </div>
-                    <p className={styles['empty-title']}>暂无热门提示词</p>
+                    <p className={styles['empty-title']}>{t('ui.no_popular_prompts')}</p>
                     <p className={styles['empty-description']}>
-                        我们正在收集用户反馈，很快将添加热门提示词
+                        {t('ui.popular_prompts_coming_soon')}
                     </p>
                     <Link href="/prompts" className={styles['view-button']}>
-                        浏览所有提示词
+                        {t('ui.browse_all_prompts')}
                     </Link>
                 </div>
             )}

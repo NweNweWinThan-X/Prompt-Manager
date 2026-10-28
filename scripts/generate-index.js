@@ -58,7 +58,7 @@ function generateIndex() {
     JSON.stringify(indexData, null, 2)
   );
 
-  console.log(`索引生成完成，共 ${indexData.length} 个提示词`);
+  console.log(`Index generated: ${indexData.length} prompts`);
 }
 
 generateIndex();

@@ -28,20 +28,20 @@ function updateJsonFile(filename) {
 
     // Write it back
     fs.writeFileSync(filePath, JSON.stringify(rest, null, 2), "utf8");
-    console.log(`已更新: ${filename}`);
+    console.log(`Updated: ${filename}`);
     return true;
   } catch (error) {
-    console.error(`更新 ${filename} 失败:`, error);
+    console.error(`Failed to update ${filename}:`, error);
     return false;
   }
 }
 
 // Entry point
 function main() {
-  console.log("开始批量更新JSON文件...");
+  console.log("Bulk-updating JSON files...");
 
   const jsonFiles = getAllJsonFiles();
-  console.log(`找到 ${jsonFiles.length} 个JSON文件`);
+  console.log(`Found ${jsonFiles.length} JSON files`);
 
   let successCount = 0;
   let failCount = 0;
@@ -55,9 +55,9 @@ function main() {
     }
   });
 
-  console.log("\n更新完成:");
-  console.log(`成功: ${successCount} 个文件`);
-  console.log(`失败: ${failCount} 个文件`);
+  console.log("\nUpdate complete:");
+  console.log(`Succeeded: ${successCount} files`);
+  console.log(`Failed: ${failCount} files`);
 }
 
 // Run it

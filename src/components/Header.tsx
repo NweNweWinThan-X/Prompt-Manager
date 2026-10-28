@@ -104,10 +104,10 @@ export default function Header() {
             Prompt<span>Library</span>
           </Link>
           <div className="nav-links">
-            <Link href="/">首页/Home</Link>
-            <Link href="/categories">分类/Categories</Link>
-            <Link href="/prompts/popular">热门/Popular</Link>
-            <Link href="/about">关于/About</Link>
+            <Link href="/">Home</Link>
+            <Link href="/categories">Categories</Link>
+            <Link href="/prompts/popular">Popular</Link>
+            <Link href="/about">About</Link>
           </div>
         </nav>
       </header>

@@ -79,7 +79,7 @@ export default function PopularPromptsContent({ prompts }: PopularPromptsContent
                 });
             }
         } catch (error) {
-            console.error('排序过程中出错:', error);
+            console.error('Error while sorting:', error);
             return promptList; // Fall back to the original list on error
         }
     };

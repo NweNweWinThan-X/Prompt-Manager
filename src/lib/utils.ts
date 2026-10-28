@@ -13,11 +13,11 @@ export function ensureDirectoryExists(directory: string): boolean {
   try {
     if (!fs.existsSync(directory)) {
       fs.mkdirSync(directory, { recursive: true });
-      console.log(`创建目录：${directory}`);
+      console.log(`Created directory: ${directory}`);
     }
     return true;
   } catch (error) {
-    console.error(`创建目录失败: ${directory}`, error);
+    console.error(`Failed to create directory: ${directory}`, error);
     return false;
   }
 }
@@ -52,7 +52,7 @@ export function safeReadFile(filePath: string, defaultValue: string = ''): strin
     }
     return defaultValue;
   } catch (error) {
-    console.error(`读取文件失败: ${filePath}`, error);
+    console.error(`Failed to read file: ${filePath}`, error);
     return defaultValue;
   }
 }
@@ -68,7 +68,7 @@ export function safeWriteFile(filePath: string, content: string): boolean {
     fs.writeFileSync(filePath, content);
     return true;
   } catch (error) {
-    console.error(`写入文件失败: ${filePath}`, error);
+    console.error(`Failed to write file: ${filePath}`, error);
     return false;
   }
 }
@@ -85,7 +85,7 @@ export function safeDeleteFile(filePath: string): boolean {
     }
     return true;
   } catch (error) {
-    console.error(`删除文件失败: ${filePath}`, error);
+    console.error(`Failed to delete file: ${filePath}`, error);
     return false;
   }
 }
@@ -100,7 +100,7 @@ export function safeParseJson<T>(content: string, defaultValue: T): T {
   try {
     return JSON.parse(content) as T;
   } catch (error) {
-    console.error('解析JSON失败', error);
+    console.error('Failed to parse JSON', error);
     return defaultValue;
   }
 } 

@@ -7,8 +7,8 @@ const AboutContent = dynamic(() => import('@/components/AboutContent'), {
   loading: () => (
     <main className="about-page">
       <section className="page-header">
-        <h1>关于Prompt Library</h1>
-        <p>探索AI提示的艺术</p>
+        <h1>About Prompt Library</h1>
+        <p>Explore the art of AI prompting</p>
       </section>
       <section className="content-section skeleton-loading">
         <div className="skeleton"></div>

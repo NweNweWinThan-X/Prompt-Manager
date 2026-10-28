@@ -101,7 +101,8 @@
     "email_placeholder": "メールアドレスを入力",
     "button": "登録する",
     "success": "登録が完了しました！",
-    "error": "登録に失敗しました。しばらくしてからもう一度お試しください。"
+    "error": "登録に失敗しました。しばらくしてからもう一度お試しください。",
+    "submitting": "登録中..."
   },
   "pagination": {
     "previous": "前へ",
@@ -139,6 +140,8 @@
     "all_prompts": "すべてのプロンプト",
     "browse_by_category": "カテゴリーから探す",
     "expand": "すべて展開",
-    "collapse": "折りたたむ"
+    "collapse": "折りたたむ",
+    "all_prompts_subtitle": "プロンプトのコレクション全体を見て、目的に合うものを見つけましょう",
+    "load_failed": "データを読み込めませんでした。しばらくしてからもう一度お試しください。"
   }
 }

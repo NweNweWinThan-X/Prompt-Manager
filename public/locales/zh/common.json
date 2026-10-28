@@ -101,7 +101,8 @@
     "email_placeholder": "输入你的邮箱地址",
     "button": "订阅",
     "success": "订阅成功！",
-    "error": "订阅失败，请稍后再试。"
+    "error": "订阅失败，请稍后再试。",
+    "submitting": "订阅中..."
   },
   "pagination": {
     "previous": "上一页",
@@ -139,6 +140,8 @@
     "all_prompts": "所有提示词",
     "browse_by_category": "按分类浏览",
     "expand": "展开全部",
-    "collapse": "收起内容"
+    "collapse": "收起内容",
+    "all_prompts_subtitle": "浏览完整的提示词集合，找到适合您需求的提示词",
+    "load_failed": "无法加载数据，请稍后再试。"
   }
 }

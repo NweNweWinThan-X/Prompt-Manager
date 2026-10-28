@@ -76,7 +76,7 @@ export default function SearchPage() {
           performSearch(data, query);
         }
       } catch (error) {
-        console.error(`加载索引时出错:`, error);
+        console.error(`Error loading the index:`, error);
         hasLoadedIndex.current = false;
       } finally {
         setLoading(false);
@@ -115,7 +115,7 @@ export default function SearchPage() {
 
       setResults(searchResults);
     } catch (error) {
-      console.error(`搜索过程中出错:`, error);
+      console.error(`Error during search:`, error);
     } finally {
       setLoading(false);
     }

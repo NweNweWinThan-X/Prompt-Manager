@@ -55,18 +55,18 @@ export const metadata: Metadata = {
 const fallbackPrompts: PromptData[] = [
   {
     slug: 'professional-article-generator',
-    title: '专业文章生成器',
-    description: '创建结构化、专业的文章，包含引人入胜的标题、精确的小标题和丰富的内容。',
-    category: '内容创作',
+    title: 'Professional Article Generator',
+    description: 'Create structured, professional articles with compelling titles, precise subheadings and rich content.',
+    category: 'Content Creation',
     rating: 9.8,
     createdAt: '2023-01-15',
     featured: true
   },
   {
     slug: 'code-optimization-assistant',
-    title: '代码优化助手',
-    description: '分析并优化您的代码，提供性能改进建议和最佳实践指导。',
-    category: '编程开发',
+    title: 'Code Optimization Assistant',
+    description: 'Analyze and optimize your code, with performance improvement suggestions and best-practice guidance.',
+    category: 'Programming',
     rating: 9.5,
     createdAt: '2023-01-20',
     featured: true
@@ -87,7 +87,7 @@ export default function Home() {
       featuredPrompts = fallbackPrompts;
     }
   } catch (error) {
-    console.error('获取热门提示词时出错:', error);
+    console.error('Error loading featured prompts:', error);
     featuredPrompts = fallbackPrompts;
   }
 
@@ -97,7 +97,7 @@ export default function Home() {
       recentPrompts = fallbackPrompts;
     }
   } catch (error) {
-    console.error('获取最新提示词时出错:', error);
+    console.error('Error loading recent prompts:', error);
     recentPrompts = fallbackPrompts;
   }
 

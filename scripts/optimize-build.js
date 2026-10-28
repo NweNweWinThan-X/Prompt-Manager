@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const zlib = require("zlib");
 
-console.log("开始优化生产构建...");
+console.log("Optimizing the production build...");
 
 // Output directory
 const outDir = path.join(process.cwd(), "out");
@@ -21,7 +21,7 @@ function optimizeFiles(dir) {
 
     // Only HTML, JS and CSS files
     if (/\.(html|js|css)$/.test(file.name)) {
-      console.log(`优化文件: ${fullPath}`);
+      console.log(`Optimizing file: ${fullPath}`);
       let content = fs.readFileSync(fullPath, "utf8");
 
       // Minify HTML
@@ -47,7 +47,7 @@ function optimizeFiles(dir) {
 if (fs.existsSync(outDir)) {
   // Go
   optimizeFiles(outDir);
-  console.log("优化完成！");
+  console.log("Optimization complete!");
 } else {
-  console.error("错误: 输出目录不存在。请先运行 npm run build");
+  console.error("Error: output directory not found. Run npm run build first");
 }

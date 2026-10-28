@@ -107,7 +107,7 @@ function createOutputDirectories() {
 function generateAllPromptsPages(allPrompts, paginatedDir, buildPaginatedDir) {
   const totalPages = Math.ceil(allPrompts.length / ITEMS_PER_PAGE);
 
-  console.log(`生成所有提示词分页数据，共 ${totalPages} 页`);
+  console.log(`Generating paginated data for all prompts: ${totalPages} pages`);
 
   // Pagination metadata
   const paginationMeta = {
@@ -168,7 +168,7 @@ function generateCategoryPages(allPrompts, paginatedDir, buildPaginatedDir) {
       categoryPrompts.length / CATEGORIES_ITEMS_PER_PAGE
     );
 
-    console.log(`生成分类 "${categoryName}" 分页数据，共 ${totalPages} 页`);
+    console.log(`Generating paginated data for category "${categoryName}": ${totalPages} pages`);
 
     // Pagination metadata
     const paginationMeta = {
@@ -225,11 +225,11 @@ function generateCategoryPages(allPrompts, paginatedDir, buildPaginatedDir) {
  * Entry point: generate all the paginated data.
  */
 function generatePaginatedData() {
-  console.log("开始生成分页数据...");
+  console.log("Generating paginated data...");
 
   // Read every prompt
   const allPrompts = getAllPrompts();
-  console.log(`共读取 ${allPrompts.length} 个提示词`);
+  console.log(`Read ${allPrompts.length} prompts`);
 
   // Create the output directories
   const { paginatedDir, buildPaginatedDir } = createOutputDirectories();
@@ -240,7 +240,7 @@ function generatePaginatedData() {
   // Paginated data per category
   generateCategoryPages(allPrompts, paginatedDir, buildPaginatedDir);
 
-  console.log("分页数据生成完成！");
+  console.log("Paginated data generated!");
 }
 
 // Run it

@@ -1,33 +1,55 @@
-# 提示库脚本
+# Prompt library scripts
 
-此目录包含用于维护提示库的各种实用脚本。
+This directory holds the utility scripts that maintain the prompt library.
+
+## generate-index.js
+
+Builds `public/data/prompts-index.json` from the Markdown files in `prompts/`.
+The search page loads that index.
+
+## generate-paginated-data.js
+
+Builds the paginated data under `public/data/paginated/` — all prompts split
+into pages, plus a folder per category. Categories are keyed by slug, resolved
+through `categories.config.js`, so a prompt's `category` value may be the
+canonical name, the slug or one of the aliases.
+
+Both of the above run automatically on `npm run dev` and `npm run build`, or on
+their own with `npm run generate-data`.
+
+## new-prompt.js
+
+Creates a prompt's `.md` and `.json` pair:
+
+```bash
+npm run new-prompt -- "My Prompt Title" --category programming --tags api,review
+```
+
+## optimize-build.js
+
+Post-processes the static export in `out/`. Runs as part of
+`npm run build:optimized`.
 
 ## update-json-files.js
 
-这个脚本用于批量更新所有 JSON 文件，移除不需要的字段（views, likes, usageCount, favoriteCount, slug）。
+A one-off migration: strips fields the site no longer uses (`views`, `likes`,
+`usageCount`, `favoriteCount`, `slug`) from every prompt JSON file.
 
-### 使用方法
-
-在终端中运行以下命令：
+### Usage
 
 ```bash
-# 首先确保你在prompt-library目录下
-cd prompt-library
-
-# 运行脚本
+# from the repository root
 node scripts/update-json-files.js
 ```
 
-### 功能说明
+### What it does
 
-此脚本会：
+1. Scans every JSON file in `prompts/`.
+2. Removes the `views`, `likes`, `usageCount`, `favoriteCount` and `slug` fields.
+3. Keeps the rest (`featured`, `createdAt`, `updatedAt`, `rating`).
+4. Writes each file back.
 
-1. 扫描`prompts`目录下所有的 JSON 文件
-2. 从每个文件中移除`views`、`likes`、`usageCount`、`favoriteCount`和`slug`字段
-3. 保留其他字段（如`featured`、`createdAt`、`updatedAt`和`rating`）
-4. 保存更新后的文件
+### Before you run it
 
-### 注意事项
-
-- 脚本会直接修改原始文件，建议在运行前备份重要数据
-- 脚本运行完成后会显示处理成功和失败的文件数量
+- It rewrites the original files in place, so commit or back up first.
+- It prints how many files succeeded and how many failed when it finishes.

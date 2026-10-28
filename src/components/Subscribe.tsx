@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from 'react';
+import { useTranslation } from '../lib/i18n';
 
 export default function Subscribe() {
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState('');
@@ -16,10 +18,10 @@ export default function Subscribe() {
     try {
       // In a real project this would be an actual API call
       await new Promise(resolve => setTimeout(resolve, 1000));
-      setMessage('订阅成功！感谢您的关注。');
+      setMessage(t('subscribe.success'));
       setEmail('');
     } catch (error) {
-      setMessage('订阅失败，请稍后再试。');
+      setMessage(t('subscribe.error'));
     } finally {
       setIsSubmitting(false);
     }
@@ -28,18 +30,18 @@ export default function Subscribe() {
   return (
     <section className="subscribe">
       <div className="subscribe-content">
-        <h2>获取最新提示词更新</h2>
-        <p>订阅我们的通讯，第一时间获取新增提示词和使用技巧</p>
+        <h2>{t('subscribe.title')}</h2>
+        <p>{t('subscribe.subtitle')}</p>
         <form className="subscribe-form" onSubmit={handleSubmit}>
           <input 
             type="email" 
-            placeholder="您的邮箱地址" 
+            placeholder={t('subscribe.email_placeholder')}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
           <button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? '订阅中...' : '订阅'}
+            {isSubmitting ? t('subscribe.submitting') : t('subscribe.button')}
           </button>
         </form>
         {message && <p className="message">{message}</p>}

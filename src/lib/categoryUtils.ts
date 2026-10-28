@@ -23,7 +23,7 @@ export function getAllCategories(): CategoryData[] {
       }
     }
   } catch (error) {
-    console.error('读取分类配置文件失败:', error);
+    console.error('Failed to read the category config file:', error);
   }
   
   // Fall back to the default categories if the config file is missing or unreadable
@@ -80,7 +80,7 @@ export function saveCategories(categories: CategoryData[]): boolean {
     // Save the category data
     return safeWriteFile(CATEGORIES_FILE_PATH, JSON.stringify(categories, null, 2));
   } catch (error) {
-    console.error('保存分类配置失败:', error);
+    console.error('Failed to save the category config:', error);
     return false;
   }
 }
@@ -96,7 +96,7 @@ export function addCategory(category: Omit<CategoryData, 'count'>): boolean {
     
     // Check whether a category with the same slug already exists
     if (categories.some(c => c.slug === category.slug)) {
-      console.error(`分类 ${category.slug} 已存在`);
+      console.error(`Category ${category.slug} already exists`);
       return false;
     }
     
@@ -106,7 +106,7 @@ export function addCategory(category: Omit<CategoryData, 'count'>): boolean {
     // Save the updated categories
     return saveCategories(categories);
   } catch (error) {
-    console.error('添加分类失败:', error);
+    console.error('Failed to add the category:', error);
     return false;
   }
 }
@@ -127,7 +127,7 @@ export function updateCategory(
     // Find the category's index
     const index = categories.findIndex(c => c.slug === slug);
     if (index === -1) {
-      console.error(`找不到分类 ${slug}`);
+      console.error(`Category ${slug} not found`);
       return false;
     }
     
@@ -140,7 +140,7 @@ export function updateCategory(
     // Save the updated categories
     return saveCategories(categories);
   } catch (error) {
-    console.error(`更新分类 ${slug} 失败:`, error);
+    console.error(`Failed to update category ${slug}:`, error);
     return false;
   }
 }
@@ -159,14 +159,14 @@ export function deleteCategory(slug: string): boolean {
     
     // Check whether anything changed
     if (updatedCategories.length === categories.length) {
-      console.error(`找不到分类 ${slug}`);
+      console.error(`Category ${slug} not found`);
       return false;
     }
     
     // Save the updated categories
     return saveCategories(updatedCategories);
   } catch (error) {
-    console.error(`删除分类 ${slug} 失败:`, error);
+    console.error(`Failed to delete category ${slug}:`, error);
     return false;
   }
 } 

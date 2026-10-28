@@ -8,8 +8,8 @@ const CategoriesContent = dynamic(() => import('@/components/CategoriesContent')
   loading: () => (
     <main>
       <section className="page-header">
-        <h1>提示词分类</h1>
-        <p>按分类浏览我们的AI提示词集合，找到适合您特定需求的提示词</p>
+        <h1>Prompt Categories</h1>
+        <p>Browse our AI prompt collection by category and find the prompts that fit your needs</p>
       </section>
 
       <section className="categories-list skeleton-loading">

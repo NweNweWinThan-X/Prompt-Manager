@@ -31,7 +31,7 @@ export function getPromptSlugs(): string[] {
       .filter(file => file.endsWith('.md'))
       .map(file => file.replace(/\.md$/, ''));
   } catch (error) {
-    console.error('获取提示文件列表出错:', error);
+    console.error('Error listing prompt files:', error);
     return [];
   }
 }
@@ -93,7 +93,7 @@ export function getPromptBySlug(slug: string): Prompt | null {
       rating: metadata.rating || 0
     };
   } catch (error) {
-    console.error(`获取提示 ${slug} 出错:`, error);
+    console.error(`Error loading prompt ${slug}:`, error);
     return null;
   }
 }
@@ -179,7 +179,7 @@ export function createPrompt(
       slug,
     };
   } catch (error) {
-    console.error('创建提示词出错:', error);
+    console.error('Error creating prompt:', error);
     return null;
   }
 }
@@ -246,7 +246,7 @@ export function updatePrompt(slug: string, promptData: Partial<Prompt>): boolean
     const metadataPath = path.join(PROMPTS_DIRECTORY, `${slug}.json`);
     return safeWriteFile(metadataPath, JSON.stringify(metadata, null, 2));
   } catch (error) {
-    console.error(`更新提示词 ${slug} 出错:`, error);
+    console.error(`Error updating prompt ${slug}:`, error);
     return false;
   }
 }
@@ -268,7 +268,7 @@ export function deletePrompt(slug: string): boolean {
     // Count the delete as successful if either file was removed
     return mdDeleted || jsonDeleted;
   } catch (error) {
-    console.error(`删除提示词 ${slug} 出错:`, error);
+    console.error(`Error deleting prompt ${slug}:`, error);
     return false;
   }
 }

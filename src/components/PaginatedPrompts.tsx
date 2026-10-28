@@ -5,6 +5,7 @@ import PromptCard from './PromptCard';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { withBasePath } from '@/config/site';
+import { useTranslation } from '../lib/i18n';
 
 interface PaginationMeta {
     total: number;
@@ -33,6 +34,8 @@ export default function PaginatedPrompts({
     const [prompts, setPrompts] = useState<PromptData[]>(initialData || []);
     const [meta, setMeta] = useState<PaginationMeta | null>(initialMeta || null);
     const [error, setError] = useState<string | null>(null);
+
+    const { t } = useTranslation();
 
     const pathname = usePathname();
     const searchParams = useSearchParams();
@@ -75,7 +78,7 @@ export default function PaginatedPrompts({
                     if (!meta) {
                         const metaResponse = await fetch(`${basePath}/categories/${categorySlug}/meta.json`, { cache: 'no-store' });
                         if (!metaResponse.ok) {
-                            throw new Error(`无法获取分类元数据: ${metaResponse.status}`);
+                            throw new Error(`Failed to fetch category metadata: ${metaResponse.status}`);
                         }
                         const metaData = await metaResponse.json();
                         setMeta(metaData);
@@ -87,7 +90,7 @@ export default function PaginatedPrompts({
                     if (!meta) {
                         const metaResponse = await fetch(`${basePath}/all-prompts-meta.json`, { cache: 'no-store' });
                         if (!metaResponse.ok) {
-                            throw new Error(`无法获取提示词元数据: ${metaResponse.status}`);
+                            throw new Error(`Failed to fetch prompt metadata: ${metaResponse.status}`);
                         }
                         const metaData = await metaResponse.json();
                         setMeta(metaData);
@@ -97,14 +100,14 @@ export default function PaginatedPrompts({
                 // Fetch the current page
                 const response = await fetch(dataPath, { cache: 'no-store' });
                 if (!response.ok) {
-                    throw new Error(`无法获取第 ${currentPage} 页数据: ${response.status}`);
+                    throw new Error(`Failed to fetch data for page ${currentPage}: ${response.status}`);
                 }
 
                 const pageData = await response.json();
                 setPrompts(pageData);
             } catch (err) {
-                console.error('加载分页数据出错:', err);
-                setError('无法加载数据，请稍后再试');
+                console.error('Error loading paginated data:', err);
+                setError(t('ui.load_failed'));
             } finally {
                 setLoading(false);
             }
@@ -181,14 +184,14 @@ export default function PaginatedPrompts({
                 <div className="loading-container">
                     <div className="loading">
                         <div className="spinner"></div>
-                        <p>正在加载提示词...</p>
+                        <p>{t('ui.loading')}</p>
                     </div>
                 </div>
             ) : error ? (
                 <div className="error-message">
                     <p>{error}</p>
                     <button onClick={() => window.location.reload()} className="retry-button">
-                        重试
+                        {t('ui.try_again')}
                     </button>
                 </div>
             ) : (
@@ -207,7 +210,7 @@ export default function PaginatedPrompts({
                         </div>
                     ) : (
                         <div className="empty-state">
-                            <p>暂无提示词</p>
+                            <p>{t('ui.no_data')}</p>
                         </div>
                     )}
 
@@ -229,11 +232,11 @@ export default function PaginatedPrompts({
                                     href={buildPageUrl(currentPage - 1)}
                                     className="pagination-button"
                                 >
-                                    <i className="fa-solid fa-chevron-left"></i> 上一页
+                                    <i className="fa-solid fa-chevron-left"></i> {t('pagination.previous')}
                                 </Link>
                             ) : (
                                 <span className="pagination-button disabled">
-                                    <i className="fa-solid fa-chevron-left"></i> 上一页
+                                    <i className="fa-solid fa-chevron-left"></i> {t('pagination.previous')}
                                 </span>
                             )}
 
@@ -267,11 +270,11 @@ export default function PaginatedPrompts({
                                     href={buildPageUrl(currentPage + 1)}
                                     className="pagination-button"
                                 >
-                                    下一页 <i className="fa-solid fa-chevron-right"></i>
+                                    {t('pagination.next')} <i className="fa-solid fa-chevron-right"></i>
                                 </Link>
                             ) : (
                                 <span className="pagination-button disabled">
-                                    下一页 <i className="fa-solid fa-chevron-right"></i>
+                                    {t('pagination.next')} <i className="fa-solid fa-chevron-right"></i>
                                 </span>
                             )}
                         </div>

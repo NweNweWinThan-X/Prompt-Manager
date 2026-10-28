@@ -9,9 +9,9 @@ const PopularPromptsContent = dynamic(() => import('@/components/PopularPromptsC
     loading: () => (
         <div className="container mx-auto px-4 py-8">
             <div className="page-header">
-                <h1 className="page-title">热门提示词</h1>
+                <h1 className="page-title">Popular Prompts</h1>
                 <p className="page-description">
-                    发现用户最喜爱的提示词，这些提示词经过社区验证，效果出众且实用性强
+                    Discover the prompts users love most — community-tested, effective and genuinely useful
                 </p>
             </div>
 
@@ -37,18 +37,18 @@ export const metadata: Metadata = {
 const fallbackPrompts: PromptData[] = [
     {
         slug: 'professional-article-generator',
-        title: '专业文章生成器',
-        description: '创建结构化、专业的文章，包含引人入胜的标题、精确的小标题和丰富的内容。',
-        category: '内容创作',
+        title: 'Professional Article Generator',
+        description: 'Create structured, professional articles with compelling titles, precise subheadings and rich content.',
+        category: 'Content Creation',
         rating: 9.8,
         createdAt: '2023-01-15',
         featured: true
     },
     {
         slug: 'code-optimization-assistant',
-        title: '代码优化助手',
-        description: '分析并优化您的代码，提供性能改进建议和最佳实践指导。',
-        category: '编程开发',
+        title: 'Code Optimization Assistant',
+        description: 'Analyze and optimize your code, with performance improvement suggestions and best-practice guidance.',
+        category: 'Programming',
         rating: 9.5,
         createdAt: '2023-01-20',
         featured: true
@@ -65,7 +65,7 @@ export default function PopularPromptsPage() {
             allPrompts = fallbackPrompts;
         }
     } catch (error) {
-        console.error('获取提示词数据时出错:', error);
+        console.error('Error loading prompt data:', error);
         // On error, use the fallback data
         allPrompts = fallbackPrompts;
     }

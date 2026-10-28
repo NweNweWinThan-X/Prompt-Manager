@@ -101,7 +101,8 @@
     "email_placeholder": "Enter your email address",
     "button": "Subscribe",
     "success": "Successfully subscribed!",
-    "error": "Subscription failed, please try again later."
+    "error": "Subscription failed, please try again later.",
+    "submitting": "Subscribing..."
   },
   "pagination": {
     "previous": "Previous",
@@ -139,6 +140,8 @@
     "all_prompts": "All Prompts",
     "browse_by_category": "Browse by Category",
     "expand": "Expand All",
-    "collapse": "Collapse"
+    "collapse": "Collapse",
+    "all_prompts_subtitle": "Browse the complete prompt collection and find the one that fits your needs",
+    "load_failed": "Could not load the data. Please try again later."
   }
 }
