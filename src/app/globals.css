@@ -580,6 +580,22 @@ nav {
   flex: 1;
   padding: 16px 24px;
   border-radius: 100px;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.subscribe-form input:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-color: transparent;
+}
+
+/* Feedback after submitting */
+.subscribe .message {
+  margin: 16px 0 0;
+  color: var(--text-secondary);
+  font-size: 15px;
 }
 
 .subscribe-form button {

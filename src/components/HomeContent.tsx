@@ -5,6 +5,7 @@ import Link from 'next/link';
 import PromptCard from '@/components/PromptCard';
 import CategoryItem from '@/components/CategoryItem';
 import Hero from '@/components/Hero';
+import Subscribe from '@/components/Subscribe';
 import { PromptData, CategoryData } from '@/types';
 import { useTranslation } from '../lib/i18n';
 import { useLanguage } from '../context/LanguageContext';
@@ -127,6 +128,9 @@ export default function HomeContent({ featuredPrompts, recentPrompts, categories
                     ))}
                 </div>
             </section>
+
+            {/* Subscribe */}
+            <Subscribe />
         </main>
     );
-} 
+}
