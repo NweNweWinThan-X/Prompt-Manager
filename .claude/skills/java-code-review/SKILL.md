@@ -1,100 +1,100 @@
 ---
 name: java-code-review
-description: git diff developに対してコードレビューを行い、日本語のレビューリストを出力する
+description: Review the diff against the develop branch and output a review list in English
 user-invocable: true
 allowed-tools: Bash, Read, Grep, Glob
 ---
 
 # Review Develop Skill
 
-`develop` ブランチとの差分を取得し、以下のチェック項目に従ってレビューし、日本語で出力する。
+Take the diff against the `develop` branch, review it against the checklist below, and output the result in English.
 
 ---
 
-## ワークフロー
+## Workflow
 
-### Step 1: 差分を取得する
+### Step 1: Get the diff
 
 ```bash
 git diff develop...HEAD
 ```
 
-差分が存在しない場合は「`develop`との差分はありません。」と報告してスキルを終了する。
+If there is no diff, report "No differences against `develop`." and end the skill.
 
-### Step 2: レビュー対象を絞る
+### Step 2: Narrow down what to review
 
-差分に含まれる **Java ファイルのみ** をレビュー対象とする。SQL・HTML・yml 等は対象外。
+Review **only the Java files** in the diff. SQL, HTML, yml and the like are out of scope.
 
-### Step 3: ファイルごとに推論する
+### Step 3: Reason about each file
 
-差分に含まれる各 Java ファイルについて、以下の問いに順番に答えること。
+For each Java file in the diff, answer the following questions in order.
 
-- このクラス/インターフェースの責務は何か？単一責務の原則を守っているか？
-- データ構造は適切か？（型の選択、冗長な保持、所有権）
-- 分岐はビジネスロジックか、設計上の欠陥か？データ構造で消せる分岐はないか？
-- 規約違反はあるか？（例外処理・アノテーション・命名・パッケージ構成）
-- 外部との契約（API・インターフェース）に一貫性はあるか？
-- 過剰設計になっていないか？問題の複雑さに解決策は見合っているか？
-- 問題があれば: 重要度（🔴/🟡/🔵）・行番号・問題の内容を記録する
+- What is this class/interface responsible for? Does it hold to the single responsibility principle?
+- Are the data structures right? (choice of type, redundant storage, ownership)
+- Is each branch business logic, or a design flaw? Are there branches a better data structure would remove?
+- Are there any convention violations? (exception handling, annotations, naming, package layout)
+- Are the contracts with the outside world (APIs, interfaces) consistent?
+- Is it over-engineered? Does the complexity of the solution match the complexity of the problem?
+- If there is a problem: record the severity (🔴/🟡/🔵), the line number and what the problem is
 
-### Step 4: チェック項目（Step 3 の推論で参照する）
+### Step 4: Checklist (referenced by the reasoning in Step 3)
 
-#### A — データ構造・所有権
+#### A — Data structures and ownership
 
-- 核となるデータは何か？その関係は正しいか？
-- 不要なデータコピー・変換が発生していないか？
-- **型の選択** — 固定された値の集合（状態・種別・区分など）を `String` や `int` で表現していないか。`enum` として定義すること
-- **冗長フィールド** — 参照先エンティティ（FK）を辿れば取得できる値を、子エンティティに重複保持していないか。保持する場合はパフォーマンス上の理由等を明確にすること
-- **クラス規約** — エンティティ・DTO・サービス等の各クラスは、プロジェクトの java-clean-code 規約に沿った書き方になっているか
+- What is the core data? Are the relationships between pieces of it correct?
+- Are there unnecessary copies or conversions of data?
+- **Choice of type** — is a fixed set of values (a state, kind, category and so on) being represented as a `String` or an `int`? Define it as an `enum` instead
+- **Redundant fields** — is a child entity duplicating a value it could reach by following a reference (FK)? If it is stored anyway, the reason (e.g. performance) must be made explicit
+- **Class conventions** — do entities, DTOs, services and the rest follow the project's java-clean-code conventions
 
-#### B — 分岐・特殊ケース
+#### B — Branching and special cases
 
-- `if/else` 分岐を列挙し、それがビジネスロジックか設計の欠陥かを判断する
-- データ構造や `Optional` の連鎖（`map` / `filter` / `orElseGet`）で分岐を消せないか検討する
-- リポジトリを複数回検索して新規/更新を手動で分岐するパターンは、`orElseGet` 等で一本化できないか検討する
+- List the `if/else` branches and decide whether each is business logic or a design flaw
+- Consider whether a different data structure, or chained `Optional` calls (`map` / `filter` / `orElseGet`), would remove the branch
+- Where the code queries a repository several times and then hand-branches between insert and update, consider collapsing it with `orElseGet` or similar
 
-#### C — 複雑度・規約
+#### C — Complexity and conventions
 
-- **インデント深さ** — `if` のネストが3層を超えている場合は設計を疑う。早期リターン・メソッド分割・データ構造の見直しで解消できないか検討する
-- **命名** — クラス名・メソッド名がその責務を正確に1つ表しているか。「And」「Or」「Manager」「Util」が入る名前は責務過多のサイン
-- **例外処理** — `IllegalArgumentException` / `RuntimeException` の直接使用禁止。`Gs8Exception` を使うこと。`catch` は具体的な例外型を指定し、素の `Exception` で握りつぶさないこと
-- **Controller** — リポジトリ直接注入禁止、ビジネスロジック禁止、`try-catch` 原則禁止。ただし画面へのエラー表示を目的とした `catch` は許容する。その場合は必ず `log.warn` / `log.error` 等でログ出力すること（ログなしは 🟡 指摘）
-- **Service** — 読み取りメソッドは `@Transactional(readOnly = true)` デフォルト、書き込みメソッドは `@Transactional`
-- **Entity / Repository** — N+1問題、フェッチ戦略の明示
-- **外部クライアント設計の一貫性** — リクエストヘッダーによる認証とインターセプターによる認証が混在していないか。どちらか一方に統一されているか確認すること
-- **DTO** — 命名規則（`Dto` / `Command` / `Query` / `Form`）、ドメインロジック混入禁止
-- **パッケージ構成** — `modules/{name}/domain, dto, repository, service, controller` の遵守
-- **マジック値** — 文字列・数値リテラルの定数化
-- メソッド・クラスは単一の責務のみを持つこと。複数の責務が混在している場合は分離を検討する
+- **Indentation depth** — nesting `if` more than three deep is a reason to doubt the design. Consider early returns, extracting methods, or rethinking the data structure
+- **Naming** — does each class and method name state exactly one responsibility? A name containing "And", "Or", "Manager" or "Util" is a sign of too many responsibilities
+- **Exception handling** — never use `IllegalArgumentException` or `RuntimeException` directly; use `Gs8Exception`. `catch` must name a specific exception type and must not swallow a bare `Exception`
+- **Controller** — no injecting repositories directly, no business logic, and as a rule no `try-catch`. A `catch` whose purpose is to show an error on screen is allowed, but it must log via `log.warn` / `log.error` (no logging is a 🟡 finding)
+- **Service** — read methods default to `@Transactional(readOnly = true)`, write methods to `@Transactional`
+- **Entity / Repository** — N+1 problems, fetch strategy stated explicitly
+- **Consistency of external client design** — check that header-based authentication and interceptor-based authentication are not mixed, and that one of the two is used throughout
+- **DTO** — naming conventions (`Dto` / `Command` / `Query` / `Form`), no domain logic mixed in
+- **Package layout** — follows `modules/{name}/domain, dto, repository, service, controller`
+- **Magic values** — string and numeric literals pulled out into constants
+- Every method and class carries a single responsibility. Where several are mixed together, consider separating them
 
-#### D — 破壊性
+#### D — Risk of breakage
 
-- この変更で既存機能が壊れるリスクはあるか？
-- API・インターフェース・契約の互換性は保たれているか？
+- Does this change risk breaking existing functionality?
+- Is compatibility preserved for APIs, interfaces and contracts?
 
-#### E — 過剰設計チェック
+#### E — Over-engineering check
 
-- 解決策の複雑さは問題の深刻さに見合っているか？
-- 時期尚早な抽象化・過剰設計になっていないか？
+- Does the complexity of the solution match the severity of the problem?
+- Is this a premature abstraction, or otherwise over-engineered?
 
 ---
 
-### Step 5: レビュー結果を日本語で出力する
+### Step 5: Output the review in English
 
-以下の表1つのみを出力する。総評・まとめ・前置き・説明は一切不要。
+Output the following single table and nothing else. No overall assessment, summary, preamble or explanation.
 
-| 重要度 | ファイル | メソッド | 行 | 問題 |
-|--------|---------|---------|-----|------|
-| 🔴 | `path/File.java` | `methodName` | L42 | `RuntimeException` を直接使用している。`Gs8Exception` を使うこと。 |
-| 🟡 | `path/File.java` | `methodName` | L88 | `@Transactional(readOnly = true)` がない。 |
-| 🔵 | `path/File.java` | `methodName` | L20–L60 | メソッドが複数の責務を持っている。分離を検討すること。 |
+| Severity | File | Method | Line | Problem |
+|----------|------|--------|------|---------|
+| 🔴 | `path/File.java` | `methodName` | L42 | Uses `RuntimeException` directly. Use `Gs8Exception`. |
+| 🟡 | `path/File.java` | `methodName` | L88 | Missing `@Transactional(readOnly = true)`. |
+| 🔵 | `path/File.java` | `methodName` | L20–L60 | The method has several responsibilities. Consider separating them. |
 
-## 出力規則
+## Output rules
 
-- **🔴**: セキュリティ違反、規約の明確な逸脱、データ破壊リスク
-- **🟡**: 推奨規約違反、将来バグになりうる設計上の問題
-- **🔵**: 複雑すぎる、特殊ケースが多すぎる、データ構造が間違っている
-- 問題がなければ「指摘なし」とだけ書く
-- 差分外のコードは指摘しない
-- 出力はすべて **日本語** で行う
-- 総評・まとめ・前置きは **出力しない**
+- **🔴**: security violations, clear departures from the conventions, risk of data corruption
+- **🟡**: violations of recommended conventions, design problems that could become bugs later
+- **🔵**: too complex, too many special cases, wrong data structure
+- If there is nothing to report, write only "No findings"
+- Do not report on code outside the diff
+- Write all output in **English**
+- Do **not** output an overall assessment, a summary or a preamble

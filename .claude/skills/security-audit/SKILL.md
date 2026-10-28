@@ -1,123 +1,123 @@
 ---
 name: security-audit
-description: セキュリティ脆弱性診断スキル。XSS、CSRF、アクセス制御不備、インジェクション、暗号化失敗、安全でないデシリアライゼーション、SSRF、シークレット管理、設定ミスを含むOWASP脆弱性を対象に、Spring Boot + Thymeleafプロジェクトを自動スキャンする。リスクレベルと推奨修正を含むレポートを生成する。
+description: Security vulnerability audit skill. Scans a Spring Boot + Thymeleaf project for OWASP vulnerabilities including XSS, CSRF, broken access control, injection, cryptographic failures, insecure deserialization, SSRF, secret management and misconfiguration. Produces a report with risk levels and recommended fixes.
 user-invocable: true
-argument-hint: [ファイルパスまたはモジュール名（省略時はプロジェクト全体をスキャン）]
+argument-hint: [file path or module name (scans the whole project when omitted)]
 allowed-tools: Read, Grep, Glob, Edit, Write
 ---
 
-# セキュリティ診断スキル
+# Security Audit Skill
 
-## 概要
+## Overview
 
-このスキルは以下を組み合わせて実行します：
-- **脆弱性チェック**: XSS（蓄積型）、XSS（DOM型）、Cookieセキュア属性、不正アクセス、個人情報漏洩、CSRF、クリックジャッキング、自動化対策（ログイン・フォーム）、Webコンポーネント、デフォルトサーバファイル、文字エンコーディング、Content-Typeエンコーディング、SQLインジェクション、暗号化失敗、安全でないデシリアライゼーション、SSRF、シークレット管理、入力検証戦略、セキュリティログ
-- **Spring Boot + Thymeleaf + Spring Security + PostgreSQL** 固有のチェック
-
----
-
-## 使用タイミング
-
-- `/security-audit` を実行したとき
-- 「セキュリティチェック」「脆弱性診断」「セキュリティ監査」と言われたとき
-- 本番リリース前
-- 新しいコントローラ・フォーム・APIエンドポイントを追加した後
+This skill combines:
+- **Vulnerability checks**: XSS (stored), XSS (DOM-based), cookie secure attributes, unauthorised access, leaking personal data, CSRF, clickjacking, anti-automation (login and forms), web components, default server files, character encoding, Content-Type encoding, SQL injection, cryptographic failures, insecure deserialization, SSRF, secret management, input validation strategy, security logging
+- Checks specific to **Spring Boot + Thymeleaf + Spring Security + PostgreSQL**
 
 ---
 
-## ワークフロー
+## When to use
 
-1. **対象ファイルの特定**
-   - 引数あり → 指定されたファイル／モジュールのみスキャン
-   - 引数なし → プロジェクト全体をスキャン
+- When `/security-audit` is run
+- When asked for a "security check", "vulnerability audit" or "security audit"
+- Before a production release
+- After adding a new controller, form or API endpoint
 
-2. **以下の順序でセキュリティチェックを実行：**
+---
+
+## Workflow
+
+1. **Identify the target files**
+   - With an argument → scan only the given file or module
+   - Without an argument → scan the whole project
+
+2. **Run the security checks in this order:**
 
 ```
-XSS（蓄積型）→ XSS（DOM型）→ Cookie／セッション
-→ アクセス制御 → 個人情報 → CSRF → クリックジャッキング
-→ 自動化対策 → Webコンポーネント
-→ デフォルトファイル → 文字エンコーディング → Content-Type → SQLインジェクション
-→ 暗号化失敗 → 安全でないデシリアライゼーション → SSRF
-→ シークレット管理 → 入力検証戦略 → セキュリティログ
+XSS (stored) → XSS (DOM-based) → cookies / sessions
+→ access control → personal data → CSRF → clickjacking
+→ anti-automation → web components
+→ default files → character encoding → Content-Type → SQL injection
+→ cryptographic failures → insecure deserialization → SSRF
+→ secret management → input validation strategy → security logging
 ```
 
-3. **各項目にリスクレベルを判定：**
+3. **Assign a risk level to each item:**
 
-| リスク | 判定基準 |
-|--------|----------|
-| 🔴 HIGH | 悪用可能な脆弱性が存在する |
-| 🟡 MEDIUM | 対策が不完全または部分的に欠如している |
-| 🟢 LOW | 適切に保護されている |
-| ⚪ N/A | 関連するコードが見当たらない |
+| Risk | Criteria |
+|------|----------|
+| 🔴 HIGH | An exploitable vulnerability is present |
+| 🟡 MEDIUM | The defence is incomplete or partly missing |
+| 🟢 LOW | Properly protected |
+| ⚪ N/A | No relevant code found |
 
-4. **全項目のレポートを出力** — リスクレベルと推奨修正を含む
+4. **Output a report covering every item** — with risk levels and recommended fixes
 
 ---
 
-## セキュリティチェック項目
+## Security check items
 
 ---
 
-### No.1 — XSS（蓄積型）
+### No.1 — XSS (stored)
 
-**概要：** ユーザー入力がDBに保存され、その後HTMLとしてレンダリングされることで、注入されたスクリプトが被害者のブラウザで実行される。
+**Overview:** user input is saved to the database and later rendered as HTML, so the injected script runs in the victim's browser.
 
-**チェック方法：**
+**How to check:**
 
 ```
-STEP 1: ユーザー入力を受け取るフォームフィールドを特定
-  → Grep: @RequestParam, @ModelAttribute, Command/Form/Requestクラス
+STEP 1: Identify the form fields that take user input
+  → Grep: @RequestParam, @ModelAttribute, Command/Form/Request classes
 
-STEP 2: それらの値をDBに保存するエンティティを特定
-  → Grep: @Entity クラスの String フィールド
+STEP 2: Identify the entities those values are saved to
+  → Grep: String fields on @Entity classes
 
-STEP 3: HTMLテンプレートでの値のレンダリング方法を確認
+STEP 3: Check how the values are rendered in the HTML templates
   → Glob: templates/**/*.html
-  → th:utext が見つかった場合 → 🔴 HIGH
-  → th:text / th:value のみの場合 → 🟢 LOW
+  → th:utext found → 🔴 HIGH
+  → only th:text / th:value → 🟢 LOW
 
-STEP 4: 入力バリデーションの確認
-  → @Pattern(regexp = "[^<>]*") が欠如している場合 → 🟡 MEDIUM
+STEP 4: Check input validation
+  → @Pattern(regexp = "[^<>]*") missing → 🟡 MEDIUM
 ```
 
-**安全な例 vs 危険な例：**
+**Safe vs dangerous:**
 ```html
-<!-- 安全 — 出力を自動エスケープ -->
+<!-- Safe — output is escaped automatically -->
 <span th:text="${dto.memo}"></span>
 
-<!-- 危険 — HTMLをそのまま出力 -->
+<!-- Dangerous — outputs HTML as-is -->
 <span th:utext="${dto.memo}"></span>
 ```
 
-**推奨修正：**
+**Recommended fix:**
 ```java
-// DTO／Commandクラスに追加
-@Pattern(regexp = "[^<>\"'&]*", message = "HTMLタグは使用できません")
+// Add to the DTO / Command class
+@Pattern(regexp = "[^<>\"'&]*", message = "HTML tags are not allowed")
 @Size(max = 20)
 private String memo;
 ```
 
 ---
 
-### No.2 — CookieセッションIDのSecure属性欠如
+### No.2 — Missing Secure attribute on the session cookie
 
-**概要：** Secure属性がない場合、セッションCookieが平文HTTP接続で盗まれる可能性がある。
+**Overview:** without the Secure attribute, the session cookie can be stolen over a plaintext HTTP connection.
 
-**チェック方法：**
+**How to check:**
 ```
-STEP 1: application.properties / application.yml を確認
-  → server.servlet.session.cookie.secure=true が設定されているか
+STEP 1: Check application.properties / application.yml
+  → is server.servlet.session.cookie.secure=true set?
 
-STEP 2: SecurityConfig.java を確認
-  → CookieSameSiteSupplier / SameSite 設定が存在するか
+STEP 2: Check SecurityConfig.java
+  → is there a CookieSameSiteSupplier / SameSite setting?
 
-STEP 3: 手動作成されたCookieを確認
+STEP 3: Check manually created cookies
   → Grep: new Cookie(...), response.addCookie(...)
-  → cookie.setSecure(true) が欠如している場合 → 🔴 HIGH
+  → cookie.setSecure(true) missing → 🔴 HIGH
 ```
 
-**推奨修正：**
+**Recommended fix:**
 ```properties
 # application.properties
 server.servlet.session.cookie.secure=true
@@ -127,33 +127,33 @@ server.servlet.session.cookie.same-site=Lax
 
 ---
 
-### No.3 — 権限のないユーザーによる機密データアクセス
+### No.3 — Confidential data accessible to unauthorised users
 
-**概要：** 適切な権限を持たないユーザーが、アクセスすべきでないデータを閲覧できる（アクセス制御の破綻）。
+**Overview:** a user without the right permissions can view data they should not reach (broken access control).
 
-**チェック方法：**
+**How to check:**
 ```
-STEP 1: コントローラの認可アノテーションを確認
+STEP 1: Check the authorisation annotations on the controllers
   → Grep: @PreAuthorize, @Secured, hasRole(...)
 
-STEP 2: Spring Securityの設定を確認
-  → SecurityConfig の requestMatchers / antMatchers
+STEP 2: Check the Spring Security configuration
+  → requestMatchers / antMatchers in SecurityConfig
 
-STEP 3: サービス層でのユーザーID検証を確認
+STEP 3: Check that the service layer verifies the user id
   → Grep: findById, getById
-  → IDが認証済みユーザーのものか確認（水平権限昇格）
+  → confirm the id belongs to the authenticated user (horizontal privilege escalation)
 ```
 
-**推奨修正：**
+**Recommended fix:**
 ```java
-// コントローラ
+// Controller
 @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
 @GetMapping("/deposit/detail/{id}")
 public String detail(@PathVariable Long id, Authentication auth) {
     depositService.findByIdAndUser(id, auth.getName());
 }
 
-// サービス — 所有権を検証
+// Service — verify ownership
 public DepositDto findByIdAndUser(Long id, String username) {
     return repository.findByIdAndUsername(id, username)
         .orElseThrow(() -> new Gs8Exception(Gs8ErrorCode.ACCESS_DENIED));
@@ -162,138 +162,138 @@ public DepositDto findByIdAndUser(Long id, String username) {
 
 ---
 
-### No.4 — 不要な個人情報の出力
+### No.4 — Unnecessary personal data in output
 
-**概要：** レスポンスやログに不要な個人情報（メール、電話、住所）が含まれている。
+**Overview:** responses or logs contain personal data (email, phone, address) that is not needed.
 
-**チェック方法：**
+**How to check:**
 ```
-STEP 1: APIレスポンスのDTOを確認
+STEP 1: Check the API response DTOs
   → Grep: Dto.java, @JsonProperty
-  → 不要なフィールドに @JsonIgnore が欠如しているか
+  → is @JsonIgnore missing on fields that are not needed?
 
-STEP 2: ログ出力を確認
+STEP 2: Check the log output
   → Grep: log.info, log.debug, logger.info
-  → 個人情報（氏名、メール、住所）がログに出力されているか
+  → is personal data (name, email, address) being logged?
 
-STEP 3: Thymeleafテンプレートを確認
-  → 機密フィールドがhiddenフォームフィールドで公開されていないか
+STEP 3: Check the Thymeleaf templates
+  → are confidential fields exposed in hidden form fields?
 ```
 
-**推奨修正：**
+**Recommended fix:**
 ```java
-// 表示に必要なフィールドのみ含める — メール、電話、住所は除外
+// Include only the fields the view needs — leave out email, phone and address
 public record UserDto(
     Long id,
     String displayName
 ) {}
 
-// ログ — IDのみ使用、個人情報は絶対に含めない
-log.info("ユーザーログイン: userId={}", userId);
+// Logging — use the id only, never include personal data
+log.info("User login: userId={}", userId);
 ```
 
 ---
 
-### No.5 — XSS（DOM型）
+### No.5 — XSS (DOM-based)
 
-**概要：** JavaScriptがURLパラメータや `location.hash` から読み取り、サニタイズせずにDOMに直接書き込む。
+**Overview:** JavaScript reads from a URL parameter or `location.hash` and writes it straight into the DOM without sanitising it.
 
-**チェック方法：**
+**How to check:**
 ```
-STEP 1: JavaScriptファイルを確認
+STEP 1: Check the JavaScript files
   → Glob: src/main/resources/static/**/*.js
   → Glob: src/main/js/**/*.js (React)
 
-STEP 2: 危険なパターンを検索
+STEP 2: Search for dangerous patterns
   → Grep: innerHTML, outerHTML, document.write, eval(...)
-  → Grep: DOM書き込みで使用される location.href, location.hash, location.search
+  → Grep: location.href, location.hash, location.search used in a DOM write
 
-STEP 3: ThymeleafのインラインJavaScriptを確認
+STEP 3: Check Thymeleaf inline JavaScript
   → Grep: th:inline="javascript"
-  → [[${...}]] の使用（Thymeleafは自動エスケープ — 安全）
+  → use of [[${...}]] (Thymeleaf escapes automatically — safe)
 ```
 
-**安全な例 vs 危険な例：**
+**Safe vs dangerous:**
 ```javascript
-// 危険
+// Dangerous
 document.getElementById('name').innerHTML = location.hash.substring(1);
 
-// 安全
+// Safe
 document.getElementById('name').textContent = location.hash.substring(1);
 ```
 
 ---
 
-### No.6 — 不要なローカルリソースへのアクセス
+### No.6 — Unnecessary access to local resources
 
-**概要：** パストラバーサルや静的リソース設定ミスにより、非公開ファイルが公開される。
+**Overview:** path traversal or a misconfigured static resource handler exposes non-public files.
 
-**チェック方法：**
+**How to check:**
 ```
-STEP 1: ファイルアクセスコードを確認
+STEP 1: Check the file access code
   → Grep: new File(...), Paths.get(...), FileInputStream(...)
-  → ユーザー入力がファイルパスに使用されているか
+  → is user input used in the file path?
 
-STEP 2: 静的リソースの設定を確認
-  → SecurityConfig の resources().permitAll() のスコープ
-  → src/main/resources/static/ の内容
+STEP 2: Check the static resource configuration
+  → the scope of resources().permitAll() in SecurityConfig
+  → the contents of src/main/resources/static/
 
-STEP 3: 管理エンドポイントを確認
+STEP 3: Check the management endpoints
   → Grep: management.endpoints.web.exposure
-  → 機密エンドポイントが公開されていないか
+  → are confidential endpoints exposed?
 ```
 
 ---
 
-### No.7 — CSRF対策の欠如
+### No.7 — Missing CSRF protection
 
-**概要：** ログイン済みユーザーが意図しないリクエストを送信させられる。
+**Overview:** a logged-in user can be made to send a request they did not intend.
 
-**チェック方法：**
+**How to check:**
 ```
-STEP 1: Spring SecurityのCSRF設定を確認
-  → Grep: csrf().disable() または csrf(csrf -> csrf.disable())
-  → 無効化されている場合 → 🔴 HIGH
+STEP 1: Check the Spring Security CSRF configuration
+  → Grep: csrf().disable() or csrf(csrf -> csrf.disable())
+  → disabled → 🔴 HIGH
 
-STEP 2: フォームのCSRFトークンを確認
+STEP 2: Check the CSRF tokens on the forms
   → Glob: templates/**/*.html
   → Grep: _csrf, th:action
-  → ThymeleafのみのCSRFトークンは th:action に自動含まれる
+  → with Thymeleaf alone, the CSRF token is included in th:action automatically
 
-STEP 3: CSRF除外のスコープを確認
-  → 除外が必要最小限に限定されているか
+STEP 3: Check the scope of the CSRF exclusions
+  → are the exclusions kept to the minimum necessary?
 ```
 
-**推奨修正：**
+**Recommended fix:**
 ```java
-// SecurityConfig — CSRFを有効に保つ
+// SecurityConfig — keep CSRF enabled
 http.csrf(csrf -> csrf
-    .ignoringRequestMatchers("/api/webhook/**") // 必要な場合のみ除外
+    .ignoringRequestMatchers("/api/webhook/**") // exclude only where necessary
 );
 ```
 
 ```html
-<!-- Thymeleaf: th:action はCSRFトークンを自動的に含む -->
+<!-- Thymeleaf: th:action includes the CSRF token automatically -->
 <form th:action="@{/deposit/memo}" method="post">
 ```
 
 ---
 
-### No.8 — クリックジャッキング対策ヘッダーの未設定
+### No.8 — Clickjacking protection headers not set
 
-**概要：** ページがiframeに埋め込まれ、ユーザーが意図しない操作を誘導される。
+**Overview:** the page can be embedded in an iframe and the user tricked into actions they did not intend.
 
-**チェック方法：**
+**How to check:**
 ```
-STEP 1: SecurityConfigのセキュリティヘッダーを確認
+STEP 1: Check the security headers in SecurityConfig
   → Grep: frameOptions, X-Frame-Options, ContentSecurityPolicy
 
-STEP 2: レスポンスヘッダーを確認
-  → X-Frame-Options: DENY または SAMEORIGIN が設定されているか
-  → Content-Security-Policy に frame-ancestors が含まれているか
+STEP 2: Check the response headers
+  → is X-Frame-Options: DENY or SAMEORIGIN set?
+  → does the Content-Security-Policy include frame-ancestors?
 ```
 
-**推奨修正：**
+**Recommended fix:**
 ```java
 // SecurityConfig
 http.headers(headers -> headers
@@ -306,103 +306,103 @@ http.headers(headers -> headers
 
 ---
 
-### No.9 — ログインURLの自動化対策の欠如
+### No.9 — No anti-automation on the login URL
 
-**概要：** レート制限やアカウントロックアウトがないため、ログインエンドポイントへのブルートフォース攻撃が可能になる。
+**Overview:** with no rate limiting or account lockout, the login endpoint can be brute-forced.
 
-**チェック方法：**
+**How to check:**
 ```
-STEP 1: ログインエンドポイントのレート制限を確認
+STEP 1: Check for rate limiting on the login endpoint
   → Grep: RateLimiter, Bucket4j, @RateLimited
 
-STEP 2: アカウントロックアウトを確認
+STEP 2: Check for account lockout
   → Grep: lockoutPolicy, failedAttempts, UserDetailsService
 
-STEP 3: CAPTCHAを確認
+STEP 3: Check for CAPTCHA
   → Grep: captcha, recaptcha, hcaptcha
 ```
 
-**推奨修正：**
+**Recommended fix:**
 ```java
-// 失敗回数をトラッキングし、閾値超過でアカウントをロック
+// Track failed attempts and lock the account once the threshold is passed
 @Service
 public class LoginAttemptService {
     private static final int MAX_ATTEMPTS = 5;
-    // 5回失敗でアカウントをロック
+    // Lock the account after 5 failures
 }
 ```
 
 ---
 
-### No.10 — フォーム送信の自動化対策の欠如
+### No.10 — No anti-automation on form submission
 
-**概要：** 登録フォームや申請フォームが自動化ボットに悪用される。
+**Overview:** registration and application forms can be abused by automated bots.
 
-**チェック方法：**
+**How to check:**
 ```
-STEP 1: 登録・申請フォームを確認
+STEP 1: Check the registration and application forms
   → Glob: templates/register/**/*.html
-  → CAPTCHAまたは送信レート制限が存在するか
+  → is there a CAPTCHA or a submission rate limit?
 
-STEP 2: バックエンドのレート制限を確認
+STEP 2: Check for rate limiting on the backend
   → Grep: RateLimiter, @RateLimited, throttle
 
-STEP 3: ハニーポットフィールドを確認
-  → ボット検出用の隠しフィールドが存在するか
+STEP 3: Check for honeypot fields
+  → is there a hidden field for bot detection?
 ```
 
 ---
 
-### No.11 — 適切なセキュリティ設定のないWebコンポーネント
+### No.11 — Web components without proper security settings
 
-**概要：** 古いライブラリや脆弱なライブラリが既知のCVEを公開している。
+**Overview:** old or vulnerable libraries expose known CVEs.
 
-**チェック方法：**
+**How to check:**
 ```
-STEP 1: バックエンド依存関係を確認
-  → Read: pom.xml または build.gradle
-  → 古いライブラリバージョンが存在するか
+STEP 1: Check the backend dependencies
+  → Read: pom.xml or build.gradle
+  → are there outdated library versions?
 
-STEP 2: フロントエンド依存関係を確認
+STEP 2: Check the frontend dependencies
   → Read: package.json
-  → npm audit / yarn audit に相当する確認
+  → the equivalent of npm audit / yarn audit
 
-STEP 3: Spring Bootのバージョンを確認
-  → 現在のバージョンに既知のCVEが存在するか
+STEP 3: Check the Spring Boot version
+  → are there known CVEs for the version in use?
 ```
 
-**推奨修正：**
+**Recommended fix:**
 ```xml
-<!-- pom.xml — バージョンを明示的に管理し、最新に保つ -->
+<!-- pom.xml — manage versions explicitly and keep them current -->
 <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version><!-- 最新の安定バージョンを使用 --></version>
+    <version><!-- use the latest stable version --></version>
 </parent>
 ```
 
 ---
 
-### No.12 — デフォルトサーバファイルの無効化の欠如
+### No.12 — Default server files not disabled
 
-**概要：** デフォルトのエラーページやサーバ情報ヘッダーが実装の詳細を攻撃者に漏洩する。
+**Overview:** default error pages and server information headers leak implementation details to an attacker.
 
-**チェック方法：**
+**How to check:**
 ```
-STEP 1: エラーページの設定を確認
+STEP 1: Check the error page configuration
   → Grep: ErrorController, /error, whitelabel
-  → カスタムエラーページが存在するか
+  → is there a custom error page?
 
-STEP 2: サーバ情報の公開を確認
+STEP 2: Check what server information is exposed
   → Grep: server.error.include-stacktrace
-  → server.error.include-message=never が設定されているか
+  → is server.error.include-message=never set?
 
-STEP 3: Actuatorエンドポイントの公開を確認
+STEP 3: Check which Actuator endpoints are exposed
   → Grep: management.endpoints.web.exposure.include
-  → healthエンドポイントのみ公開されているか
+  → is only the health endpoint exposed?
 ```
 
-**推奨修正：**
+**Recommended fix:**
 ```properties
 # application.properties
 server.error.include-stacktrace=never
@@ -413,51 +413,51 @@ management.endpoints.web.exposure.include=health
 
 ---
 
-### No.13 — 文字エンコーディングが未定義のテキストレスポンス
+### No.13 — Text responses with no character encoding declared
 
-**概要：** charsetが未定義のレスポンスはブラウザにエンコーディングを推測させ、XSSに悪用される可能性がある。
+**Overview:** a response with no charset makes the browser guess the encoding, which can be abused for XSS.
 
-**チェック方法：**
+**How to check:**
 ```
-STEP 1: コントローラの @ResponseBody メソッドを確認
+STEP 1: Check the @ResponseBody methods on the controllers
   → Grep: @ResponseBody, ResponseEntity
-  → produces = "text/plain" に charset=UTF-8 が欠如しているか
+  → is charset=UTF-8 missing from produces = "text/plain"?
 
-STEP 2: リクエストマッピングの produces 属性を確認
+STEP 2: Check the produces attribute on the request mappings
   → Grep: produces = "text/
-  → charset なしの "text/html" または "text/plain" が存在するか
+  → is there a "text/html" or "text/plain" without a charset?
 ```
 
-**推奨修正：**
+**Recommended fix:**
 ```java
-// 悪い例
+// Bad
 @GetMapping(value = "/export", produces = "text/plain")
 
-// 良い例
+// Good
 @GetMapping(value = "/export", produces = "text/plain;charset=UTF-8")
 ```
 
 ---
 
-### No.14 — Content-Typeの文字エンコーディング欠如
+### No.14 — Missing character encoding on Content-Type
 
-**概要：** Content-Typeヘッダーにcharsetが欠如すると、エンコーディングベースのXSS攻撃が可能になる。
+**Overview:** a Content-Type header with no charset opens the door to encoding-based XSS attacks.
 
-**チェック方法：**
+**How to check:**
 ```
-STEP 1: デフォルトエンコーディングの設定を確認
+STEP 1: Check the default encoding configuration
   → Grep: CharacterEncodingFilter, spring.http.encoding
-  → server.servlet.encoding.charset=UTF-8 が application.properties に設定されているか
+  → is server.servlet.encoding.charset=UTF-8 set in application.properties?
 
-STEP 2: 手動設定のContent-Typeヘッダーを確認
+STEP 2: Check manually set Content-Type headers
   → Grep: response.setContentType(...)
-  → charset=UTF-8 が含まれているか
+  → is charset=UTF-8 included?
 
-STEP 3: Thymeleafのエンコーディング設定を確認
-  → spring.thymeleaf.encoding=UTF-8 が設定されているか
+STEP 3: Check the Thymeleaf encoding configuration
+  → is spring.thymeleaf.encoding=UTF-8 set?
 ```
 
-**推奨修正：**
+**Recommended fix:**
 ```properties
 # application.properties
 server.servlet.encoding.charset=UTF-8
@@ -468,130 +468,130 @@ spring.thymeleaf.encoding=UTF-8
 
 ---
 
-### No.15 — SQLインジェクション（OWASP A03）
+### No.15 — SQL injection (OWASP A03)
 
-**概要：** ユーザー入力がSQLクエリに直接埋め込まれ、攻撃者がデータベースを操作できる。
+**Overview:** user input is embedded directly into a SQL query, letting an attacker manipulate the database.
 
-**チェック方法：**
+**How to check:**
 ```
-STEP 1: ネイティブクエリを確認
+STEP 1: Check the native queries
   → Grep: nativeQuery = true, @Query
-  → 文字列連結でクエリを構築している場合 → 🔴 HIGH
+  → query built by string concatenation → 🔴 HIGH
 
-STEP 2: JPQLクエリを確認
+STEP 2: Check the JPQL queries
   → Grep: createQuery, EntityManager
-  → 名前付きパラメータバインディングが使用されているか
+  → is named parameter binding used?
 ```
 
-**推奨修正：**
+**Recommended fix:**
 ```java
-// 悪い例 — SQLインジェクション脆弱性
+// Bad — SQL injection vulnerability
 @Query(value = "SELECT * FROM users WHERE name = '" + name + "'", nativeQuery = true)
 
-// 良い例 — パラメータバインディング
+// Good — parameter binding
 @Query("SELECT u FROM User u WHERE u.name = :name")
 List<User> findByName(@Param("name") String name);
 ```
 
 ---
 
-### No.16 — 暗号化の失敗（OWASP A02）
+### No.16 — Cryptographic failures (OWASP A02)
 
-**概要：** 弱いまたは欠如した暗号化により機密データが公開される — 弱いハッシュによるパスワード保存、ハードコードされた秘密情報、平文HTTP送信など。
+**Overview:** weak or missing cryptography exposes confidential data — passwords stored with a weak hash, hardcoded secrets, plaintext HTTP transmission and the like.
 
-**チェック方法：**
+**How to check:**
 ```
-STEP 1: パスワードハッシュを確認
+STEP 1: Check the password hashing
   → Grep: PasswordEncoder, BCrypt, Argon2
-  → MD5, SHA1, ソルトなしSHA256 が見つかった場合 → 🔴 HIGH
-  → BCryptPasswordEncoder の強度 < 10 の場合 → 🟡 MEDIUM
+  → MD5, SHA1 or unsalted SHA256 found → 🔴 HIGH
+  → BCryptPasswordEncoder with strength < 10 → 🟡 MEDIUM
 
-STEP 2: ハードコードされたシークレットを確認
-  → Grep: password=, secret=, apiKey=, token= (.java / .properties ファイル内)
-  → ソースコードにリテラルの認証情報 → 🔴 HIGH
+STEP 2: Check for hardcoded secrets
+  → Grep: password=, secret=, apiKey=, token= (in .java / .properties files)
+  → literal credentials in the source → 🔴 HIGH
 
-STEP 3: HTTPSの強制を確認
+STEP 3: Check that HTTPS is enforced
   → Grep: requiresSecure, http.requiresChannel
-  → HTTPトラフィックがHTTPSにリダイレクトされているか
+  → is HTTP traffic redirected to HTTPS?
 ```
 
-**推奨修正：**
+**Recommended fix:**
 ```java
-// 良い例 — 強度12のBCrypt
+// Good — BCrypt at strength 12
 @Bean
 public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder(12);
 }
 
-// 悪い例 — MD5やプレーンSHAは絶対に使用しない
+// Bad — never use MD5 or plain SHA
 MessageDigest.getInstance("MD5").digest(password.getBytes());
 ```
 
 ```properties
-# application.properties — シークレットをソース管理ファイルに保存しない
-# 環境変数またはシークレット管理ツールを使用する
+# application.properties — do not keep secrets in files under source control
+# Use environment variables or a secret management tool
 spring.datasource.password=${DB_PASSWORD}
 ```
 
 ---
 
-### No.17 — 安全でないデシリアライゼーション（OWASP A08）
+### No.17 — Insecure deserialization (OWASP A08)
 
-**概要：** 信頼できないデータのデシリアライズにより、リモートコード実行やオブジェクトインジェクション攻撃が可能になる。
+**Overview:** deserializing untrusted data opens the door to remote code execution and object injection attacks.
 
-**チェック方法：**
+**How to check:**
 ```
-STEP 1: Javaネイティブシリアライゼーションを確認
+STEP 1: Check for Java native serialization
   → Grep: ObjectInputStream, readObject(), Serializable
-  → 外部入力と共に使用されている場合 → 🔴 HIGH
+  → used with external input → 🔴 HIGH
 
-STEP 2: Jacksonの設定を確認
+STEP 2: Check the Jackson configuration
   → Grep: ObjectMapper, enableDefaultTyping, @JsonTypeInfo
-  → 型の許可リストなしの enableDefaultTyping() → 🔴 HIGH
+  → enableDefaultTyping() without a type allow-list → 🔴 HIGH
 
-STEP 3: 外部データのデシリアライゼーションを確認
+STEP 3: Check the deserialization of external data
   → Grep: @RequestBody, readValue(
-  → 型が厳密に制御されているか
+  → are the types strictly controlled?
 ```
 
-**推奨修正：**
+**Recommended fix:**
 ```java
-// 悪い例 — ポリモーフィック型攻撃に脆弱
+// Bad — vulnerable to polymorphic type attacks
 objectMapper.enableDefaultTyping();
 
-// 良い例 — 明示的な型バインディングのみ使用
+// Good — use explicit type binding only
 objectMapper.activateDefaultTyping(
     LaissezFaireSubTypeValidator.instance,
     ObjectMapper.DefaultTyping.NON_FINAL,
     JsonTypeInfo.As.PROPERTY
 );
 
-// 最良 — Javaシリアライゼーションを完全に避け、JSON/DTOマッピングを使用
+// Best — avoid Java serialization entirely and use JSON/DTO mapping
 ```
 
 ---
 
-### No.18 — SSRF — サーバーサイドリクエストフォージェリ（OWASP A10）
+### No.18 — SSRF — server-side request forgery (OWASP A10)
 
-**概要：** サーバーがユーザーから提供されたURLを取得し、攻撃者が内部サービスやクラウドメタデータエンドポイントに到達できる。
+**Overview:** the server fetches a URL supplied by the user, letting an attacker reach internal services or cloud metadata endpoints.
 
-**チェック方法：**
+**How to check:**
 ```
-STEP 1: ユーザー提供のURLを使用した外部HTTPコールを確認
+STEP 1: Check external HTTP calls that use a user-supplied URL
   → Grep: RestTemplate, WebClient, HttpURLConnection, URL(
-  → URLの値が @RequestParam, @RequestBody, またはDBから取得されているか
+  → does the URL value come from @RequestParam, @RequestBody or the database?
 
-STEP 2: URL許可リストの検証を確認
+STEP 2: Check for URL allow-list validation
   → Grep: allowedHosts, allowedDomains, URI.getHost()
-  → 許可リストが存在しない場合 → 🔴 HIGH
+  → no allow-list → 🔴 HIGH
 
-STEP 3: 内部IPブロッキングを確認
-  → 127.0.0.1, 169.254.169.254（クラウドメタデータ）, 10.x, 192.168.x にアクセス可能か
+STEP 3: Check for internal IP blocking
+  → are 127.0.0.1, 169.254.169.254 (cloud metadata), 10.x and 192.168.x reachable?
 ```
 
-**推奨修正：**
+**Recommended fix:**
 ```java
-// リクエスト前にURLを許可リストで検証する
+// Validate the URL against an allow-list before making the request
 private static final List<String> ALLOWED_HOSTS = List.of("api.example.com", "cdn.example.com");
 
 public void validateUrl(String url) {
@@ -604,37 +604,37 @@ public void validateUrl(String url) {
 
 ---
 
-### No.19 — シークレット管理
+### No.19 — Secret management
 
-**概要：** APIキー、パスワード、トークンがソース管理にコミットされたり設定ファイルに埋め込まれたりすると、リポジトリアクセスで漏洩する可能性がある。
+**Overview:** API keys, passwords and tokens committed to source control or embedded in configuration files can leak to anyone with access to the repository.
 
-**チェック方法：**
+**How to check:**
 ```
-STEP 1: application.properties / application.yml を確認
+STEP 1: Check application.properties / application.yml
   → Grep: password=, secret=, key=, token=
-  → リテラルの認証情報値（${ENV_VAR}参照でないもの）→ 🔴 HIGH
+  → literal credential values (not a ${ENV_VAR} reference) → 🔴 HIGH
 
-STEP 2: .gitignore を確認
-  → application-prod.properties, .env, *.jks, *.p12 が除外されているか
+STEP 2: Check .gitignore
+  → are application-prod.properties, .env, *.jks and *.p12 excluded?
 
-STEP 3: Javaソースファイルのシークレットを確認
+STEP 3: Check the Java source files for secrets
   → Grep: private static final String.*KEY =
   → Grep: private static final String.*SECRET =
-  → ハードコードされたリテラル値 → 🔴 HIGH
+  → hardcoded literal values → 🔴 HIGH
 
-STEP 4: 環境変数の使用を確認
-  → すべての認証情報に ${...} プレースホルダーが使用されているか
+STEP 4: Check the use of environment variables
+  → is a ${...} placeholder used for every credential?
 ```
 
-**推奨修正：**
+**Recommended fix:**
 ```properties
-# 良い例 — 環境変数を参照する
+# Good — reference environment variables
 spring.datasource.password=${DB_PASSWORD}
 cloud.api.secret=${CLOUD_API_SECRET}
 ```
 
 ```
-# .gitignore — 常に除外する
+# .gitignore — always exclude
 application-prod.properties
 application-local.properties
 .env
@@ -644,77 +644,77 @@ application-local.properties
 
 ---
 
-### No.20 — 入力検証戦略（許可リスト vs ブロックリスト）
+### No.20 — Input validation strategy (allow-list vs block-list)
 
-**概要：** ブロックリストベースの検証（既知の悪いパターンをブロック）は簡単に回避される。許可リストベースの検証（既知の良いパターンのみ許可）が正しいアプローチである。
+**Overview:** block-list validation (blocking known-bad patterns) is easy to get around. Allow-list validation (permitting only known-good patterns) is the correct approach.
 
-**チェック方法：**
+**How to check:**
 ```
-STEP 1: DTO／Commandクラスのbean validationアノテーションを確認
+STEP 1: Check the bean validation annotations on the DTO / Command classes
   → Grep: @Pattern, @Size, @NotBlank, @Email
-  → ブロックリスト正規表現を使用している場合（例：[^<>]）→ 🟡 MEDIUM
-  → 許可リスト正規表現を使用している場合（例：[a-zA-Z0-9]）→ 🟢 LOW
-  → バリデーションが全くない場合 → 🔴 HIGH
+  → a block-list regex (e.g. [^<>]) → 🟡 MEDIUM
+  → an allow-list regex (e.g. [a-zA-Z0-9]) → 🟢 LOW
+  → no validation at all → 🔴 HIGH
 
-STEP 2: カスタムバリデータを確認
+STEP 2: Check the custom validators
   → Grep: implements ConstraintValidator
-  → 許可リストロジックが存在するか
+  → is the logic allow-list based?
 
-STEP 3: コントローラのエントリポイントを確認
-  → Grep: @RequestBody / @ModelAttribute に @Valid, @Validated
-  → @Valid が欠如している場合 → 🔴 HIGH
+STEP 3: Check the controller entry points
+  → Grep: @Valid, @Validated on @RequestBody / @ModelAttribute
+  → @Valid missing → 🔴 HIGH
 ```
 
-**安全な例 vs 危険な例：**
+**Safe vs dangerous:**
 ```java
-// ブロックリスト — 回避可能なため非推奨
+// Block-list — discouraged, because it can be bypassed
 @Pattern(regexp = "[^<>\"']*")
 
-// 許可リスト — 安全な文字のみ許可するため推奨
-@Pattern(regexp = "^[a-zA-Z0-9\\s\\-_.,@]+$", message = "使用できない文字が含まれています")
+// Allow-list — recommended, because only safe characters are permitted
+@Pattern(regexp = "^[a-zA-Z0-9\\s\\-_.,@]+$", message = "Contains characters that are not allowed")
 @Size(max = 100)
 private String companyName;
 ```
 
 ```java
-// コントローラのバウンダリで常にバリデーションを起動する
+// Always trigger validation at the controller boundary
 @PostMapping("/apply")
 public String apply(@Valid @ModelAttribute ApplicationCommand cmd, BindingResult result) { }
 ```
 
 ---
 
-### No.21 — セキュリティログ
+### No.21 — Security logging
 
-**概要：** セキュリティイベントのログが欠如または不完全だと、攻撃の検出やインシデント調査が不可能になる。個人情報や認証情報をログに記録すると、別のデータ漏洩リスクが生じる。
+**Overview:** missing or incomplete logging of security events makes it impossible to detect attacks or investigate incidents. Logging personal data or credentials creates a data leak risk of its own.
 
-**チェック方法：**
+**How to check:**
 ```
-STEP 1: 認証イベントがログに記録されているか確認
+STEP 1: Check that authentication events are logged
   → Grep: AuthenticationSuccessHandler, AuthenticationFailureHandler
-  → ログイン成功／失敗がuserIdとタイムスタンプ付きでログされているか
+  → are login successes and failures logged with a userId and a timestamp?
 
-STEP 2: 認可失敗がログに記録されているか確認
+STEP 2: Check that authorisation failures are logged
   → Grep: AccessDeniedException, @ControllerAdvice
-  → 403レスポンスがuserIdとリクエストパス付きでログされているか
+  → are 403 responses logged with a userId and the request path?
 
-STEP 3: ログへのPII／認証情報漏洩を確認
+STEP 3: Check for PII / credential leakage into the logs
   → Grep: log.info, log.debug, log.error
-  → email, password, phone, address, token がログ文字列に含まれている → 🔴 HIGH
+  → email, password, phone, address or token in a log string → 🔴 HIGH
 
-STEP 4: ログレベルの設定を確認
+STEP 4: Check the log level configuration
   → Grep: logging.level in application.properties
-  → 本番環境でDEBUGレベルが有効になっているか → 🟡 MEDIUM
+  → DEBUG level enabled in production → 🟡 MEDIUM
 ```
 
-**推奨修正：**
+**Recommended fix:**
 ```java
-// 良い例 — IDのみでセキュリティイベントをログに記録
-log.warn("ログイン失敗: userId={}, ip={}", userId, clientIp);
-log.info("アクセス拒否: userId={}, path={}", userId, requestPath);
+// Good — log security events with the id only
+log.warn("Login failed: userId={}, ip={}", userId, clientIp);
+log.info("Access denied: userId={}, path={}", userId, requestPath);
 
-// 悪い例 — 個人情報や認証情報を絶対にログに記録しない
-log.info("ログイン試行: email={}, password={}", email, password); // 🔴
+// Bad — never log personal data or credentials
+log.info("Login attempt: email={}, password={}", email, password); // 🔴
 ```
 
 ```properties
@@ -725,56 +725,56 @@ logging.level.com.example.security=INFO
 
 ---
 
-## レポート出力フォーマット
+## Report output format
 
-スキャン後、以下の形式でレポートを出力する：
+After the scan, output a report in this format:
 
 ```
-## セキュリティ診断レポート
-日付: YYYY-MM-DD
-スコープ: [ファイル名 または "プロジェクト全体"]
+## Security audit report
+Date: YYYY-MM-DD
+Scope: [file name or "whole project"]
 
-| No. | 脆弱性 | リスク | ファイル | 詳細 |
-|-----|--------|--------|----------|------|
-| 1   | XSS（蓄積型）         | 🟢 LOW    | templates/deposit/... | th:text を使用 — 安全 |
-| 2   | Cookieセキュア属性    | 🟡 MEDIUM | application.properties | secure=true 未設定 |
-| 3   | 不正アクセス          | 🟢 LOW    | SecurityConfig.java    | @PreAuthorize が設定済み |
-| 4   | 個人情報の不要な出力  | ...       | ...                    | ... |
-| 5   | XSS（DOM型）          | ...       | ...                    | ... |
-| 6   | ローカルリソース公開  | ...       | ...                    | ... |
-| 7   | CSRF対策              | ...       | ...                    | ... |
-| 8   | クリックジャッキング  | ...       | ...                    | ... |
-| 9   | ログイン自動化対策    | ...       | ...                    | ... |
-| 10  | フォーム自動化対策    | ...       | ...                    | ... |
-| 11  | Webコンポーネント     | ...       | ...                    | ... |
-| 12  | デフォルトサーバファイル | ...    | ...                    | ... |
-| 13  | 文字エンコーディング  | ...       | ...                    | ... |
-| 14  | Content-Typeエンコーディング | ... | ...                 | ... |
-| 15  | SQLインジェクション   | ...       | ...                    | ... |
-| 16  | 暗号化の失敗          | ...       | ...                    | ... |
-| 17  | 安全でないデシリアライゼーション | ... | ...            | ... |
-| 18  | SSRF                  | ...       | ...                    | ... |
-| 19  | シークレット管理      | ...       | ...                    | ... |
-| 20  | 入力検証戦略          | ...       | ...                    | ... |
-| 21  | セキュリティログ      | ...       | ...                    | ... |
+| No. | Vulnerability | Risk | File | Details |
+|-----|---------------|------|------|---------|
+| 1   | XSS (stored)              | 🟢 LOW    | templates/deposit/...  | Uses th:text — safe |
+| 2   | Cookie secure attribute   | 🟡 MEDIUM | application.properties | secure=true not set |
+| 3   | Unauthorised access       | 🟢 LOW    | SecurityConfig.java    | @PreAuthorize is in place |
+| 4   | Unnecessary personal data | ...       | ...                    | ... |
+| 5   | XSS (DOM-based)           | ...       | ...                    | ... |
+| 6   | Local resource exposure   | ...       | ...                    | ... |
+| 7   | CSRF protection           | ...       | ...                    | ... |
+| 8   | Clickjacking              | ...       | ...                    | ... |
+| 9   | Login anti-automation     | ...       | ...                    | ... |
+| 10  | Form anti-automation      | ...       | ...                    | ... |
+| 11  | Web components            | ...       | ...                    | ... |
+| 12  | Default server files      | ...       | ...                    | ... |
+| 13  | Character encoding        | ...       | ...                    | ... |
+| 14  | Content-Type encoding     | ...       | ...                    | ... |
+| 15  | SQL injection             | ...       | ...                    | ... |
+| 16  | Cryptographic failures    | ...       | ...                    | ... |
+| 17  | Insecure deserialization  | ...       | ...                    | ... |
+| 18  | SSRF                      | ...       | ...                    | ... |
+| 19  | Secret management         | ...       | ...                    | ... |
+| 20  | Input validation strategy | ...       | ...                    | ... |
+| 21  | Security logging          | ...       | ...                    | ... |
 
-## 推奨修正
-🔴 HIGH を優先順位の高い順に、コード例付きでリストアップする。
+## Recommended fixes
+List the 🔴 HIGH items in priority order, with code examples.
 ```
 
 ---
 
-## プロジェクト固有のチェックポイント
+## Project-specific checkpoints
 
-| レイヤー | チェック内容 |
-|----------|------------|
-| **Thymeleaf** | `th:utext` を使用していないか；`th:action` がCSRFトークンを自動的に含むか |
-| **Spring Security** | `csrf().disable()` がないか；`frameOptions` が設定済みか；BCryptの強度 ≥ 12か |
-| **Spring Data JPA** | ネイティブクエリで名前付きパラメータバインディングを使用しているか；JPQLで文字列連結がないか |
-| **application.properties** | エンコーディング、エラー、Cookie、Actuatorの設定；ハードコードされた認証情報がないか |
-| **React（Vite）** | `dangerouslySetInnerHTML` がないか；生の `innerHTML` 書き込みがないか |
-| **Beanバリデーション** | `@Pattern`（許可リスト）、`@Size`、`@Valid` がすべてのユーザー入力エントリポイントに適用されているか |
-| **ObjectMapper / Jackson** | `enableDefaultTyping()` がないか；明示的な型バインディングのみを使用しているか |
-| **外部HTTPコール** | URL許可リストが適用されているか；ユーザー制御URLがRestTemplate/WebClientに渡されていないか |
-| **シークレット** | すべての認証情報が `${ENV_VAR}` 経由か；機密ファイルが `.gitignore` に含まれているか |
-| **ログ** | 認証／認可イベントがログに記録されているか；ログ文字列にPIIや認証情報がゼロか |
+| Layer | What to check |
+|-------|---------------|
+| **Thymeleaf** | No `th:utext`; `th:action` includes the CSRF token automatically |
+| **Spring Security** | No `csrf().disable()`; `frameOptions` configured; BCrypt strength ≥ 12 |
+| **Spring Data JPA** | Native queries use named parameter binding; no string concatenation in JPQL |
+| **application.properties** | Encoding, error, cookie and Actuator settings; no hardcoded credentials |
+| **React (Vite)** | No `dangerouslySetInnerHTML`; no raw `innerHTML` writes |
+| **Bean validation** | `@Pattern` (allow-list), `@Size` and `@Valid` applied at every user input entry point |
+| **ObjectMapper / Jackson** | No `enableDefaultTyping()`; explicit type binding only |
+| **External HTTP calls** | A URL allow-list is applied; no user-controlled URL passed to RestTemplate/WebClient |
+| **Secrets** | Every credential goes through `${ENV_VAR}`; confidential files are in `.gitignore` |
+| **Logging** | Authentication and authorisation events are logged; zero PII or credentials in log strings |
